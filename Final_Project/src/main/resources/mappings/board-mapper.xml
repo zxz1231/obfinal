@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="BoardDAO">
+	<resultMap id="boardResult" type="board">
+		<result property="seq" column="SEQ"/>
+		<result property="title" column="TITLE"/>
+		<result property="writer" column="WRITER"/>
+		<result property="content" column="CONTENT"/>
+		<result property="regdate" column="REGDATE"/>
+		<result property="cnt" column="CNT"/>
+	</resultMap>
+	
+	<select id="getBoard" parameterType="board"
+		resultMap="boardResult">
+		SELECT * FROM BOARD WHERE SEQ = #{seq}
+	</select>
+	
+	<select id="getBoardList" resultMap="boardResult">
+		SELECT * FROM BOARD 
+		 WHERE 1=1
+		<if test="searchCondition == 'TITLE'">
+		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+		   AND CONTENT LIKE '%' || #{searchKeyword} || '%'	
+		</if>
+		ORDER BY SEQ DESC
+	</select>
+	
+	<select id="getBoardListwhere" resultMap="boardResult">
+		SELECT * FROM BOARD 
+		 <where>
+		<if test="searchCondition == 'TITLE'">
+		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+		   AND CONTENT LIKE '%' || #{searchKeyword} || '%'	
+		</if>
+		</where>
+		ORDER BY SEQ DESC
+	</select>
+	
+	<select id="getBoardSeqSmall" parameterType="int">
+	<![CDATA[
+		SELECT * FROM BOARD WHERE SEQ < #{seq}
+	]]>
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+	<![CDATA[
+		INSERT INTO BOARD (SEQ, TITLE, WRITER, CONTENT)
+		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD),
+		       #{title}, #{writer}, #{content}) 
+	]]>
+	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+		UPDATE BOARD
+		   SET TITLE = #{title},
+		       CONTENT = #{content}
+		 WHERE SEQ = #{seq}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="board">
+		DELETE FROM BOARD WHERE SEQ = #{seq}
+	</delete>
+</mapper>  
+
+
+
+
+
+

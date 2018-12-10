@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- =========================================start resurttype parametertype 
+		바꿔쓸 수 있음 -->
+	<typeAliases>
+		<!-- com.spring.biz.board.BoardVO 이것을 board로 사용할 수 있음!! -->
+		<typeAlias type="com.ob.biz.vo.BoardVO" alias="board" />
+		<typeAlias type="com.ob.biz.vo.UserVO" alias="user" />
+	</typeAliases>
+	<!-- =========================================end -->
+	<mappers>
+		<mapper resource="mappings/board-mapper.xml" />
+		<mapper resource="mappings/user-mapper.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
