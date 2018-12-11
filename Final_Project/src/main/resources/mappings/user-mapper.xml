@@ -15,7 +15,7 @@
 	
 	<select id="getUser" parameterType="user"
 		resultMap="userResult">
-		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
+		SELECT * FROM USERS_EX WHERE ID = #{id} AND PASSWORD = #{password}
 	</select>
 </mapper>  
 

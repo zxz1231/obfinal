@@ -16,11 +16,11 @@
 	
 	<select id="getBoard" parameterType="board"
 		resultMap="boardResult">
-		SELECT * FROM BOARD WHERE SEQ = #{seq}
+		SELECT * FROM BOARD_EX WHERE SEQ = #{seq}
 	</select>
 	
 	<select id="getBoardList" resultMap="boardResult">
-		SELECT * FROM BOARD 
+		SELECT * FROM BOARD_EX 
 		 WHERE 1=1
 		<if test="searchCondition == 'TITLE'">
 		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="getBoardListwhere" resultMap="boardResult">
-		SELECT * FROM BOARD 
+		SELECT * FROM BOARD_EX
 		 <where>
 		<if test="searchCondition == 'TITLE'">
 		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
@@ -46,27 +46,27 @@
 	
 	<select id="getBoardSeqSmall" parameterType="int">
 	<![CDATA[
-		SELECT * FROM BOARD WHERE SEQ < #{seq}
+		SELECT * FROM BOARD_EX WHERE SEQ < #{seq}
 	]]>
 	</select>
 	
 	<insert id="insertBoard" parameterType="board">
 	<![CDATA[
-		INSERT INTO BOARD (SEQ, TITLE, WRITER, CONTENT)
-		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD),
+		INSERT INTO BOARD_EX (SEQ, TITLE, WRITER, CONTENT)
+		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD_EX),
 		       #{title}, #{writer}, #{content}) 
 	]]>
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
-		UPDATE BOARD
+		UPDATE BOARD_EX
 		   SET TITLE = #{title},
 		       CONTENT = #{content}
 		 WHERE SEQ = #{seq}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="board">
-		DELETE FROM BOARD WHERE SEQ = #{seq}
+		DELETE FROM BOARD_EX WHERE SEQ = #{seq}
 	</delete>
 </mapper>  
 
