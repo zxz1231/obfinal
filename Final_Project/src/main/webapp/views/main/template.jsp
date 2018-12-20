@@ -57,7 +57,7 @@
 		<!-- Header -->
 		<header
 			class="header header-style-1 transparent-header sticky-header megamenu-container"
-			data-black-overlay="1">
+			data-black-overlay="10">
 
 			<div class="container d-none d-lg-block">
 				<div class="row">
