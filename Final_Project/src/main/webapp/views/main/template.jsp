@@ -4,7 +4,7 @@
 	// 경로 /biz 부터 시작  [http://localhost:8080/biz/ @@.do 요청 하기 위해]
 	String contextPath = request.getContextPath();
 	// theme 까지 들어온 경로 
-	String KPath = contextPath + "/resources/theme";
+	String KPath = contextPath + "/resources/theme"; 
 %>
 
 <!doctype html>
