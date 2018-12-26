@@ -5,35 +5,91 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="BoardDAO">
-	<resultMap id="boardResult" type="board">
-		<result property="seq" column="SEQ"/>
+	<!-- <resultMap id="boardResult" type="board">
+		<result property="b_id" column="B_ID"/>
+		<result property="b_type" column="B_TYPE"/>
+		<result property="id" column="ID"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="m_id" column="M_ID"/>
 		<result property="title" column="TITLE"/>
-		<result property="writer" column="WRITER"/>
 		<result property="content" column="CONTENT"/>
 		<result property="regdate" column="REGDATE"/>
-		<result property="cnt" column="CNT"/>
-	</resultMap>
+		<result property="hit" column="HIT"/>
+		<result property="img1" column="IMG1"/>
+		<result property="img2" column="IMG2"/>
+		<result property="img3" column="IMG3"/>
+		<result property="img4" column="IMG4"/>
+		<result property="img5" column="IMG5"/>
+		<result property="u_id" column="U_ID"/>
+		<result property="t_id" column="T_ID"/>
+	</resultMap> -->
 	
-	<select id="getBoard" parameterType="board"
-		resultMap="boardResult">
-		SELECT * FROM BOARD_EX WHERE SEQ = #{seq}
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARD (B_ID, B_TYPE, ID, NICKNAME, M_ID, TITLE, CONTENT, REGDATE, HIT
+						 , IMG1, IMG2, IMG3, IMG4, IMG5, U_ID, T_ID)
+		VALUES (
+		<if test="b_type == 0">
+				 SEQ_BOARD_NOTICE.NEXTVAL
+		</if>
+		<if test="b_type == 1">
+				 SEQ_BOARD_REVIEW_MOVIE.NEXTVAL
+		</if>
+		<if test="b_type == 2">
+				 SEQ_BOARD_REVIEW_THEATER.NEXTVAL
+		</if>
+		<if test="b_type == 3">
+				 SEQ_BOARD_FAME.NEXTVAL
+		</if>
+		<if test="b_type == 4">
+				 SEQ_BOARD_RECOM.NEXTVAL
+		</if>
+		<if test="b_type == 5">
+				 SEQ_BOARD_EVENT.NEXTVAL
+		</if>
+		<if test="b_type == 6">
+				 SEQ_BOARD_QNA.NEXTVAL
+		</if>
+			   , #{b_type}, #{id}, #{nickname}, #{m_id}, #{title}, #{content}
+			   , SYSDATE, 0, #{img1}, #{img2}, #{img3}, #{img4}, #{img5}, #{u_id}, #{t_id}) 
+	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+		UPDATE BOARD
+		   SET M_ID = #{m_id},
+		   	   T_ID = #{t_id},
+			   TITLE = #{title},
+		       CONTENT = #{content},
+		       <!-- REGDATE = #{regdate}, -->	<!-- REGDATE를 수정할 때마다 업데이트 할 지 최초 글 등록일로 할지 고민 -->
+		       IMG1 = #{img1},
+		       IMG2 = #{img2},
+		       IMG3 = #{img3},
+		       IMG4 = #{img4},
+		       IMG5 = #{img5}
+		       
+		 WHERE B_ID = #{b_id}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="board">
+		DELETE FROM BOARD WHERE B_ID = #{b_id}
+	</delete>
+	
+	<select id="getBoard" parameterType="board" resultType="board">
+		<!-- resultMap="boardResult"> -->
+		SELECT * FROM BOARD WHERE B_ID = #{b_id}
 	</select>
 	
-	<select id="getBoardList" resultMap="boardResult">
-		SELECT * FROM BOARD_EX 
-		 WHERE 1=1
-		<if test="searchCondition == 'TITLE'">
-		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
-		</if>
-		<if test="searchCondition == 'CONTENT'">
-		   AND CONTENT LIKE '%' || #{searchKeyword} || '%'	
-		</if>
-		ORDER BY SEQ DESC
+	<!-- 게시판별(B_TYPE) 게시물 전체 조회 -->
+	<select id="getBoardList"  resultType="board">
+			<!-- resultMap="board"> -->
+		SELECT * FROM BOARD
+		 WHERE B_TYPE = #{b_type}
+		 ORDER BY B_ID DESC
 	</select>
 	
-	<select id="getBoardListwhere" resultMap="boardResult">
-		SELECT * FROM BOARD_EX
-		 <where>
+	<select id="getBoardListWhere" resultType="board">
+			<!-- resultMap="board"> -->
+		SELECT * FROM BOARD
+		<where>
 		<if test="searchCondition == 'TITLE'">
 		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
 		</if>
@@ -46,28 +102,12 @@
 	
 	<select id="getBoardSeqSmall" parameterType="int">
 	<![CDATA[
-		SELECT * FROM BOARD_EX WHERE SEQ < #{seq}
+		SELECT * FROM BOARD WHERE SEQ < #{seq}
 	]]>
 	</select>
 	
-	<insert id="insertBoard" parameterType="board">
-	<![CDATA[
-		INSERT INTO BOARD_EX (SEQ, TITLE, WRITER, CONTENT)
-		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD_EX),
-		       #{title}, #{writer}, #{content}) 
-	]]>
-	</insert>
+	<!-- 히트수 증가  -->
 	
-	<update id="updateBoard" parameterType="board">
-		UPDATE BOARD_EX
-		   SET TITLE = #{title},
-		       CONTENT = #{content}
-		 WHERE SEQ = #{seq}
-	</update>
-	
-	<delete id="deleteBoard" parameterType="board">
-		DELETE FROM BOARD_EX WHERE SEQ = #{seq}
-	</delete>
 </mapper>  
 
 

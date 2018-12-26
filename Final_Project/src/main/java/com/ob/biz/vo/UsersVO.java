@@ -12,7 +12,7 @@ CREATE TABLE USERS (
  */
 public class UsersVO {
 	private int u_id, grade;
-	private String id, password, name, nickname, phone, add1, add2, gender, email;
+	private String id, password, name, nickname, phone, gender, email;
 	private Date birth;
 	
 	
@@ -57,18 +57,6 @@ public class UsersVO {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getAdd1() {
-		return add1;
-	}
-	public void setAdd1(String add1) {
-		this.add1 = add1;
-	}
-	public String getAdd2() {
-		return add2;
-	}
-	public void setAdd2(String add2) {
-		this.add2 = add2;
 	}
 	public String getGender() {
 		return gender;

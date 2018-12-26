@@ -5,17 +5,48 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="UserDAO">
-	<resultMap id="userResult" type="user">
+	<!-- <resultMap id="userResult" type="user">
+		<result property="u_id" column="U_ID"/>
 		<result property="id" column="ID"/>
 		<result property="password" column="PASSWORD"/>
 		<result property="name" column="NAME"/>
-		<result property="role" column="ROLE"/>
-	</resultMap>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="phone" column="PHONE"/>
+		<result property="add1" column="ADD1"/>
+		<result property="add2" column="ADD2"/>
+		<result property="gender" column="GENDER"/>
+		<result property="grade" column="GRADE"/>
+		<result property="email" column="EMAIL"/>
+	</resultMap> -->
 
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, NICKNAME
+			 , BIRTH, PHONE, ADD1, ADD2, GENDER, GRADE, EMAIL)
+		VALUES(SEQ_USERS.NEXTVAL, #{id}, #{password}, #{name}, #{nickname}
+			 , #{birth}, #{phone}, #{add1}, #{add2}, #{gender}, #{grade}, #{email} )
+	</insert>
 	
-	<select id="getUser" parameterType="user"
-		resultMap="userResult">
-		SELECT * FROM USERS_EX WHERE ID = #{id} AND PASSWORD = #{password}
+	<update id="updateUser" parameterType="user">
+		UPDATE USERS 
+		   SET PASSWORD = #{password}, NAME = #{name}, NICKNAME = #{nickname}
+			 , BIRTH = #{birth}, PHONE = #{phone}, ADD1 = #{add1}, ADD2 = #{add2}
+			 , GENDER = #{gender}, GRADE = #{grade}, EMAIL = #{email}
+		 WHERE U_ID = #{u_id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="user">
+		DELETE FROM USERS WHERE U_ID = #{u_id}
+	</delete>
+	
+	<select id="getUser" parameterType="user" resultType="user">
+		<!-- resultMap="userResult"> -->
+		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="getUserList" resultType="user">
+		<!-- resultMap="userResult"> -->
+		SELECT * FROM USERS ORDER BY U_ID DESC
 	</select>
 </mapper>  
 

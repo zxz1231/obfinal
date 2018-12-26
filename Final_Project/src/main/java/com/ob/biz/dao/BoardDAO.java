@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ob.biz.vo.BoardVO;
 
-@Repository("boardDAO") // 이름을 지정해주지 않으면 BoardDAOMybatis2클래스 이름 첫글자 소문자로
+@Repository // 이름을 지정해주지 않으면 BoardDAO클래스 이름 첫글자 소문자로
 public class BoardDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
