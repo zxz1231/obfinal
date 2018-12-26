@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="UsersDAO">
+
+	<insert id="insertUsers" parameterType="users">
+		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, NICKNAME
+			 , BIRTH, PHONE, ADD1, ADD2, GENDER, GRADE, EMAIL)
+		VALUES(SEQ_USERS.NEXTVAL, #{id}, #{password}, #{name}, #{nickname}
+			 , #{birth}, #{phone}, #{add1}, #{add2}, #{gender}, #{grade}, #{email} )
+	</insert>
+	
+	<update id="updateUsers" parameterType="users">
+		UPDATE USERS 
+		   SET PASSWORD = #{password}, NAME = #{name}, NICKNAME = #{nickname}
+			 , BIRTH = #{birth}, PHONE = #{phone}, ADD1 = #{add1}, ADD2 = #{add2}
+			 , GENDER = #{gender}, GRADE = #{grade}, EMAIL = #{email}
+		 WHERE U_ID = #{u_id}
+	</update>
+	
+	<delete id="deleteUsers" parameterType="users">
+		DELETE FROM USERS WHERE U_ID = #{u_id}
+	</delete>
+	
+	<select id="getUsers" parameterType="users" resultType="users">
+		<!-- resultMap="userResult"> -->
+		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="getUsersList" resultType="users">
+		<!-- resultMap="userResult"> -->
+		SELECT * FROM USERS ORDER BY U_ID DESC
+	</select>
+</mapper>  
+
+
+
+
+
+

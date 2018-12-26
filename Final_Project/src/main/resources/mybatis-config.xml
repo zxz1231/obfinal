@@ -5,7 +5,7 @@
 <configuration>
   <typeAliases>
   	<typeAlias alias="board" type="com.ob.biz.vo.BoardVO"/>
-  	<typeAlias alias="user" type="com.ob.biz.vo.UsersVO"/>
+  	<typeAlias alias="users" type="com.ob.biz.vo.UsersVO"/>
   	<typeAlias alias="no_users" type="com.ob.biz.vo.No_UsersVO"/>
   	<typeAlias alias="comments" type="com.ob.biz.vo.CommentsVO"/>
   	<typeAlias alias="movie" type="com.ob.biz.vo.MovieVO"/>
@@ -15,7 +15,7 @@
   
   <mappers>
     <mapper resource="mappings/board-mapper.xml"/>
-    <mapper resource="mappings/user-mapper.xml"/>
+    <mapper resource="mappings/users-mapper.xml"/>
     <mapper resource="mappings/no_users-mapper.xml"/>
     <mapper resource="mappings/comments-mapper.xml"/>
     <mapper resource="mappings/movie-mapper.xml"/>

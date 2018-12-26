@@ -3,18 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- =========================================start resurttype parametertype 
-		바꿔쓸 수 있음 -->
-	<typeAliases>
-		<!-- com.spring.biz.board.BoardVO 이것을 board로 사용할 수 있음!! -->
-		<typeAlias type="com.ob.biz.vo.BoardVO" alias="board" />
-		<typeAlias type="com.ob.biz.vo.UserVO" alias="user" />
-	</typeAliases>
-	<!-- =========================================end -->
-	<mappers>
-		<mapper resource="mappings/board-mapper.xml" />
-		<mapper resource="mappings/user-mapper.xml" />
-	</mappers>
+  <typeAliases>
+  	<typeAlias alias="board" type="com.ob.biz.vo.BoardVO"/>
+  	<typeAlias alias="users" type="com.ob.biz.vo.UsersVO"/>
+  	<typeAlias alias="no_users" type="com.ob.biz.vo.No_UsersVO"/>
+  	<typeAlias alias="comments" type="com.ob.biz.vo.CommentsVO"/>
+  	<typeAlias alias="movie" type="com.ob.biz.vo.MovieVO"/>
+  	<typeAlias alias="movie_history" type="com.ob.biz.vo.Movie_HistoryVO"/>
+  	<typeAlias alias="reservation" type="com.ob.biz.vo.ReservationVO"/>
+  </typeAliases>
+  
+  <mappers>
+    <mapper resource="mappings/board-mapper.xml"/>
+    <mapper resource="mappings/users-mapper.xml"/>
+    <mapper resource="mappings/no_users-mapper.xml"/>
+    <mapper resource="mappings/comments-mapper.xml"/>
+    <mapper resource="mappings/movie-mapper.xml"/>
+    <mapper resource="mappings/movie_history-mapper.xml"/>
+    <mapper resource="mappings/reservation-mapper.xml"/>
+  </mappers>
 </configuration>
 
 

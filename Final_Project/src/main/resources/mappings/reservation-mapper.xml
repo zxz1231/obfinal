@@ -39,7 +39,7 @@
 	</select>
 	
 	<!-- 예매 조회(회원) - 회원인덱스값 -->
-	<select id="getReservationUsers" parameterType="user" resultType="reservation">
+	<select id="getReservationUsers" parameterType="users" resultType="reservation">
 		SELECT * FROM RESERVATION WHERE U_ID = #{u_id}
 	</select>
 	
@@ -63,7 +63,7 @@
 	</select>
 	
 	<!-- 사용자별 예매 전체조회(회원) -->
-	<select id="getReservationListUsers" parameterType="user" resultType="reservation">
+	<select id="getReservationListUsers" parameterType="users" resultType="reservation">
 		SELECT * FROM RESERVATION
 		 WHERE U_ID = #{u_id}
 		 ORDER BY R_ID

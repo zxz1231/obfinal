@@ -4,30 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
-<mapper namespace="UserDAO">
-	<!-- <resultMap id="userResult" type="user">
-		<result property="u_id" column="U_ID"/>
-		<result property="id" column="ID"/>
-		<result property="password" column="PASSWORD"/>
-		<result property="name" column="NAME"/>
-		<result property="nickname" column="NICKNAME"/>
-		<result property="birth" column="BIRTH"/>
-		<result property="phone" column="PHONE"/>
-		<result property="add1" column="ADD1"/>
-		<result property="add2" column="ADD2"/>
-		<result property="gender" column="GENDER"/>
-		<result property="grade" column="GRADE"/>
-		<result property="email" column="EMAIL"/>
-	</resultMap> -->
+<mapper namespace="UsersDAO">
 
-	<insert id="insertUser" parameterType="user">
+	<insert id="insertUsers" parameterType="users">
 		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, NICKNAME
 			 , BIRTH, PHONE, ADD1, ADD2, GENDER, GRADE, EMAIL)
 		VALUES(SEQ_USERS.NEXTVAL, #{id}, #{password}, #{name}, #{nickname}
 			 , #{birth}, #{phone}, #{add1}, #{add2}, #{gender}, #{grade}, #{email} )
 	</insert>
 	
-	<update id="updateUser" parameterType="user">
+	<update id="updateUsers" parameterType="users">
 		UPDATE USERS 
 		   SET PASSWORD = #{password}, NAME = #{name}, NICKNAME = #{nickname}
 			 , BIRTH = #{birth}, PHONE = #{phone}, ADD1 = #{add1}, ADD2 = #{add2}
@@ -35,16 +21,16 @@
 		 WHERE U_ID = #{u_id}
 	</update>
 	
-	<delete id="deleteUser" parameterType="user">
+	<delete id="deleteUsers" parameterType="users">
 		DELETE FROM USERS WHERE U_ID = #{u_id}
 	</delete>
 	
-	<select id="getUser" parameterType="user" resultType="user">
+	<select id="getUsers" parameterType="users" resultType="users">
 		<!-- resultMap="userResult"> -->
 		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
 	</select>
 	
-	<select id="getUserList" resultType="user">
+	<select id="getUsersList" resultType="users">
 		<!-- resultMap="userResult"> -->
 		SELECT * FROM USERS ORDER BY U_ID DESC
 	</select>
