@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	// 경로 /biz 부터 시작  [http://localhost:8080/biz/ @@.do 요청 하기 위해]
 	String contextPath = request.getContextPath();
 	// theme 까지 들어온 경로 
-	String KPath = contextPath + "/resources/theme"; 
+	String KPath = contextPath + "/resources/theme";
 %>
 
 <!doctype html>
@@ -13,7 +14,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>탬플릿</title>
+<title>OB 영화관</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,6 +44,11 @@
 
 <!-- Modernizer js -->
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
+
+<!-- 로그인 메인 css -->
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/addcss/login_main.css">
+
 </head>
 
 <body>
@@ -64,7 +70,7 @@
 					<div class="col-lg-12">
 						<div class="header-inner">
 							<div class="logo">
-								<a href="main.jsp"> <img
+								<a href="<%=contextPath%>/mainGO.do"> <img
 									src="<%=KPath%>/images/logo/logo-secondary-light.png"
 									alt="logo secondary dark">
 								</a>
@@ -74,7 +80,6 @@
 									<li class="cr-dropdown"><a href="index.html">영화/예매</a>
 										<ul>
 											<li><a href="index.html">현재상영작</a></li>
-											<li><a href="index-corporate-agency.html">상영예정작</a></li>
 											<li><a href="index-creative-studio.html">상영예정작</a></li>
 											<li><a href="index-marketing-agency.html">상영시간표</a></li>
 											<li><a href="index-creative-agency.html">(관람가이드)</a></li>
@@ -111,145 +116,41 @@
 									<!--   -->
 								</ul>
 							</nav>
-							<a href="#" class="cr-btn cr-btn-sm"> <span>로그인</span>
-							</a>
+							<c:if test="${empty Logininformation}">
+								<button
+									onclick="document.getElementById('id01').style.display='block'"
+									style="width: auto;" class="cr-btn cr-btn-sm">
+									<span>로그인</span>
+								</button>
+							</c:if>
+							<c:if test="${not empty Logininformation}">
+							<nav class="menu">
+								<ul>
+								<li class="cr-dropdown">${Logininformation.name} 님 환영합니다.
+									<ul>
+										<li><a href="<%=contextPath%>/logOUT.do">로그아웃</a></li>
+										<li><a href="contact-us-2.html">내정보보기</a></li>
+									</ul>
+
+								</li>
+								</ul>
+								</nav>
+							</c:if>
+
+
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- 로그인 modal 시작 (login폴더에 login_modal.jsp을 포함시킴)-->
+			<jsp:include page="../login/login_modal.jsp"></jsp:include>
+			<!-- 로그인 modal 끝 -->
+
 
 
 		</header>
 		<!-- //Header -->
-		<!--메인 영역 Content -->
-		<main class="page-content"> <!-- Counter Area --> <!-- 추천 영화 섹션 시작 -->
-		<section class="services-area section-padding-lg bg-grey">
-			<div class="container">
-				<div class="row">
-				<!-- ///////////////////////////////// 여기부터 채우면됨 -->
-				내용채우는곳
-					
-					
-					
-					
-					
-				
-					
-					
-		
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<!-- ///////////////////////////////// 여기부터 채우면끝 -->
-				</div>
-			</div>
-		</section>
-		
-		<!-- Features Area -->
-		<section
-			class="features-area section-padding-top-xs section-padding-bottom-sm bg-grey">
-			<div class="container">
-				<div class="row justify-content-center services-grid">
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-color-plate"></i>
-								</span> <span> <i class="bi bi-color-plate"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>친절</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-support"></i>
-								</span> <span> <i class="bi bi-support"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>감동</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-rocket2"></i>
-								</span> <span> <i class="bi bi-rocket2"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>행복</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
-
-				</div>
-			</div>
-		</section>
-		
-		
-		</main>
-		<!-- //메인 끝 -->
-
-		<!-- Footer Area -->
-		<footer id="footer" class="footer-area">
-
-
-			<!-- Footer Bottom Area -->
-			<div class="footer-bottom-area bg-dark">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8">
-							<ul class="footer-social">
-								<li><a href="https://www.facebook.com/">Facebook</a></li>
-								<li><a href="https://twitter.com/">Twitter</a></li>
-								<li><a href="https://plus.google.com/">Google+</a></li>
-								<li><a href="https://www.linkedin.com/">Linkedin</a></li>
-								<li><a href="https://www.behance.net/">Behance</a></li>
-							</ul>
-						</div>
-						<div class="col-lg-4">
-							<p class="footer-copyright">
-								Copyright &copy; <a href="#">Themes-Hub</a> 2018. All Right
-								Reserved
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--// Footer Bottom Area -->
-
-		</footer>
-		<!-- //Footer Area -->
 
 	</div>
 	<!-- //Main wrapper -->
@@ -261,6 +162,9 @@
 	<script src="<%=KPath%>/js/plugins.js"></script>
 	<script src="<%=KPath%>/js/active.js"></script>
 	<script src="<%=KPath%>/js/scripts.js"></script>
+
+	<!-- 추가 : 로그인 modal JS File -->
+	<script src="<%=contextPath%>/resources/addjs/login.js"></script>
 </body>
 
 </html>

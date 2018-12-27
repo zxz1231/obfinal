@@ -75,6 +75,13 @@ public class UsersVO {
 	}
 	public void setBirth(Date birth) {
 		this.birth = birth;
+	}
+	@Override
+	public String toString() {
+		return "UsersVO [u_id=" + u_id + ", grade=" + grade + ", id=" + id + ", password=" + password + ", name=" + name
+				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", email=" + email + ", birth="
+				+ birth + "]";
 	}	
+	
 	
 }
