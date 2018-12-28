@@ -43,6 +43,11 @@ public class UsersServiceImpl implements UsersService{
 		return usersDAO.getUsersList();
 	}
 
+	@Override
+	public int idcheck(UsersVO vo) {
+		return usersDAO.idcheck(vo);
+	}
+
 	
 	
 }
