@@ -264,7 +264,7 @@ $(function() {
 										</div>
 									</div>
 
-									<div class="col-lg-12">
+									<div class="col-lg-3">
 										<div class="single-input">
 											<button class="cr-btn" type="button" id="sendgo">
 												<span>가입신청</span>
