@@ -98,7 +98,7 @@ public class NaverLoginController {
 		session.setAttribute("Logininformation", vo);
 		return "/views/main/main.jsp";
 
-		// vo.setGender(sex);
+		// vo.setGender(sex); 
 		// vo.setNickname(nickname);
 
 	}
