@@ -35,6 +35,10 @@
       SELECT * FROM MOVIE ORDER BY M_ID
    </select>
    
+   <select id="getMovieGnr" resultType="movie">
+SELECT DISTINCT GNR FROM MOVIE WHERE GNR IS NOT NULL
+   </select>
+   
    <!-- M_ID TITLE GNR DIRECTOR RUNNINGTIME RESTRICT ONAIR POSTER IMG1 IMG2 
       IMG3 IMG4 IMG5 -->
 </mapper>  

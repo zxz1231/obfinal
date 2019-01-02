@@ -13,33 +13,39 @@ import com.ob.biz.vo.MovieVO;
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {
 
-   @Autowired
-   private MovieDAO movieDAO;
+	@Autowired
+	private MovieDAO movieDAO;
 
-   @Override
-   public void insertMovie(MovieVO vo) {
-      movieDAO.insertMovie(vo);
-   }
+	@Override
+	public void insertMovie(MovieVO vo) {
+		movieDAO.insertMovie(vo);
+	}
 
-   @Override
-   public void updateMovie(MovieVO vo) {
-      movieDAO.updateMovie(vo);
-   }
+	@Override
+	public void updateMovie(MovieVO vo) {
+		movieDAO.updateMovie(vo);
+	}
 
-   @Override
-   public void deleteMovie(MovieVO vo) {
-      movieDAO.deleteMovie(vo);
-   }
+	@Override
+	public void deleteMovie(MovieVO vo) {
+		movieDAO.deleteMovie(vo);
+	}
 
-   @Override
-   public MovieVO getMovie(MovieVO vo) {
-      
-      return movieDAO.getMovie(vo);
-   }
+	@Override
+	public MovieVO getMovie(MovieVO vo) {
 
-   @Override
-   public List<MovieVO> getMovieList() {
-      return movieDAO.getMovieList();
-   }
+		return movieDAO.getMovie(vo);
+	}
+
+	@Override
+	public List<MovieVO> getMoiveList() {
+		// TODO Auto-generated method stub
+		return movieDAO.getMovieList();
+	}
+
+	@Override
+	public List<MovieVO> getMovieGnr() {
+		return movieDAO.getMovieGnr();
+	}
 
 }

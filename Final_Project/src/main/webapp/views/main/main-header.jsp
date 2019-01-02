@@ -31,7 +31,7 @@
 								<ul>
 									<li class="cr-dropdown"><a href="index.html">영화/예매</a>
 										<ul>
-											<li><a href="index.html">현재상영작</a></li>
+											<li><a href="<%=contextPath%>/checkMovieList.do">현재상영작</a></li>
 											<li><a href="index-creative-studio.html">상영예정작</a></li>
 											<li><a href="index-marketing-agency.html">상영시간표</a></li>
 											<li><a href="index-creative-agency.html">(관람가이드)</a></li>
