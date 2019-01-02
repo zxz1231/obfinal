@@ -38,6 +38,20 @@
 	<select id="idcheck" parameterType="users" resultType="int">
 	SELECT count(*) FROM USERS WHERE ID = #{id}
 	</select>
+	
+		<select id="getApiUsers" parameterType="users" resultType="users">
+		<!-- resultMap="userResult"> -->
+		SELECT * FROM USERS WHERE ID = #{id}
+	</select>
+	
+	<update id="updateUsersEmail" parameterType="users">
+		UPDATE USERS 
+		   SET  EMAIL = #{email}
+		 WHERE U_ID = #{u_id}
+	</update>
+	
+	
+	
 </mapper>  
 
 

@@ -43,5 +43,16 @@ public class UsersDAO {
 		System.out.println("==========================> Mybatis2로 idcheck() 처리");
 		return mybatis.selectOne("UsersDAO.idcheck", vo);
 	}
+	//네이버 카카오 vo 조회
+	public UsersVO getApiUsers(UsersVO vo) {
+		System.out.println("==========================> Mybatis2로 getApiUsers() 처리");
+		return mybatis.selectOne("UsersDAO.getApiUsers",vo);
+	}
+	// Email 추가
+	public int updateUsersEmail(UsersVO vo) {
+		System.out.println("==========================> Mybatis2로 이메일 추가하기() 처리");
+		 return mybatis.delete("UsersDAO.updateUsersEmail", vo);
+		
+	}
 	
 }

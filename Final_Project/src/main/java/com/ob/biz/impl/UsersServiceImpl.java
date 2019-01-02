@@ -48,6 +48,17 @@ public class UsersServiceImpl implements UsersService{
 		return usersDAO.idcheck(vo);
 	}
 
+	@Override
+	public UsersVO getApiUsers(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return usersDAO.getApiUsers(vo);
+	}
+
+	@Override
+	public int updateUsersEmail(UsersVO vo) {
+		return usersDAO.updateUsersEmail(vo);
+	}
+
 	
 	
 }

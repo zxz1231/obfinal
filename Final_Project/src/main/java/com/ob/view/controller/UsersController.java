@@ -53,5 +53,18 @@ public class UsersController {
 
 		return "success";
 	}
+	
+	//추가 EMAIL
+	@RequestMapping(value = "/addEmail.do", method = RequestMethod.POST)
+	public @ResponseBody String addEmail(UsersVO vo, HttpSession session) {
+		System.out.println("입력받은 vo" + vo);	
+		
+		System.out.println("회원가입 받은 인덱스: " + vo.getU_id());
+		System.out.println("회원가입 받은 이메일: " + vo.getEmail());
+		int result = usersService.updateUsersEmail(vo);
+		System.out.println(result +" 건 처리됨");
+
+		return "success";
+	}
 
 }

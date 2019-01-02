@@ -17,4 +17,8 @@ public interface UsersService {
 	public List<UsersVO> getUsersList();
 	//아이디 중복 검사
 	public int idcheck(UsersVO vo);
+	//API 회원정보 상세 조회
+	public UsersVO getApiUsers(UsersVO vo);
+	//이메일 추가 하기
+	public int updateUsersEmail(UsersVO vo);
 }

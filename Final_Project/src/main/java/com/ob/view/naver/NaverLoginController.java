@@ -87,15 +87,21 @@ public class NaverLoginController {
 		if (usersService.idcheck(vo) < 1) {
 			System.out.println("zzzz" + vo);
 			usersService.insertUsers(vo);
+			//API 유저들 정보 다가져와 vo에 담기
+			UsersVO newvo = usersService.getApiUsers(vo);
 			// session.setAttribute("result", apiResult);
-			session.setAttribute("Logininformation", vo);
+			session.setAttribute("Logininformation", newvo);
 			/* 네이버 로그인 성공 페이지 View 호출 */
 			// return "/views/login/login_success.jsp";
+			System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
 			return "/views/main/main.jsp";
 
 		} else
 			System.out.println("이미 존재하는 id");
-		session.setAttribute("Logininformation", vo);
+		//API 유저들 정보 다가져와 vo에 담기
+		UsersVO newvo = usersService.getApiUsers(vo);
+		session.setAttribute("Logininformation", newvo);
+		System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
 		return "/views/main/main.jsp";
 
 		// vo.setGender(sex); 
