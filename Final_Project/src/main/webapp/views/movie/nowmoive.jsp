@@ -71,61 +71,62 @@
 				<div class="row">
 					<div
 						class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-12 offset-0">
-						<div class="section-title text-center">		
+						<div class="section-title text-center">
 							<h4>상영중 영화</h4>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="portfolio-wrap">
 
+			<div class="portfolio-wrap">
 				<!-- Poftfolio Filters -->
 				<div class="portfolio-filters">
-				<button class="is-checked" data-filter="*">ALL</button>
-				<c:forEach var="gnridx" items="${gnrList}">					
-					<button data-filter=".pfolio-filter-${gnridx.gnr }">${gnridx.gnr}</button>
+					<button class="is-checked" data-filter="*">ALL</button>
+					<c:forEach var="gnridx" items="${gnrList}">
+						<button data-filter=".pfolio-filter-${gnridx.gnr }">${gnridx.gnr}</button>
 					</c:forEach>
 				</div>
 				<!--// Poftfolio Filters -->
 
-				
 
 					<!-- Portfolios -->
-					<div class="row no-gutters portfolios portfolios-style-1" style="height: 900px;width: 700px;"
-						data-show="2" data-load="2">
-						<c:forEach var="movieidx" items="${movieList}">
+					<div class="row no-gutters portfolios portfolios-style-1"
+						style="height: 900px; width: 700px;" data-show="6" data-load="3">
 
-						<!-- Single Portfolio -->
-						<div
-							class="col-xl-4 col-lg-6 col-md-6 col-12 portfolio-single pfolio-filter-now pfolio-filter-${movieidx.gnr}">
-							<div class="portfolio">
-								<div class="portfoilo-thumb">
-									<img  src="<%=MovieIMGPath %>/${movieidx.poster}"
-										alt="${moiceidx.title}">
-								</div>
-								<div class="portfolio-content" style="opacity: 0.9;">
-									<div class="portfolio-content-inner text-center">
-										<h6>${movieidx.title}</h6>
-										<hr>
-										<h3>
-											<a href="single-portfolio.html"><img alt="예매하기"
-												src="<%=IMGPath%>/예매.png"></a>
-										</h3>
+						<c:forEach var="movieidx" items="${movieList}">
+							<c:if test="${not empty movieidx.poster}">
+
+								<!-- Single Portfolio -->
+								<div
+									class="col-xl-4 col-lg-6 col-md-6 col-12 portfolio-single pfolio-filter-now pfolio-filter-${movieidx.gnr}">
+									<div class="portfolio">
+										<div class="portfoilo-thumb">
+											<img src="<%=MovieIMGPath %>/${movieidx.poster}"
+												alt="${moiceidx.title}">
+										</div>
+										<div class="portfolio-content" style="opacity: 0.9;">
+											<div class="portfolio-content-inner text-center">
+												<h6>${movieidx.title}</h6>
+												<hr>
+												<h3>
+													<a href="single-portfolio.html"><img alt="예매하기"
+														src="<%=IMGPath%>/예매.png"></a>
+												</h3>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<!--// Single Portfolio -->
-
-</c:forEach>
+								<!--// Single Portfolio -->
+							</c:if>
+						</c:forEach>
 
 
 					</div>
 					<!--// Portfolios -->
 
 
-				
+
 
 
 
@@ -136,6 +137,7 @@
 					</button>
 				</div>
 			</div>
+
 
 		</section>
 		<!--// Portfolio Area --> </main>

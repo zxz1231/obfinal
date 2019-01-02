@@ -4,15 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MovieDAO">
 
-   <insert id="insertMovie" parameterType="movie">
-   <![CDATA[
-      INSERT INTO MOVIE (M_ID, TITLE, GNR, DIRECTOR, RUNNINGTIME, RESTRICT, ONAIR
-      				   ,POSTER, IMG1, IMG2, IMG3, IMG4, IMG5, CONTENT, VOTE)
-      VALUES ((SELECT NVL(MAX(M_ID),0)+1 FROM MOVIE)
-      		, #{title}, #{gnr}, #{director}, #{runningtime}, #{restrict}, #{onair}
-            , #{poster} ,#{img1}, #{img2}, #{img3}, #{img4}, #{img5} ,#{content}, 0) 
-   ]]>
-   </insert>
+ 	<insert id="insertMovie" parameterType="movie">
+	<![CDATA[
+		INSERT INTO MOVIE (M_ID, TITLE, GNR, DIRECTOR, RUNNINGTIME, RESTRICT, ONAIR ,POSTER ,IMG1, IMG2, 
+		IMG3, IMG4, IMG5,CONTENT,VOTE)
+		VALUES ((SELECT NVL(MAX(M_ID),0)+1 FROM MOVIE),
+		       #{title}, #{gnr}, #{director}, #{runningtime}, #{restrict}, #{onair} ,#{poster} ,#{img1}, #{img2},       
+		#{img3}, #{img4}, #{img5} ,#{content},0) 
+	]]>
+	</insert>
    
    <update id="updateMovie" parameterType="movie">
       UPDATE MOVIE

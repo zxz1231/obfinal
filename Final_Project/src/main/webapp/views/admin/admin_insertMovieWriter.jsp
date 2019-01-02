@@ -68,7 +68,7 @@
 							<!-- 영화 인덱스 영화제목 장르 감독 상영시간 제한 현재상영중(01) 포스터이미지 영화 관련img1 영화
 		관련img2 영화 관련img3 영화 관련img4 영화 관련img5 -->
 							<hr>
-							<form action="insertMovie.do" method="post"
+							<form action="admin_insertMovie.do" method="post"
 								enctype="multipart/form-data" class="form-horizontal">
 								<table>
 									<tr>
