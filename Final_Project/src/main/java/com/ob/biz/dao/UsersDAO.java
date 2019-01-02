@@ -38,5 +38,10 @@ public class UsersDAO {
 		System.out.println("==========================> Mybatis2로 getUsersList() 처리");
 		return mybatis.selectList("UsersDAO.getUsersList");
 	}
+	//회원 ID 조회
+	public int idcheck(UsersVO vo) {
+		System.out.println("==========================> Mybatis2로 idcheck() 처리");
+		return mybatis.selectOne("UsersDAO.idcheck", vo);
+	}
 	
 }

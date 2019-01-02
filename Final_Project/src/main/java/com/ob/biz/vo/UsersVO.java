@@ -1,7 +1,5 @@
 package com.ob.biz.vo;
 
-import java.sql.Date;
-
 /*
 CREATE TABLE USERS (
 	ID VARCHAR2(8) PRIMARY KEY,
@@ -13,9 +11,7 @@ CREATE TABLE USERS (
 public class UsersVO {
 	private int u_id, grade;
 	private String id, password, name, nickname, phone, gender, email;
-	private Date birth;
-	
-	
+	private String birth;
 	public int getU_id() {
 		return u_id;
 	}
@@ -70,10 +66,10 @@ public class UsersVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	@Override
@@ -81,7 +77,9 @@ public class UsersVO {
 		return "UsersVO [u_id=" + u_id + ", grade=" + grade + ", id=" + id + ", password=" + password + ", name=" + name
 				+ ", nickname=" + nickname + ", phone=" + phone + ", gender=" + gender + ", email=" + email + ", birth="
 				+ birth + "]";
-	}	
+	}
+	
+	
 	
 	
 }

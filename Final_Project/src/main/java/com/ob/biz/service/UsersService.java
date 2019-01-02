@@ -15,4 +15,6 @@ public interface UsersService {
 	public UsersVO getUsers(UsersVO vo);
 	//회원목록 전체조회
 	public List<UsersVO> getUsersList();
+	//아이디 중복 검사
+	public int idcheck(UsersVO vo);
 }

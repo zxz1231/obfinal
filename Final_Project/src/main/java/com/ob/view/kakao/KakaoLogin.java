@@ -28,7 +28,7 @@ public class KakaoLogin {
 
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-		postParams.add(new BasicNameValuePair("client_id", "b20b1dd0eb47e9d365860f669696c994")); // REST API KEY
+		postParams.add(new BasicNameValuePair("client_id", "2609b2266d44516fd921046db0f62d8d")); // REST API KEY
 		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/biz/kakaologin.do")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
@@ -104,13 +104,12 @@ public class KakaoLogin {
 		UsersVO vo = new UsersVO();
 
 		vo.setId(userInfo.path("id").asText()); // id -> vo 넣기
-
-	/*	if (userInfo.path("kaccount_email_verified").asText().equals("true")) { // 이메일 받기 허용 한 경우
-			vo.setUser_email(userInfo.path("kaccount_email").asText()); // email -> vo 넣기
+	if (userInfo.path("kaccount_email_verified").asText().equals("true")) { // 이메일 받기 허용 한 경우
+			vo.setEmail(userInfo.path("kaccount_email").asText()); // email -> vo 넣기
 
 		} else { // 이메일 거부 할 경우 코드 추후 개발
 
-		}*/
+		}
 
 		JsonNode properties = userInfo.path("properties"); // 추가정보 받아오기
 		if (properties.has("nickname"))

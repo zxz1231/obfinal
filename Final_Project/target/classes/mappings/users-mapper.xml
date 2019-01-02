@@ -7,10 +7,10 @@
 <mapper namespace="UsersDAO">
 
 	<insert id="insertUsers" parameterType="users">
-		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, NICKNAME
-			 , BIRTH, PHONE, ADD1, ADD2, GENDER, GRADE, EMAIL)
-		VALUES(SEQ_USERS.NEXTVAL, #{id}, #{password}, #{name}, #{nickname}
-			 , #{birth}, #{phone}, #{add1}, #{add2}, #{gender}, #{grade}, #{email} )
+		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, BIRTH
+			 , PHONE, GRADE, EMAIL)
+		VALUES(SEQ_USERS.NEXTVAL, #{id}, #{password}, #{name}
+			 , #{birth}, #{phone} , #{grade}, #{email} )
 	</insert>
 	
 	<update id="updateUsers" parameterType="users">
@@ -33,6 +33,10 @@
 	<select id="getUsersList" resultType="users">
 		<!-- resultMap="userResult"> -->
 		SELECT * FROM USERS ORDER BY U_ID DESC
+	</select>
+	
+	<select id="idcheck" parameterType="users" resultType="int">
+	SELECT count(*) FROM USERS WHERE ID = #{id}
 	</select>
 </mapper>  
 
