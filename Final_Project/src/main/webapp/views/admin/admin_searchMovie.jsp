@@ -24,6 +24,8 @@
 <!-- Title -->
 <title>OBFINAL - 관리자 페이지</title>
 
+
+
 <!-- Styles -->
 <link href="https://fonts.googleapis.com/css?family=Ubuntu"
 	rel="stylesheet">
@@ -47,6 +49,11 @@
 <link href="<%=KPath%>/css/ecaps.min.css" rel="stylesheet">
 <link href="<%=KPath%>/css/custom.css" rel="stylesheet">
 
+<!-- jquery  -->
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- jquery  -->
+
 </head>
 <body>
 
@@ -57,87 +64,123 @@
 		<jsp:include page="admin_Header.jsp"></jsp:include>
 		<!-- //Header 끝 -->
 
-		<div class="page-inner">
-			<div class="page-title">
-				<h3 class="breadcrumb-header">영화 리스트</h3>
-			</div>
-			<div id="main-wrapper">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="panel panel-white">
-							<div class="panel-heading clearfix">
-								<h4 class="panel-title">전체 검색</h4>
-							</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table id="example" class="display table"
-										style="width: 100%; cellspacing: 0;">
-										<thead>
-											<tr>
-												<th>번호</th>
-												<th>포스터</th>
-												<th>제목</th>
-												<th>장르</th>
-												<th>감독</th>
-												<th>상영시간</th>
-												<th>관람제한</th>
-												<th>현재상영</th>
-												<th>투표현황</th>
-												<th>비고</th>
-											</tr>
-										</thead>
+		<div class="page-content">
 
-										<tbody>
-											<c:forEach var="movie" items="${movieList}">
+			<div class="page-inner">
+				<div class="page-title">
+					<h3 class="breadcrumb-header">영화 리스트</h3>
+				</div>
+				<div id="main-wrapper">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-white">
+								<div class="panel-heading clearfix">
+									<h4 class="panel-title">전체 검색</h4>
+								</div>
+								<div class="panel-body">
+									<div class="table-responsive">
+										<table id="example" class="display table"
+											style="width: 100%; cellspacing: 0;">
+											<thead>
 												<tr>
-													<td>${movie.m_id }</td>
-													<td><img style="width: 60px; height: 100px"
-														alt="${movie.poster}"
-														src="<%=MovieIMGPath %>/${movie.poster}"></td>
-													<td><a href="getMovieOne.do?m_id=${movie.m_id }">
-															${movie.title } </a></td>
-													<td>${movie.gnr }</td>
-													<td>${movie.director}</td>
-													<td>${movie.runningtime}</td>
-													<td>${movie.restrict}</td>
-													<td><c:choose>
-															<c:when test="${movie.onair eq 1}">상영중 </c:when>
-															<c:when test="${movie.onair eq 0}">상영종료 </c:when>
-														</c:choose></td>
-													<td>${movie.vote}</td>
-													<td><input type="button" value="상세">
-													<div>
-															<input type="button" value="수정">
-														</div>
-														<input type="button" value="삭제"></td>
+													<th>번호</th>
+													<th>포스터</th>
+													<th>제목</th>
+													<th>장르</th>
+													<th>감독</th>
+													<th>상영시간</th>
+													<th>관람제한</th>
+													<th>현재상영</th>
+													<th>투표현황</th>
+													<th>비고</th>
 												</tr>
+											</thead>
 
-
-
-
-
-
-
-
-
-
-											</c:forEach>
-										</tbody>
-									</table>
+											<tbody>
+												<c:forEach var="movie" items="${movieList}">
+													<tr>
+														<td>${movie.m_id }</td>
+														<td><img style="width: 60px; height: 100px"
+															alt="${movie.poster}"
+															src="<%=MovieIMGPath %>/${movie.poster}"></td>
+														<td><a href="getMovieOne.do?m_id=${movie.m_id }">
+																${movie.title } </a></td>
+														<td>${movie.gnr }</td>
+														<td>${movie.director}</td>
+														<td>${movie.runningtime}</td>
+														<td>${movie.restrict}</td>
+														<td><c:choose>
+																<c:when test="${movie.onair eq 1}">상영중 </c:when>
+																<c:when test="${movie.onair eq 0}">상영종료 </c:when>
+															</c:choose></td>
+														<td>${movie.vote}</td>
+														<td><input type="button" value="상세" class="detail"
+															name="${movie.m_id}">
+															<div>
+																<input type="button" value="수정">
+															</div> <input type="button" value="삭제"
+															onclick="deleteGO(${movie.m_id })"></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>
+		<!-- 페이지 conten -->
 
 
 
 	</div>
 	<!-- /Page Container -->
+	<!-- 페이지가 로딩될때 먼저 실행되는 곳  -->
+	<script>
+	$(document).ready(function(){
+		var result = "${result}";
+		if(result == "result"){
+			alert(" 정상 삭제되었습니다.");
+		}
+		
 
+	});
+	
+	</script>
+
+	<!-- 추가 스크립트 1 javascript 버전-->
+	<script>
+	function deleteGO(m_id){
+		var check = confirm("정말 삭제하시겠습니까?");
+		if(check== true){
+			location.href="<%=contextPath%>/admin_deleteMovie.do?m_id="+m_id;
+		}else if(check == false){
+			return check;
+		}
+		
+		
+	}
+	</script>
+	<!-- 끝 -->
+
+	<!-- 추가 스크립트 2 jquery 버전 -->
+	<script>
+$(document).ready(function(){
+  $(".detail").click(function(){
+	  var m_id = $(this).attr('name');
+    alert("눌렀냐");
+    alert(m_id);
+    location.href="<%=contextPath%>/admin_getMovie.do?m_id="+m_id;
+  });
+});
+</script>
+
+	<!-- 끝 -->
 
 	<!-- Javascripts -->
 	<script src="<%=KPath%>/plugins/jquery/jquery-3.1.0.min.js"></script>

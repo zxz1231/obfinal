@@ -35,7 +35,6 @@
 								<li><a href="<%=contextPath %>/admin_searchMovie.do">영화전체조회</a></li>
 								<li><a href="<%=contextPath %>/admin_insertMovieWriter.do">영화 추가</a></li>
 								<li><a href="ui-icons.html">영화 수정</a></li>								
-								<li><a href="ui-typography.html">영화 삭제</a></li>
 							</ul></li>
 						
 						

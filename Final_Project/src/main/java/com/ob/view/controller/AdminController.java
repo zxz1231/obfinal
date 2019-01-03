@@ -44,17 +44,16 @@ public class AdminController {
 		return "/views/admin/admin_insertMovieWriter.jsp";
 	}
 
-	@RequestMapping(value = "/admin_insertMovie.do",method = RequestMethod.POST)
+	@RequestMapping(value = "/admin_insertMovie.do", method = RequestMethod.POST)
 	public String Admin_insertMovie(MovieVO vo) throws IllegalStateException, IOException {
 		System.out.println(">>> 영화 등록 요청 처리(admin_insertMovie.do)");
-		System.out.println("넘어온 vo : " +vo);
+		System.out.println("넘어온 vo : " + vo);
 		// 파일 업로드 처리
 		// MultipartFile 인터페이스 주요 메소드
 		// String getOriginalFilename() : 업로드한 파일명
 		// void transferTo(File destFile) : 업로드한 파일을 destFile에 저장
 		// boolean isEmpty() : 업로드한 파일의 존재여부(없으면 true 리턴)
-		
-		
+
 		MultipartFile posterFile = vo.getPoster_file();
 		if (!posterFile.isEmpty()) {
 			String fileName = posterFile.getOriginalFilename();
@@ -120,4 +119,27 @@ public class AdminController {
 		return "/admin_searchMovie.do";
 	}
 
+	@RequestMapping(value = "/admin_deleteMovie.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_deleteMovie(MovieVO vo, Model model) {
+		System.out.println("요기까징");
+		System.out.println("확인 vo : " + vo);
+		movieService.deleteMovie(vo);
+
+		model.addAttribute("result", "result");
+
+		return "/admin_searchMovie.do";
+	}
+
+	@RequestMapping(value = "/admin_getMovie.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_getMovie(MovieVO vo, Model model) {
+		System.out.println("요기까징");
+		System.out.println("확인 vo : " + vo);
+		MovieVO movieOne = movieService.getMovie(vo);
+		
+		System.out.println("쓸 movieOne 확인 :" + movieOne);
+		
+		model.addAttribute("movieOne", movieOne);
+
+		return "/views/admin/admin_detailMovie.jsp";
+	}
 }
