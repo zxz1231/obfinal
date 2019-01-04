@@ -103,7 +103,7 @@
 														<td><img style="width: 60px; height: 100px"
 															alt="${movie.poster}"
 															src="<%=MovieIMGPath %>/${movie.poster}"></td>
-														<td><a href="getMovieOne.do?m_id=${movie.m_id }">
+														<td><a href="admin_getMovie.do?m_id=${movie.m_id }">
 																${movie.title } </a></td>
 														<td>${movie.gnr }</td>
 														<td>${movie.director}</td>
@@ -117,7 +117,7 @@
 														<td><input type="button" value="상세" class="detail"
 															name="${movie.m_id}">
 															<div>
-																<input type="button" value="수정">
+																<input type="button" value="수정" onclick="updateGO(${movie.m_id})" >
 															</div> <input type="button" value="삭제"
 															onclick="deleteGO(${movie.m_id })"></td>
 													</tr>
@@ -134,7 +134,7 @@
 			</div>
 
 		</div>
-		<!-- 페이지 conten -->
+		<!-- 페이지 content -->
 
 
 
@@ -144,14 +144,32 @@
 	<script>
 	$(document).ready(function(){
 		var result = "${result}";
-		if(result == "result"){
+		if(result == "delete"){
 			alert(" 정상 삭제되었습니다.");
+		}
+		if(result =="update"){
+			alert(" 정상 수정되었습니다.");
 		}
 		
 
 	});
 	
 	</script>
+	<!-- 수정 버튼 눌렀을때 -->
+	<script>
+	function updateGO(m_id){
+		var check = confirm("수정 페이지로 이동합니다.");
+		if(check== true){
+			location.href="<%=contextPath%>/admin_updateMovie.do?m_id="+m_id;
+		}else if(check == false){
+			return check;
+		}
+		
+		
+		
+	}
+	</script>
+	<!-- 끝 -->
 
 	<!-- 추가 스크립트 1 javascript 버전-->
 	<script>

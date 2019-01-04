@@ -23,7 +23,7 @@ public class MoiveController {
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String checkMovieList(MovieVO vo, Model model) {
 		System.out.println(">> 영화 리스트 보기");
-		List<MovieVO> movieList = movieService.getMoiveList();
+		List<MovieVO> movieList = movieService.getMovieList();
 		List<MovieVO> gnrList = movieService.getMovieGnr();
 		
 		// Model 형식으로 저장해서 DispatcherServervlet에 전달

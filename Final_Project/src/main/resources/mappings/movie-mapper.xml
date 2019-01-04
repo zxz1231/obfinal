@@ -23,6 +23,8 @@
        WHERE m_id = #{m_id}
    </update>
    
+     
+   
    <delete id="deleteMovie" parameterType="movie">
       DELETE FROM MOVIE WHERE m_id = #{m_id}
    </delete>

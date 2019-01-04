@@ -38,7 +38,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<MovieVO> getMoiveList() {
+	public List<MovieVO> getMovieList() {
 		// TODO Auto-generated method stub
 		return movieDAO.getMovieList();
 	}

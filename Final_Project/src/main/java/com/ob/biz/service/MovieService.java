@@ -15,7 +15,7 @@ public interface MovieService {
    //영화 상세 조회
    MovieVO getMovie(MovieVO vo);
 	//영화 목록 전체 조회
-	List<MovieVO> getMoiveList();
+	List<MovieVO> getMovieList();
 	//영화 장르 전체 조회
 	List<MovieVO> getMovieGnr();
 	

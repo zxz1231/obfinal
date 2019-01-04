@@ -30,14 +30,15 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_searchMovie.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String Admin_seachMovie(MovieVO vo, Model model) {
-		List<MovieVO> movieList = movieService.getMoiveList();
+	public String Admin_searchMovie(MovieVO vo, Model model) {
+		List<MovieVO> movieList = movieService.getMovieList();
 
 		model.addAttribute("movieList", movieList);
 
 		return "/views/admin/admin_searchMovie.jsp";
 	}
 
+	//단순 페이지 이동
 	@RequestMapping(value = "/admin_insertMovieWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_insertMovieWriter(MovieVO vo, Model model) {
 
@@ -125,7 +126,7 @@ public class AdminController {
 		System.out.println("확인 vo : " + vo);
 		movieService.deleteMovie(vo);
 
-		model.addAttribute("result", "result");
+		model.addAttribute("result", "delete");
 
 		return "/admin_searchMovie.do";
 	}
@@ -141,5 +142,97 @@ public class AdminController {
 		model.addAttribute("movieOne", movieOne);
 
 		return "/views/admin/admin_detailMovie.jsp";
+	}
+	
+// 단순 페이지 이동
+	@RequestMapping(value = "/admin_updateMovie.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_updateMovie(MovieVO vo, Model model) {
+		MovieVO movieOne = movieService.getMovie(vo);
+		model.addAttribute("movieOne", movieOne);
+
+		return "/views/admin/admin_updateMovie.jsp";
+	}
+	
+	
+	@RequestMapping(value = "/admin_modifyMovie.do", method = RequestMethod.POST)
+	public String Admin_modifyMovie(MovieVO vo, Model model) throws IllegalStateException, IOException  {
+		
+		System.out.println(">>> --------------------------------------------- <<<<");
+		System.out.println(">>> 영화 등록 요청 처리(/admin_modifyMovie.do)");
+		System.out.println("넘어온 vo : " + vo);
+		// 파일 업로드 처리
+		// MultipartFile 인터페이스 주요 메소드
+		// String getOriginalFilename() : 업로드한 파일명
+		// void transferTo(File destFile) : 업로드한 파일을 destFile에 저장
+		// boolean isEmpty() : 업로드한 파일의 존재여부(없으면 true 리턴)
+
+		
+		MultipartFile posterFile = vo.getPoster_file();
+		if (!posterFile.isEmpty()) {
+			String fileName = posterFile.getOriginalFilename();
+			posterFile.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setPoster(fileName);
+		} else {
+			if (vo.getPoster() == null)
+				vo.setPoster("");
+		}
+		MultipartFile img1File = vo.getImg1_file();
+		if (!img1File.isEmpty()) {
+			String fileName = img1File.getOriginalFilename();
+			img1File.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setImg1((fileName));
+		} else {
+			if (vo.getImg1() == null)
+				vo.setImg1("");
+		}
+		MultipartFile img2File = vo.getImg2_file();
+		if (!img2File.isEmpty()) {
+			String fileName = img2File.getOriginalFilename();
+			img2File.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setImg2((fileName));
+		} else {
+			if (vo.getImg2() == null)
+				vo.setImg2("");
+		}
+		MultipartFile img3File = vo.getImg3_file();
+		if (!img3File.isEmpty()) {
+			String fileName = img3File.getOriginalFilename();
+			img3File.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setImg3((fileName));
+		} else {
+			if (vo.getImg3() == null)
+				vo.setImg3("");
+		}
+		MultipartFile img4File = vo.getImg4_file();
+		if (!img4File.isEmpty()) {
+			String fileName = img4File.getOriginalFilename();
+			img4File.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setImg4((fileName));
+		} else {
+			if (vo.getImg4() == null)
+				vo.setImg4("");
+		}
+		MultipartFile img5File = vo.getImg5_file();
+		if (!img5File.isEmpty()) {
+			String fileName = img5File.getOriginalFilename();
+			img5File.transferTo(
+					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + fileName));
+			vo.setImg5((fileName));
+		} else {
+			if (vo.getImg5() == null)
+				vo.setImg5("");
+		}
+
+		System.out.println("확인 : "+vo);
+		
+		movieService.updateMovie(vo);
+		model.addAttribute("result", "update");		
+
+		return "/admin_searchMovie.do";
 	}
 }
