@@ -7,6 +7,7 @@
 	// theme 까지 들어온 경로 
 	String KPath = contextPath + "/resources/assets";
 	String MovieIMGPath = contextPath + "/resources/movieimg";
+	String TheaterIMGPath = contextPath + "/resources/theaterimg";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -84,43 +85,34 @@
 											<thead>
 												<tr>
 													<th>번호</th>
-													<th>포스터</th>
-													<th>제목</th>
-													<th>장르</th>
-													<th>감독</th>
-													<th>상영시간</th>
-													<th>관람제한</th>
-													<th>현재상영</th>
-													<th>투표현황</th>
+													<th>극장사진</th>
+													<th>극장이름</th>
+													<th>상영관 수</th>
+													<th>전화번호</th>
+													<th>주소</th>
 													<th>비고</th>
 												</tr>
 											</thead>
 
 											<tbody>
-												<c:forEach var="movie" items="${movieList}">
+												<c:forEach var="theater" items="${theaterList}">
 													<tr>
-														<td>${movie.m_id }</td>
+														<td>${theater.t_id }</td>
 														<td><img style="width: 60px; height: 100px"
-															alt="${movie.poster}"
-															src="<%=MovieIMGPath %>/${movie.poster}"></td>
-														<td><a href="admin_getMovie.do?m_id=${movie.m_id }">
-																${movie.title } </a></td>
-														<td>${movie.gnr }</td>
-														<td>${movie.director}</td>
-														<td>${movie.runningtime}</td>
-														<td>${movie.restrict}</td>
-														<td><c:choose>
-																<c:when test="${movie.onair eq 1}">상영중 </c:when>
-																<c:when test="${movie.onair eq 0}">상영종료 </c:when>
-															</c:choose></td>
-														<td>${movie.vote}</td>
+															alt="${theater.img1}"
+															src="<%=TheaterIMGPath %>/${theater.img1}"></td>
+														<td><a href="admin_getMovie.do?t_id=${theater.t_id }">
+																${theater.name } </a></td>
+														<td>${theater.scr_num}</td>
+														<td>${theater.phone }</td>
+														<td>${theater.adress}</td>
 														<td><input type="button" value="상세" class="detail"
-															name="${movie.m_id}">
+															name="${theater.t_id}">
 															<div>
 																<input type="button" value="수정"
-																	onclick="updateGO(${movie.m_id})">
+																	onclick="updateGO(${theater.t_id})">
 															</div> <input type="button" value="삭제"
-															onclick="deleteGO(${movie.m_id })"></td>
+															onclick="deleteGO(${theater.t_id })"></td>
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -158,10 +150,10 @@
 	</script>
 	<!-- 수정 버튼 눌렀을때 -->
 	<script>
-	function updateGO(m_id){
+	function updateGO(t_id){
 		var check = confirm("수정 페이지로 이동합니다.");
 		if(check== true){
-			location.href="<%=contextPath%>/admin_updateMovie.do?m_id="+m_id;
+			location.href="<%=contextPath%>/admin_updateMovie.do?t_id="+t_id;
 		}else if(check == false){
 			return check;
 		}
@@ -174,14 +166,12 @@
 
 	<!-- 추가 스크립트 1 javascript 버전-->
 	<script>
-	function deleteGO(m_id){
-		var check = prompt("정말 삭제하시겠습니까?","비밀번호를 입력해주세요");
-		var password = ${password};
-		if(check== 1234){
-			location.href="<%=contextPath%>/admin_deleteMovie.do?m_id="+m_id;
-		}else {
-			alert("비밀번호가 일치하지 않습니다.")
-			return false;
+	function deleteGO(t_id){
+		var check = confirm("정말 삭제하시겠습니까?");
+		if(check== true){
+			location.href="<%=contextPath%>/admin_deleteMovie.do?t_id="+t_id;
+		}else if(check == false){
+			return check;
 		}
 		
 		
@@ -193,10 +183,10 @@
 	<script>
 $(document).ready(function(){
   $(".detail").click(function(){
-	  var m_id = $(this).attr('name');
+	  var t_id = $(this).attr('name');
     alert("눌렀냐");
-    alert(m_id);
-    location.href="<%=contextPath%>/admin_getMovie.do?m_id="+m_id;
+    alert(t_id);
+    location.href="<%=contextPath%>/admin_getMovie.do?t_id="+t_id;
   });
 });
 </script>

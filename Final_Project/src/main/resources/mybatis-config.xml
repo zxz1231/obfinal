@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- 김재현 추가 시작 -->
-<!-- 500Error 부적절한 열유형 뜰떄 null 값이 들어가서 그러는뎅.. 이거를 추가함으로 해결가능? ㅇ  -->
-<!-- null처리용 -->
+	<!-- 김재현 추가 시작 -->
+	<!-- 500Error 부적절한 열유형 뜰떄 null 값이 들어가서 그러는뎅.. 이거를 추가함으로 해결가능? ㅇ -->
+	<!-- null처리용 -->
 	<settings>
 		<setting name="cacheEnabled" value="false" />
 		<setting name="jdbcTypeForNull" value="NULL" />
@@ -21,6 +21,8 @@
 			type="com.ob.biz.vo.Movie_HistoryVO" />
 		<typeAlias alias="reservation"
 			type="com.ob.biz.vo.ReservationVO" />
+		<typeAlias alias="theater"
+			type="com.ob.biz.vo.TheaterVO" />
 
 	</typeAliases>
 
@@ -32,6 +34,7 @@
 		<mapper resource="mappings/movie-mapper.xml" />
 		<mapper resource="mappings/movie_history-mapper.xml" />
 		<mapper resource="mappings/reservation-mapper.xml" />
+		<mapper resource="mappings/theater-mapper.xml" />
 	</mappers>
 
 

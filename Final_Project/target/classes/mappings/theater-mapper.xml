@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TheaterDAO">
+
+	<select id="getTheaterList" resultType="theater">
+		select * from THEATER
+		ORDER BY T_ID
+	</select>
+
+	<insert id="insertTheater" parameterType="theater">
+	<![CDATA[
+		INSERT INTO THEATER (T_ID,NAME,PHONE,ADRESS,CONTENT,SCR_NUM,IMG1,IMG2,IMG3,IMG4,IMG5)
+		VALUES ((SELECT NVL(MAX(T_ID),0)+1 FROM THEATER),
+		       #{name}, #{phone}, #{adress}, #{content}, #{scr_num}, #{img1}, #{img2}, #{img3}, #{img4}, #{img5}) 
+	]]>
+	</insert>
+
+</mapper>  
+
+
+
+
+

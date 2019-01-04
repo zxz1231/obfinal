@@ -54,14 +54,88 @@
 		<div class="page-content">
 			<!-- Page Header -->
 
-
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">Blank Page</h3>
+					<h3 class="breadcrumb-header">극장 등록</h3>
 				</div>
 				<div id="main-wrapper">
-					<div class="row"></div>
+					<div class="row">
+						<div id="container">
+							
+							<hr>
+							<form action="admin_insertTheater.do" method="post"
+								enctype="multipart/form-data" class="form-horizontal">
+								<table>
+									<tr>
+										<th>극장이름</th>
+
+
+										<td><input type="text" name="name"
+											class="form-control input-rounded"></td>
+
+									</tr>
+									<tr>
+										<th>극장설명</th>
+										<td><textarea name="content" rows="10" cols="40"
+												class="form-control input-rounded"></textarea></td>
+									</tr>
+									<tr>
+										<th>상영관 수</th>
+										<td><input type="text" name="scr_num"
+											class="form-control input-rounded" value="1"></td>
+									</tr>
+									<tr>
+										<th>극장전화번호</th>
+										<td><input type="text" name="phone"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>극장 주소</th>
+										<td><input type="text" name="adress"
+											class="form-control input-rounded"></td>
+									</tr>
+												
+									
+									<tr>
+										<th>극장 사진1</th>
+										<td><input type="file" name="img1_file"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>극장 사진2</th>
+										<td><input type="file" name="img2_file"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>극장 사진3</th>
+										<td><input type="file" name="img3_file"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>주변 맛집 사진1</th>
+										<td><input type="file" name="img4_file"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>주변 맛집 사진2</th>
+										<td><input type="file" name="img5_file"
+											class="form-control input-rounded"></td>
+									</tr>
+									
+									<tr>
+
+										<td colspan="2" style="text-align: center;"><input
+											type="submit" value="극장 등록"
+											class="btn btn-success btn-download"></td>
+									</tr>
+								</table>
+							</form>
+							<p>
+							</p>
+						</div>
+
+					</div>
 					<!-- Row -->
 				</div>
 				<!-- Main Wrapper -->

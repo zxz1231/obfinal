@@ -29,7 +29,7 @@
 							</div>
 							<nav class="menu">
 								<ul>
-									<li class="cr-dropdown"><a href="index.html">영화/예매</a>
+									<li class="cr-dropdown"><a href="#">영화/예매</a>
 										<ul>
 											<li><a href="<%=contextPath%>/checkMovieList.do">현재상영작</a></li>
 											<li><a href="index-creative-studio.html">상영예정작</a></li>
@@ -81,6 +81,9 @@
 								<li class="cr-dropdown">${Logininformation.name} 님 환영합니다.
 									<ul>
 										<li><a href="<%=contextPath%>/logOUT.do">로그아웃</a></li>
+										<c:if test="${Logininformation.id eq 'admin' }">									
+										<li><a href="<%=contextPath%>/admin_Main.do">관리자모드</a></li>
+										</c:if>
 										<li><a href="contact-us-2.html">내정보보기</a></li>
 									</ul>
 
