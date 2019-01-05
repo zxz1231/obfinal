@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ob.biz.service.MovieService;
@@ -20,7 +19,8 @@ import com.ob.biz.vo.MovieVO;
 import com.ob.biz.vo.TheaterVO;
 
 @Controller
-@SessionAttributes("movieOne")
+//// 세션 어트리뷰트 사용해보고 싶었음 . 극장만 해봄
+//@SessionAttributes("theaterOne")
 public class AdminController {
 	@Autowired
 	private MovieService movieService;
@@ -41,7 +41,7 @@ public class AdminController {
 		List<MovieVO> movieList = movieService.getMovieList();
 
 		model.addAttribute("movieList", movieList);
-		model.addAttribute("password", "1234"); //음. 
+		model.addAttribute("password", "1234"); // 음.
 		return "/views/admin/admin_searchMovie.jsp";
 	}
 
@@ -64,72 +64,72 @@ public class AdminController {
 
 		MultipartFile posterFile = vo.getPoster_file();
 		if (!posterFile.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = posterFile.getOriginalFilename();
-			posterFile.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setPoster(("("+to+")"+fileName));
+			posterFile.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setPoster(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getPoster() == null)
 				vo.setPoster("");
 		}
 		MultipartFile img1File = vo.getImg1_file();
 		if (!img1File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img1File.getOriginalFilename();
-			img1File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" + fileName));
-			vo.setImg1(("("+to+")"+fileName));
+			img1File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg1(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg1() == null)
 				vo.setImg1("");
 		}
 		MultipartFile img2File = vo.getImg2_file();
 		if (!img2File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img2File.getOriginalFilename();
-			img2File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" + fileName));
-			vo.setImg2(("("+to+")"+fileName));
+			img2File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg2(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg2() == null)
 				vo.setImg2("");
 		}
 		MultipartFile img3File = vo.getImg3_file();
 		if (!img3File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img3File.getOriginalFilename();
-			img3File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" + fileName));
-			vo.setImg3(("("+to+")"+fileName));
+			img3File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg3(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg3() == null)
 				vo.setImg3("");
 		}
 		MultipartFile img4File = vo.getImg4_file();
 		if (!img4File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img4File.getOriginalFilename();
-			img4File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" + fileName));
-			vo.setImg4(("("+to+")"+fileName));
+			img4File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg4(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg4() == null)
 				vo.setImg4("");
 		}
 		MultipartFile img5File = vo.getImg5_file();
 		if (!img5File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img5File.getOriginalFilename();
-			img5File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" + fileName));
-			vo.setImg5(("("+to+")"+fileName));
+			img5File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg5(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg5() == null)
 				vo.setImg5("");
@@ -186,72 +186,72 @@ public class AdminController {
 
 		MultipartFile posterFile = vo.getPoster_file();
 		if (!posterFile.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = posterFile.getOriginalFilename();
-			posterFile.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setPoster(("("+to+")"+fileName));
+			posterFile.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setPoster(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getPoster() == null)
 				vo.setPoster("");
 		}
 		MultipartFile img1File = vo.getImg1_file();
 		if (!img1File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img1File.getOriginalFilename();
-			img1File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setImg1(("("+to+")"+fileName));
+			img1File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg1(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg1() == null)
 				vo.setImg1("");
 		}
 		MultipartFile img2File = vo.getImg2_file();
 		if (!img2File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img2File.getOriginalFilename();
-			img2File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setImg2(("("+to+")"+fileName));
+			img2File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg2(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg2() == null)
 				vo.setImg2("");
 		}
 		MultipartFile img3File = vo.getImg3_file();
 		if (!img3File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img3File.getOriginalFilename();
-			img3File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setImg3(("("+to+")"+fileName));
+			img3File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg3(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg3() == null)
 				vo.setImg3("");
 		}
 		MultipartFile img4File = vo.getImg4_file();
 		if (!img4File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img4File.getOriginalFilename();
-			img4File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setImg4(("("+to+")"+fileName));
+			img4File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg4(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg4() == null)
 				vo.setImg4("");
 		}
 		MultipartFile img5File = vo.getImg5_file();
 		if (!img5File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			String to = Integer.toString(random);
 			String fileName = img5File.getOriginalFilename();
-			img5File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" +"("+to+")" +fileName));
-			vo.setImg5(("("+to+")"+fileName));
+			img5File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/movieimg/" + "("
+					+ to + ")" + fileName));
+			vo.setImg5(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg5() == null)
 				vo.setImg5("");
@@ -274,14 +274,14 @@ public class AdminController {
 
 		return "/views/admin/admin_searchTheater.jsp";
 	}
-	
+
 	// 단순 페이지 이동
 	@RequestMapping(value = "/admin_insertTheaterWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_insertTheaterWriter(MovieVO vo, Model model) {
 
 		return "/views/admin/admin_insertTheaterWriter.jsp";
 	}
-	
+
 	@RequestMapping(value = "/admin_insertTheater.do", method = RequestMethod.POST)
 	public String Admin_insertTheater(TheaterVO vo) throws IllegalStateException, IOException {
 		System.out.println(">>> 극장 등록 요청 처리(admin_insertTheater.do)");
@@ -291,83 +291,191 @@ public class AdminController {
 		// String getOriginalFilename() : 업로드한 파일명
 		// void transferTo(File destFile) : 업로드한 파일을 destFile에 저장
 		// boolean isEmpty() : 업로드한 파일의 존재여부(없으면 true 리턴)
-		
-		
-			
-	
+
 		MultipartFile img1File = vo.getImg1_file();
 		if (!img1File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			System.out.println(random);
 			String to = Integer.toString(random);
 			String fileName = img1File.getOriginalFilename();
-			img1File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/" +"("+to+")" +fileName));
-			vo.setImg1(("("+to+")"+fileName));
+			img1File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg1(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg1() == null)
 				vo.setImg1("");
 		}
 		MultipartFile img2File = vo.getImg2_file();
 		if (!img2File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			System.out.println(random);
 			String to = Integer.toString(random);
 			String fileName = img2File.getOriginalFilename();
-			img2File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/" +"("+to+")" +fileName));
-			vo.setImg2(("("+to+")"+fileName));
+			img2File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg2(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg2() == null)
 				vo.setImg2("");
 		}
 		MultipartFile img3File = vo.getImg3_file();
 		if (!img3File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			System.out.println(random);
 			String to = Integer.toString(random);
 			String fileName = img3File.getOriginalFilename();
-			img3File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/" +"("+to+")" +fileName));
-			vo.setImg3(("("+to+")"+fileName));
+			img3File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg3(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg3() == null)
 				vo.setImg3("");
 		}
 		MultipartFile img4File = vo.getImg4_file();
 		if (!img4File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			System.out.println(random);
 			String to = Integer.toString(random);
 			String fileName = img4File.getOriginalFilename();
-			img4File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/" +"("+to+")" +fileName));
-			vo.setImg4(("("+to+")"+fileName));
+			img4File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg4(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg4() == null)
 				vo.setImg4("");
 		}
 		MultipartFile img5File = vo.getImg5_file();
 		if (!img5File.isEmpty()) {
-			int random = (int)(Math.random()*10000)+1;
+			int random = (int) (Math.random() * 10000) + 1;
 			System.out.println(random);
 			String to = Integer.toString(random);
 			String fileName = img5File.getOriginalFilename();
-			img5File.transferTo(
-					new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/" +"("+to+")" +fileName));
-			vo.setImg5(("("+to+")"+fileName));
+			img5File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg5(("(" + to + ")" + fileName));
 		} else {
 			if (vo.getImg5() == null)
 				vo.setImg5("");
 		}
 
 		int count = theaterService.insertTheater(vo);
-		System.out.println(count +"건 정상 등록");
-		
+		System.out.println(count + "건 정상 등록");
+
 		return "redirect:/admin_searchTheater.do";
 	}
+
+	@RequestMapping(value = "/admin_getTheater.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_getTheater(TheaterVO vo, Model model) {
+		System.out.println("요기까징");
+		System.out.println("확인 vo : " + vo);
+		TheaterVO theaterOne = theaterService.getTheater(vo);
+
+		System.out.println("쓸 theaterOne 확인 :" + theaterOne);
+
+		model.addAttribute("theaterOne", theaterOne);
+
+		return "/views/admin/admin_detailTheater.jsp";
+	}
+
+	// 단순 페이지 이동
+	@RequestMapping(value = "/admin_updateTheater.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_updateTheater(TheaterVO vo, Model model) {
+		TheaterVO theaterOne = theaterService.getTheater(vo);
+
+		model.addAttribute("theaterOne", theaterOne);
+
+		return "/views/admin/admin_updateTheater.jsp";
+	}
+
+	@RequestMapping(value = "/admin_modifyTheater.do", method = RequestMethod.POST)
+	public String Admin_modifyTheater(TheaterVO vo, Model model) throws IllegalStateException, IOException {
+		System.out.println(">>> --------------------------------------------- <<<<");
+		System.out.println(">>> 영화 등록 요청 처리(/admin_modifyTheater.do)");
+		System.out.println("넘어온 vo : " + vo);
+		// 파일 업로드 처리
+		// MultipartFile 인터페이스 주요 메소드
+		// String getOriginalFilename() : 업로드한 파일명
+		// void transferTo(File destFile) : 업로드한 파일을 destFile에 저장
+		// boolean isEmpty() : 업로드한 파일의 존재여부(없으면 true 리턴)
+
+		MultipartFile img1File = vo.getImg1_file();
+		if (!img1File.isEmpty()) {
+			int random = (int) (Math.random() * 10000) + 1;
+			String to = Integer.toString(random);
+			String fileName = img1File.getOriginalFilename();
+			img1File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg1(("(" + to + ")" + fileName));
+		} else {
+			if (vo.getImg1() == null)
+				vo.setImg1("");
+		}
+		MultipartFile img2File = vo.getImg2_file();
+		if (!img2File.isEmpty()) {
+			int random = (int) (Math.random() * 10000) + 1;
+			String to = Integer.toString(random);
+			String fileName = img2File.getOriginalFilename();
+			img2File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg2(("(" + to + ")" + fileName));
+		} else {
+			if (vo.getImg2() == null)
+				vo.setImg2("");
+		}
+		MultipartFile img3File = vo.getImg3_file();
+		if (!img3File.isEmpty()) {
+			int random = (int) (Math.random() * 10000) + 1;
+			String to = Integer.toString(random);
+			String fileName = img3File.getOriginalFilename();
+			img3File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg3(("(" + to + ")" + fileName));
+		} else {
+			if (vo.getImg3() == null)
+				vo.setImg3("");
+		}
+		MultipartFile img4File = vo.getImg4_file();
+		if (!img4File.isEmpty()) {
+			int random = (int) (Math.random() * 10000) + 1;
+			String to = Integer.toString(random);
+			String fileName = img4File.getOriginalFilename();
+			img4File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg4(("(" + to + ")" + fileName));
+		} else {
+			if (vo.getImg4() == null)
+				vo.setImg4("");
+		}
+		MultipartFile img5File = vo.getImg5_file();
+		if (!img5File.isEmpty()) {
+			int random = (int) (Math.random() * 10000) + 1;
+			String to = Integer.toString(random);
+			String fileName = img5File.getOriginalFilename();
+			img5File.transferTo(new File("C:/gitobfinal/obfinal/Final_Project/src/main/webapp/resources/theaterimg/"
+					+ "(" + to + ")" + fileName));
+			vo.setImg5(("(" + to + ")" + fileName));
+		} else {
+			if (vo.getImg5() == null)
+				vo.setImg5("");
+		}
+
+		System.out.println("확인 : " + vo);
+
+		theaterService.upateTheater(vo);
+		model.addAttribute("result", "update");
+
+		return "/admin_searchTheater.do";
+	}
 	
-	
+	@RequestMapping(value = "/admin_deleteTheater.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_deleteTheater(TheaterVO vo, Model model) {
+		System.out.println("요기까징");
+		System.out.println("확인 vo : " + vo);
+		theaterService.deleteTheater(vo);
+		model.addAttribute("result", "delete");
+
+		return "/admin_searchTheater.do";
+	}
 
 	// --------------------> 극장 ----------------- 끝
 

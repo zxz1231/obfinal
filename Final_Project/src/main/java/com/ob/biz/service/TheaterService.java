@@ -11,6 +11,16 @@ public interface TheaterService {
 	
 	//극장 입력
 	int insertTheater(TheaterVO vo);
+	
+	//극장 상세 조회
+	TheaterVO getTheater(TheaterVO vo);
+	
+	//극장 수정
+	void upateTheater(TheaterVO vo);
+	
+	//극장 삭제
+	void deleteTheater(TheaterVO vo);
+	
 
 
 }

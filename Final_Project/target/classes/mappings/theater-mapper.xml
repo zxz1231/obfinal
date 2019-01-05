@@ -17,6 +17,28 @@
 	]]>
 	</insert>
 
+	<select id="getTheater" parameterType="theater"
+		resultType="theater">
+		SELECT * FROM THEATER where T_ID = #{t_id}
+	</select>
+
+	<delete id="deleteTheater" parameterType="theater">
+		DELETE FROM THEATER
+		WHERE t_id = #{t_id}
+
+	</delete>
+
+	<update id="updateTheater" parameterType="theater">
+		UPDATE THEATER
+		SET NAME
+		= #{name}, PHONE = #{phone}, ADRESS = #{adress},
+		CONTENT = #{content},
+		SCR_NUM = #{scr_num},IMG1 = #{img1}, IMG2 =
+		#{img2}, IMG3 = #{img3},
+		IMG4 = #{img4}, IMG5 = #{img5} WHERE t_id = #{t_id}
+	</update>
+
+
 </mapper>  
 
 

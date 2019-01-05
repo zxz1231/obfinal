@@ -101,7 +101,7 @@
 														<td><img style="width: 60px; height: 100px"
 															alt="${theater.img1}"
 															src="<%=TheaterIMGPath %>/${theater.img1}"></td>
-														<td><a href="admin_getMovie.do?t_id=${theater.t_id }">
+														<td><a href="admin_getTheater.do?t_id=${theater.t_id }">
 																${theater.name } </a></td>
 														<td>${theater.scr_num}</td>
 														<td>${theater.phone }</td>
@@ -153,7 +153,7 @@
 	function updateGO(t_id){
 		var check = confirm("수정 페이지로 이동합니다.");
 		if(check== true){
-			location.href="<%=contextPath%>/admin_updateMovie.do?t_id="+t_id;
+			location.href="<%=contextPath%>/admin_updateTheater.do?t_id="+t_id;
 		}else if(check == false){
 			return check;
 		}
@@ -169,7 +169,7 @@
 	function deleteGO(t_id){
 		var check = confirm("정말 삭제하시겠습니까?");
 		if(check== true){
-			location.href="<%=contextPath%>/admin_deleteMovie.do?t_id="+t_id;
+			location.href="<%=contextPath%>/admin_deleteTheater.do?t_id="+t_id;
 		}else if(check == false){
 			return check;
 		}
@@ -186,7 +186,7 @@ $(document).ready(function(){
 	  var t_id = $(this).attr('name');
     alert("눌렀냐");
     alert(t_id);
-    location.href="<%=contextPath%>/admin_getMovie.do?t_id="+t_id;
+    location.href="<%=contextPath%>/admin_getTheater.do?t_id="+t_id;
   });
 });
 </script>

@@ -8,6 +8,7 @@
 	// theme 까지 들어온 경로 
 	String KPath = contextPath + "/resources/assets";
 	String MovieIMGPath = contextPath + "/resources/movieimg";
+	String TheaterIMGPath = contextPath + "/resources/theaterimg";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -59,7 +60,7 @@
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">영화 상세정보</h3>
+					<h3 class="breadcrumb-header">극장 상세정보</h3>
 				</div>
 				<div id="main-wrapper">
 
@@ -69,95 +70,71 @@
 						<div class="col-md-4">
 							<div class="panel panel-white">
 								<img style="width: 220px; height: 250px"
-									alt="${movieOne.poster}"
-									src="<%=MovieIMGPath %>/${movieOne.poster}">
-									<p><label class="control-label">${movieOne.poster}</label></p>
+									alt="${theaterOne.img1}"
+									src="<%=TheaterIMGPath %>/${theaterOne.img1}">
+									<p><label class="control-label">${theaterOne.img1}</label></p>
 									
 							</div>
 							<div class="panel panel-white">
 								<img style="width: 220px; height: 250px"
-									alt="${movieOne.img1}"
-									src="<%=MovieIMGPath %>/${movieOne.img1}">
-									<label class="control-label">${movieOne.img1}</label>
+									alt="${theaterOne.img2}"
+									src="<%=TheaterIMGPath %>/${theaterOne.img2}">
+									<label class="control-label">${theaterOne.img2}</label>
 							</div>
 							<div class="panel panel-white">
 								<img style="width: 220px; height: 250px"
-									alt="${movieOne.img2}"
-									src="<%=MovieIMGPath %>/${movieOne.img2}">
-									<label class="control-label">${movieOne.img2}</label>
+									alt="${theaterOne.img3}"
+									src="<%=TheaterIMGPath %>/${theaterOne.img3}">
+									<label class="control-label">${theaterOne.img3}</label>
 							</div>
 							<div class="panel panel-white">
 								<img style="width: 220px; height: 250px"
-									alt="${movieOne.img3}"
-									src="<%=MovieIMGPath %>/${movieOne.img3}">
-									<label class="control-label">${movieOne.img3}</label>
+									alt="${theaterOne.img4}"
+									src="<%=TheaterIMGPath %>/${theaterOne.img4}">
+									<label class="control-label">${theaterOne.img4}</label>
 							</div>
 							<div class="panel panel-white">
 								<img style="width: 220px; height: 250px"
-									alt="${movieOne.img4}"
-									src="<%=MovieIMGPath %>/${movieOne.img4}">
-									<label class="control-label">${movieOne.img4}</label>
+									alt="${theaterOne.img5}"
+									src="<%=TheaterIMGPath %>/${theaterOne.img5}">
+									<label class="control-label">${theaterOne.img5}</label>
 							</div>
-							<div class="panel panel-white">
-								<img style="width: 220px; height: 250px"
-									alt="${movieOne.img5}"
-									src="<%=MovieIMGPath %>/${movieOne.img5}">
-									<label class="control-label">${movieOne.img5}</label>
-							</div>
+							
 							
 
 						</div>
 						<div class="col-md-5">
 							<div class="panel panel-white">
-								<label class="control-label">번호</label> <input id="m_id"
+								<label class="control-label">번호</label> <input id="t_id"
 									type="text" class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.m_id }" /> <label
-									class="control-label">제목</label> <input id="title" type="text"
+									onfocus="this.blur();" value="${theaterOne.t_id }" /> <label
+									class="control-label">극장 이름</label> <input id="name" type="text"
 									class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.title }" /> <label
-									class="control-label">장르</label> <input id="gnr" type="text"
+									onfocus="this.blur();" value="${theaterOne.name }" /> <label
+									class="control-label">극장 전화번호</label> <input id="phone" type="text"
 									class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.gnr }" /> <label
-									class="control-label">감독</label> <input id="director"
+									onfocus="this.blur();" value="${theaterOne.phone }" /> <label
+									class="control-label">극장 주소</label> <input id="adress"
 									type="text" class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.director}" /> <label
-									class="control-label">상영시간</label> <input id="runningtime"
+									onfocus="this.blur();" value="${theaterOne.adress}" /> <label
+									class="control-label">극장 상영관 수</label> <input id="scr_num"
 									type="text" class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.runningtime }" />
+									onfocus="this.blur();" value="${theaterOne.scr_num }" />
 									
-									 <label
-									class="control-label">관람제한</label> <input id="restrict"
-									type="text" class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.restrict }" />
 									
-
-								<c:set var="test" value="${movieOne.onair}" />
-								<c:choose>
-									<c:when test="${test eq 1}">
-										<c:set var="test2" value="상영중"></c:set>
-									</c:when>
-									<c:when test="${test eq 0}">
-										<c:set var="test2" value="상영종료"></c:set>
-									</c:when>
-								</c:choose>
-								<label class="control-label">상영정보</label> <input id="onair"
-									type="text" class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${test2}" /> <label
-									class="control-label">투표현황</label> <input id="vote" type="text"
-									class="input-large form-control m-b-sm" readonly
-									onfocus="this.blur();" value="${movieOne.vote }" />
-
+							
+								
 							</div>
 							<div class="panel panel-white">
-								<label class="control-label">내용</label>
+								<label class="control-label">극장 설명</label>
 								<textarea class="input-large form-control" id="content"
-									rows="10" cols="90" readonly onfocus="this.blur();">${movieOne.content}</textarea>
+									rows="10" cols="90" readonly onfocus="this.blur();">${theaterOne.content}</textarea>
 							</div>
 
 						</div>
 						<div class="col-md-2">
 							<div class="panel panel-white">
-								<input type="button" value="수정페이지"  onclick="updateGO(${movieOne.m_id})">
+								<input type="button" value="수정페이지"  onclick="updateGO(${theaterOne.t_id})">
 							</div>
 
 						</div>
@@ -179,10 +156,10 @@
 	
 		<!-- 수정 버튼 눌렀을때 -->
 	<script>
-	function updateGO(m_id){
+	function updateGO(t_id){
 		var check = confirm("수정 페이지로 이동합니다.");
 		if(check== true){
-			location.href="<%=contextPath%>/admin_updateMovie.do?m_id="+m_id;
+			location.href="<%=contextPath%>/admin_updateTheater.do?t_id="+t_id;
 		}else if(check == false){
 			return check;
 		}

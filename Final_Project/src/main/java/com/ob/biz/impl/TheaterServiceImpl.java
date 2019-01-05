@@ -27,4 +27,21 @@ public class TheaterServiceImpl implements TheaterService {
 		return theaterDAO.insertTheater(vo);
 	}
 
+	@Override
+	public TheaterVO getTheater(TheaterVO vo) {
+		return theaterDAO.getTheater(vo);
+	}
+
+	@Override
+	public void upateTheater(TheaterVO vo) {
+		theaterDAO.updateTheater(vo);
+		
+	}
+
+	@Override
+	public void deleteTheater(TheaterVO vo) {
+		theaterDAO.deleteTheater(vo);
+		
+	}
+
 }
