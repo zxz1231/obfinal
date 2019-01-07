@@ -13,7 +13,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+	<!-- 시작페이지 설정 빙구들아 -->
+	<welcome-file-list>
+		<welcome-file>/views/main/main.jsp</welcome-file>
+	</welcome-file-list>
 	
   <filter>
     <filter-name>characterEncoding</filter-name>
