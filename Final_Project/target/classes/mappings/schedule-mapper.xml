@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="ScheduleDAO">
+	<resultMap id="scheduleResult" type="schedule">
+		<result property="sch_id" column="SCH_ID"/>
+		<result property="m_id" column="M_ID"/>
+		<result property="t_id" column="T_ID"/>
+		<result property="scr_id" column="SCR_ID"/>
+		<result property="time" column="TIME"/>
+		<result property="price" column="PRICE"/>
+	</resultMap>
+	
+	<!-- 스케쥴 조회 -->
+	<select id="getSchList" 
+	resultMap="scheduleResult" parameterType="schedule">
+		SELECT * FROM SCHEDULE 
+		WHERE T_ID = #{t_id} and M_ID=#{m_id}
+		ORDER BY SCR_ID,SCH_ID
+	</select>
+	
+	<!-- 스케쥴 상세조회 -->
+	<select id="getSchOne" 
+	resultMap="scheduleResult" parameterType="schedule">
+		SELECT * FROM SCHEDULE 
+		WHERE T_ID = #{t_id} AND M_ID=#{m_id} AND SCR_ID=#{scr_id} AND TIME=#{time}
+		ORDER BY SCR_ID,SCH_ID
+	</select>
+	
+	<!-- 아이디 조회 -->
+	<select id="getSchId" 
+	resultMap="scheduleResult" parameterType="schedule">
+		SELECT * FROM SCHEDULE 
+		WHERE SCR_ID = #{scr_id} AND M_ID=#{m_id} AND TIME=#{time}
+	</select>
+	
+	
+</mapper>
+
+
+
+
