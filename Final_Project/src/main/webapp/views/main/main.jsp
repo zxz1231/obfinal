@@ -45,9 +45,7 @@
 <!-- Modernizer js -->
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 
-<!-- 로그인 메인 css -->
-<link rel="stylesheet"
-	href="<%=contextPath%>/resources/addcss/login_main.css">
+
 
 </head>
 

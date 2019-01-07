@@ -49,6 +49,8 @@
 <!-- Modernizer js -->
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 
+
+
 </head>
 
 <body>
@@ -81,10 +83,10 @@
 
 			<div class="portfolio-wrap">
 				<!-- Poftfolio Filters -->
-				<div class="portfolio-filters">
-					<button class="is-checked" data-filter="*">ALL</button>
+				<div class="portfolio-filters" style="float: left;">
+					<span><button class="is-checked" data-filter="*">ALL</button></span>
 					<c:forEach var="gnridx" items="${gnrList}">
-						<button data-filter=".pfolio-filter-${gnridx.gnr }">${gnridx.gnr}</button>
+						<span><button data-filter=".pfolio-filter-${gnridx.gnr }">${gnridx.gnr}</button></span>
 					</c:forEach>
 				</div>
 				<!--// Poftfolio Filters -->

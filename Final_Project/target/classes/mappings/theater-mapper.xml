@@ -2,7 +2,25 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성 -->
 <mapper namespace="TheaterDAO">
+	<resultMap id="theaterResult" type="theater">
+		<result property="t_id" column="T_ID" />
+		<result property="scr_num" column="SCR_NUM" />
+		<result property="name" column="NAME" />
+		<result property="phone" column="PHONE" />
+		<result property="adress" column="ADRESS" />
+		<result property="content" column="CONTENT" />
+
+		<!-- <result property="uploadFile" column="IMG1"/> -->
+
+		<result property="img1" column="IMG1" />
+		<result property="img2" column="IMG2" />
+		<result property="img3" column="IMG3" />
+		<result property="img4" column="IMG4" />
+		<result property="img5" column="IMG5" />
+	</resultMap>
 
 	<select id="getTheaterList" resultType="theater">
 		select * from THEATER
@@ -37,6 +55,20 @@
 		#{img2}, IMG3 = #{img3},
 		IMG4 = #{img4}, IMG5 = #{img5} WHERE t_id = #{t_id}
 	</update>
+
+	<!-- 극장 상세 조회 -->
+	<select id="getTheaterOne" resultMap="theaterResult">
+		SELECT * FROM THEATER
+		WHERE T_ID = #{t_id}
+	</select>
+
+	<!-- 해당 영화 극장 조회 -->
+	<select id="getTheater_movieList" resultMap="theaterResult">
+		SELECT * FROM
+		THEATER
+		WHERE T_ID IN (SELECT T_ID FROM SCHEDULE
+		WHERE M_ID = #{m_id})
+	</select>
 
 
 </mapper>  

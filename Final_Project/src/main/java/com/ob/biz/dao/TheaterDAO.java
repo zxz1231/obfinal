@@ -35,6 +35,14 @@ public class TheaterDAO {
 		mybatis.delete("TheaterDAO.deleteTheater", vo);
 	}
 	
+	//극장 상세조회(정택)
+	public TheaterVO getTheaterOne(TheaterVO vo) {
+		return mybatis.selectOne("TheaterDAO.getTheaterOne", vo);
+	}
 	
-
+	//해당영화 극장 조회
+	public List<MovieVO> getTheater_movieList(int m_id) {
+		return mybatis.selectList("TheaterDAO.getTheater_movieList",m_id);
+		
+	}
 }

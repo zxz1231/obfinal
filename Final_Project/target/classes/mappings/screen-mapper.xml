@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<mapper namespace="ScreenDAO">
+	<resultMap id="screenResult" type="screen">
+		<result property="scr_id" column="SCR_ID"/>
+		<result property="t_id" column="T_ID"/>
+		<result property="scr_name" column="SCR_NAME"/>
+		<result property="scr_seat_row" column="SCR_SEAT_ROW"/>
+		<result property="scr_seat_col" column="SCR_SEAT_COL"/>
+		<result property="scr_seat_tot" column="SCR_SEAT_TOT"/>
+	</resultMap>
+	
+	<!-- 영화관 list 조회 -->
+	<select id="getScreenList" resultMap="screenResult" parameterType="screen">
+		SELECT * FROM SCREEN
+	</select>
+	
+	<!-- 영화관vo 조회 -->
+	<select id="getScrOne" resultMap="screenResult" parameterType="screen">
+		SELECT * FROM SCREEN WHERE SCR_ID = #{scr_id}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

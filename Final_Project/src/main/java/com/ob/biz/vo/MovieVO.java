@@ -3,18 +3,18 @@ package com.ob.biz.vo;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MovieVO {
-	private int m_id ,vote;
+	private int m_id, vote;
 	private String title;
 	private String gnr;
 	private String director;
 	private String runningtime;
 	private String restrict;
 	private int onair;
-	private String  poster, img1, img2, img3, img4, img5;  
+	private String poster, img1, img2, img3, img4, img5;
 	private String content;
 
-	//파일 관련 필드 추가
-	private MultipartFile poster_file , img1_file, img2_file, img3_file, img4_file, img5_file;
+	// 파일 관련 필드 추가
+	private MultipartFile poster_file, img1_file, img2_file, img3_file, img4_file, img5_file;
 
 	public int getM_id() {
 		return m_id;
@@ -194,7 +194,4 @@ public class MovieVO {
 				+ ", img5_file=" + img5_file + "]";
 	}
 
-	
-
-	
 }

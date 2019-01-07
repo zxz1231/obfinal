@@ -37,5 +37,8 @@ public class MovieDAO {
 		// TODO Auto-generated method stub
 		return mybatis.selectList("MovieDAO.getMovieGnr");
 	}
-
+	
+	public MovieVO getMovieOne(MovieVO vo) {
+		return mybatis.selectOne("MovieDAO.getMovieOne", vo);
+	}
 }

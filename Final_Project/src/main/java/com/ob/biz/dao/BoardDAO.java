@@ -31,7 +31,8 @@ public class BoardDAO {
 		mybatis.insert("BoardDAO.insertBoard", vo);
 
 	}
-
+	
+	//게시글 수정
 	public void updateBoard(BoardVO vo) {
 		System.out.println("==========================> Mybatis2로 updateBoard() 처리");
 		mybatis.insert("BoardDAO.updateBoard", vo);

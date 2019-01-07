@@ -19,9 +19,19 @@
 	
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="ReservationDAO">
+	<resultMap id="reservationResult" type="reservation">
+		<result property="r_id" column="R_ID"/>
+		<result property="u_id" column="U_ID"/>
+		<result property="nu_id" column="NU_ID"/>
+		<result property="sch_id" column="SCH_ID"/>
+		<result property="seat_row" column="SEAT_ROW"/>
+		<result property="seat_col" column="SEAT_COL"/>
+		<result property="r_date" column="R_DATE"/>
+	</resultMap>
+	
 	<insert id="insertReservation" parameterType="reservation">
-		INSERT INTO RESERVATION (R_ID, U_ID, NU_ID, SCH_ID, SEAT_ROW, SEAT_COL)
-		VALUES ((SELECT NVL(MAX(R_ID),0)+1), #{u_id}, #{nu_id}, #{sch_id}, #{seat_row}, #{seat_col})
+		INSERT INTO RESERVATION (R_ID, U_ID, NU_ID, SCH_ID, SEAT_ROW, SEAT_COL, R_DATE) 
+		VALUES ((SELECT NVL(MAX(R_ID),0)+1 FROM RESERVATION), #{u_id}, #{nu_id}, #{sch_id}, #{seat_row}, #{seat_col}, #{r_date})
 	</insert>
 	
 	<update id="updateReservation" parameterType="reservation">
@@ -62,6 +72,14 @@
 		 ORDER BY R_ID DESC
 	</select>
 	
+	<!-- 예매 전체조회(영화,스크린,시간으로 조회) -->
+	<select id="getReservationList_id" resultMap="reservationResult">
+		SELECT * FROM RESERVATION
+		WHERE  SCH_ID IN
+		(SELECT SCH_ID FROM SCHEDULE
+		WHERE M_ID=#{m_id} AND SCR_ID=#{scr_id} AND TIME=#{time}) AND R_DATE = #{date}
+	</select>
+	
 	<!-- 사용자별 예매 전체조회(회원) -->
 	<select id="getReservationListUsers" parameterType="users" resultType="reservation">
 		SELECT * FROM RESERVATION
@@ -75,6 +93,7 @@
 		 WHERE NU_ID = #{nu_id}
 		 ORDER BY R_ID
 	</select>
+	
 	<!-- 사용자별 예매 전체조회(비회원 휴대폰번호) -->
 	<select id="getReservationListNo_UsersPhone" parameterType="no_users" resultType="reservation">
 		SELECT * FROM RESERVATION 

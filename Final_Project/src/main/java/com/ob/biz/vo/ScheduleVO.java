@@ -11,6 +11,7 @@ public class ScheduleVO {
 	private String title, runningtime;	//영화제목,상영시간(러닝타임)	- movie
 	private String t_name, t_phone, t_address;	//극장정보	- theater
 	private String scr_name, etc;	//상영관 이름, 층 정보	- screen
+	private String date; //예약날짜 - reservation
 	
 	
 	public int getSch_id() {
@@ -48,6 +49,19 @@ public class ScheduleVO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "ScheduleVO [sch_id=" + sch_id + ", m_id=" + m_id + ", t_id=" + t_id + ", scr_id=" + scr_id + ", time="
+				+ time + ", price=" + price + ", title=" + title + ", runningtime=" + runningtime + ", t_name=" + t_name
+				+ ", t_phone=" + t_phone + ", t_address=" + t_address + ", scr_name=" + scr_name + ", etc=" + etc
+				+ ", date=" + date + "]";
 	}
 	
 }

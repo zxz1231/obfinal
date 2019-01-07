@@ -47,5 +47,9 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVO> getMovieGnr() {
 		return movieDAO.getMovieGnr();
 	}
-
+	
+    @Override
+    public MovieVO getMovieOne(MovieVO vo) {
+       return movieDAO.getMovieOne(vo);
+    }
 }
