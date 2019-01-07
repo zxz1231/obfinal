@@ -12,7 +12,7 @@ CREATE TABLE USERS (
  */
 public class UsersVO {
 	private int u_id, grade;
-	private String id, password, name, nickname, phone, gender, email;
+	private String id, password, name, phone, email;
 	private Date birth;
 	
 	
@@ -46,23 +46,11 @@ public class UsersVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public String getEmail() {
 		return email;
@@ -75,6 +63,10 @@ public class UsersVO {
 	}
 	public void setBirth(Date birth) {
 		this.birth = birth;
-	}	
-	
+	}
+	@Override
+	public String toString() {
+		return "UsersVO [u_id=" + u_id + ", grade=" + grade + ", id=" + id + ", password=" + password + ", name=" + name
+				+ ", phone=" + phone + ", email=" + email + ", birth=" + birth + "]";
+	}
 }

@@ -32,9 +32,8 @@ public class MovieServiceImpl implements MovieService {
    }
 
    @Override
-   public MovieVO getMovie(MovieVO vo) {
-      
-      return movieDAO.getMovie(vo);
+   public MovieVO getMovieOne(MovieVO vo) {
+      return movieDAO.getMovieOne(vo);
    }
 
    @Override

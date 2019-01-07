@@ -25,8 +25,8 @@ public class MovieDAO {
       mybatis.delete("MovieDAO.deleteMovie",vo);
    }
 
-   public MovieVO getMovie(MovieVO vo) {
-      return mybatis.selectOne("MovieDAO.getMovie",vo);
+   public MovieVO getMovieOne(MovieVO vo) {
+      return mybatis.selectOne("MovieDAO.getMovieOne",vo);
    }
 
    public List<MovieVO> getMovieList() {

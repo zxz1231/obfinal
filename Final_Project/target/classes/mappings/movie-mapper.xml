@@ -3,6 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MovieDAO">
+	<resultMap id="movieResult" type="movie">
+		<result property="m_id" column="M_ID"/>
+		<result property="onair" column="ONAIR"/>
+		<result property="vote" column="VOTE"/>
+		<result property="title" column="TITLE"/>
+		<result property="gnr" column="GNR"/>
+		<result property="director" column="DIRECTOR"/>
+		<result property="runningtime" column="RUNNINGTIME"/>
+		<result property="restrict" column="RESTRICT"/>
+		<result property="poster" column="POSTER"/>
+		<result property="content" column="CONTENT"/>
+		
+		<!-- 
+		<result property="uploadFile" column="IMG1"/>
+		 -->
+		
+		<result property="img1" column="IMG1"/>
+		<result property="img2" column="IMG2"/>
+		<result property="img3" column="IMG3"/>
+		<result property="img4" column="IMG4"/>
+		<result property="img5" column="IMG5"/>
+	</resultMap>
 
    <insert id="insertMovie" parameterType="movie">
    <![CDATA[
@@ -23,17 +45,18 @@
        WHERE m_id = #{m_id}
    </update>
    
-   <delete id="deleteMovie" parameterType="movie">
-      DELETE FROM MOVIE WHERE m_id = #{m_id}
-   </delete>
+	<delete id="deleteMovie" parameterType="movie">
+	   DELETE FROM MOVIE WHERE m_id = #{m_id}
+	</delete>
    
-   <select id="getMovie" parameterType="movie" resultType="movie">
-      SELECT * FROM MOVIE WHERE M_ID = #{m_id}
-   </select>
-   
-   <select id="getMovieList" resultType="movie">
-      SELECT * FROM MOVIE ORDER BY M_ID
-   </select>
+	<!-- 영화 상세조회 -->
+	<select id="getMovieOne" resultMap="movieResult">
+		SELECT * FROM MOVIE WHERE M_ID = #{m_id}
+	</select>
+	<!-- 영화 전체 조회 -->
+	<select id="getMovieList" resultType="movie">
+		SELECT * FROM MOVIE ORDER BY M_ID
+	</select>
    
    <!-- M_ID TITLE GNR DIRECTOR RUNNINGTIME RESTRICT ONAIR POSTER IMG1 IMG2 
       IMG3 IMG4 IMG5 -->

@@ -13,7 +13,7 @@ public interface MovieService {
    //영화 삭제
    void deleteMovie(MovieVO vo);
    //영화 상세 조회
-   MovieVO getMovie(MovieVO vo);
+   MovieVO getMovieOne(MovieVO vo);
    //영화 목록 전체 조회
    List<MovieVO> getMovieList();
    

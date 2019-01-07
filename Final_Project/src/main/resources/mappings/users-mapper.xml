@@ -5,6 +5,16 @@
 
 <!-- mapper 태그의 namespace 속성 필수 작성  -->  
 <mapper namespace="UsersDAO">
+	<resultMap id="usersResult" type="users">
+		<result property="u_id" column="U_ID"/>
+		<result property="id" column="ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="name" column="NAME"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="phone" column="PHONE"/>
+		<result property="grade" column="GRADE"/>
+		<result property="email" column="EMAIL"/>
+	</resultMap>
 
 	<insert id="insertUsers" parameterType="users">
 		INSERT INTO USERS (U_ID, ID, PASSWORD, NAME, NICKNAME
@@ -28,6 +38,11 @@
 	<select id="getUsers" parameterType="users" resultType="users">
 		<!-- resultMap="userResult"> -->
 		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="getUserOne" resultMap="usersResult" parameterType="users">
+	<!-- resultMap="userResult"> -->
+	SELECT * FROM USERS WHERE U_ID = 1
 	</select>
 	
 	<select id="getUsersList" resultType="users">

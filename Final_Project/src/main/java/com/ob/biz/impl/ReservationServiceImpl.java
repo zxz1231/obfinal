@@ -2,11 +2,17 @@ package com.ob.biz.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ob.biz.dao.ReservationDAO;
 import com.ob.biz.service.ReservationService;
 import com.ob.biz.vo.ReservationVO;
+import com.ob.biz.vo.ScheduleVO;
 
+@Service("reservationService")
 public class ReservationServiceImpl implements ReservationService {
+	@Autowired
 	private ReservationDAO reservationDAO;
 
 	@Override
@@ -32,6 +38,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<ReservationVO> getReservationList() {
 		return reservationDAO.getReservationList();
+	}
+	
+	@Override
+	public List<ReservationVO> getReservationList_id(ScheduleVO scheduleVO) {
+		return reservationDAO.getReservationList_id(scheduleVO);
 	}
 
 }

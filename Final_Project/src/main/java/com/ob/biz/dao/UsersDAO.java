@@ -38,5 +38,9 @@ public class UsersDAO {
 		System.out.println("==========================> Mybatis2로 getUsersList() 처리");
 		return mybatis.selectList("UsersDAO.getUsersList");
 	}
+	public UsersVO getUserOne(UsersVO vo) {
+		System.out.println("UsersDAO : " + vo);
+		return mybatis.selectOne("UsersDAO.getUserOne");
+	}
 	
 }

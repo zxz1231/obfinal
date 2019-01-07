@@ -11,6 +11,9 @@
   	<typeAlias alias="movie" type="com.ob.biz.vo.MovieVO"/>
   	<typeAlias alias="movie_history" type="com.ob.biz.vo.Movie_HistoryVO"/>
   	<typeAlias alias="reservation" type="com.ob.biz.vo.ReservationVO"/>
+ 	<typeAlias alias="theater" type="com.ob.biz.vo.TheaterVO"/>
+	<typeAlias alias="screen" type="com.ob.biz.vo.ScreenVO"/>
+	<typeAlias alias="schedule" type="com.ob.biz.vo.ScheduleVO"/>
   </typeAliases>
   
   <mappers>
@@ -21,6 +24,9 @@
     <mapper resource="mappings/movie-mapper.xml"/>
     <mapper resource="mappings/movie_history-mapper.xml"/>
     <mapper resource="mappings/reservation-mapper.xml"/>
+    <mapper resource="mappings/schedule-mapper.xml" />
+	<mapper resource="mappings/theater-mapper.xml" />
+	<mapper resource="mappings/screen-mapper.xml" />
   </mappers>
 </configuration>
 

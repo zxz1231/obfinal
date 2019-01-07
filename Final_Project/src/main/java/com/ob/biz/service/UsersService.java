@@ -15,4 +15,6 @@ public interface UsersService {
 	public UsersVO getUsers(UsersVO vo);
 	//회원목록 전체조회
 	public List<UsersVO> getUsersList();
+	//회원정보 아이디로 조회
+	public UsersVO getUserOne(UsersVO vo);
 }

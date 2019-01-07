@@ -96,6 +96,11 @@ public class MovieVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "MovieVO [m_id=" + m_id + ", onair=" + onair + ", vote=" + vote + ", title=" + title + ", gnr=" + gnr
+				+ ", director=" + director + ", runningtime=" + runningtime + ", restrict=" + restrict + ", poster="
+				+ poster + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5
+				+ ", content=" + content + "]";
+	}
 }

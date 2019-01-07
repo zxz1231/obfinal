@@ -33,7 +33,7 @@ public class UsersController {
 	//별도 이름 지정을 안한 경우
 	//public String loginView(@ModelAttribute UserVO vo) {
 	//속성명 : userVO - 타입의 첫글자를 소문자로 변경한 이름이 사용됨
-	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public String loginView(@ModelAttribute("users") UsersVO vo) {
 		System.out.println(">> 로그인 화면으로 이동(loginView)");
 		vo.setId("test");

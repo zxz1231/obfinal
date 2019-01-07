@@ -43,6 +43,8 @@ public class UsersServiceImpl implements UsersService{
 		return usersDAO.getUsersList();
 	}
 
-	
-	
+	@Override
+	public UsersVO getUserOne(UsersVO vo) {
+		return usersDAO.getUserOne(vo);
+	}
 }
