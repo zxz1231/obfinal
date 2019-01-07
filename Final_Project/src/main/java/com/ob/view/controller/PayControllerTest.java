@@ -20,13 +20,10 @@ public class PayControllerTest {
 		
 		UsersVO usersVO = new UsersVO();
 		usersVO.setU_id(1);
-		System.out.println("1111111111111");
 		
 		request.setAttribute("price", 1000);
-		System.out.println("2222222222222");
 		
 		usersService.getUserOne(usersVO);
-		System.out.println("3333333333333");
 		
 		return "/views/payOk.jsp";
 	}

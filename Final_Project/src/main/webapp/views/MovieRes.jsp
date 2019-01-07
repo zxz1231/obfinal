@@ -267,7 +267,6 @@
 					for(b=1; b<=col; b++) {
 						$.each(data, function(member){
 							if(a == this.seat_row && b == this.seat_col) {
-								alert(a+","+b);
 								$("#"+a+b).remove();
 							}
 						});

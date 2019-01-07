@@ -63,8 +63,9 @@ public class MovieController {
 		
 
 		return theaterList;
+
 	}
-	
+
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String checkMovieList(MovieVO vo, Model model) {
 		System.out.println(">> 영화 리스트 보기");

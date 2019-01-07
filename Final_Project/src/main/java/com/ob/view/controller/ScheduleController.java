@@ -73,10 +73,6 @@ public class ScheduleController {
 		//스케쥴 검색
 		List<ReservationVO> reservationList = reservationService.getReservationList_id(scheduleVO);
 		
-		
-		System.out.println("scheduleVO : " + scheduleVO);
-		System.out.println("reservationList : " + reservationList);
-		
 		return reservationList;
 	}
 }
