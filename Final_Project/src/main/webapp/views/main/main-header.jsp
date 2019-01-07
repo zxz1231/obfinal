@@ -10,6 +10,9 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
+<!-- 로그인 메인 css -->
+
+
 </head>
 <body>
 		<!-- Header -->
@@ -103,6 +106,13 @@
 
 		</header>
 		<!-- //Header -->
+		
+		
+		
 </body>
+<!-- 로그인 메인 css -->
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/addcss/login_main.css">
+
 
 </html>
