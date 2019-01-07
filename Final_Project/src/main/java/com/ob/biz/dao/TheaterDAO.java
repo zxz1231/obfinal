@@ -14,12 +14,28 @@ public class TheaterDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	//극장 전체조회
-	public List<TheaterVO> getTheaterList() {
+	public List<TheaterVO> getTheaterList(){
 		return mybatis.selectList("TheaterDAO.getTheaterList");
+		
 	}
 	
-	//극장 상세조회
+	public int insertTheater(TheaterVO vo) {
+		return mybatis.insert("TheaterDAO.insertTheater", vo);
+	}
+	
+	public TheaterVO getTheater(TheaterVO vo) {
+		return mybatis.selectOne("TheaterDAO.getTheater",vo);
+	}
+	
+	public void updateTheater(TheaterVO vo) {
+		mybatis.insert("TheaterDAO.updateTheater", vo);
+	}
+
+	public void deleteTheater(TheaterVO vo) {
+		mybatis.delete("TheaterDAO.deleteTheater", vo);
+	}
+	
+	//극장 상세조회(정택)
 	public TheaterVO getTheaterOne(TheaterVO vo) {
 		return mybatis.selectOne("TheaterDAO.getTheaterOne", vo);
 	}
@@ -29,5 +45,4 @@ public class TheaterDAO {
 		return mybatis.selectList("TheaterDAO.getTheater_movieList",m_id);
 		
 	}
-
 }

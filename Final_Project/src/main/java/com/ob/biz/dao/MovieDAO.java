@@ -10,27 +10,35 @@ import com.ob.biz.vo.MovieVO;
 
 @Repository("movieDAO")
 public class MovieDAO {
-   @Autowired
-   private SqlSessionTemplate mybatis;
+	@Autowired
+	private SqlSessionTemplate mybatis;
 
-   public void insertMovie(MovieVO vo) {
-      mybatis.insert("MovieDAO.insertMovie", vo);
-   }
+	public void insertMovie(MovieVO vo) {
+		mybatis.insert("MovieDAO.insertMovie", vo);
+	}
 
-   public void updateMovie(MovieVO vo) {
-      mybatis.insert("MovieDAO.updateMovie", vo);
-   }
+	public void updateMovie(MovieVO vo) {
+		mybatis.insert("MovieDAO.updateMovie", vo);
+	}
 
-   public void deleteMovie(MovieVO vo) {
-      mybatis.delete("MovieDAO.deleteMovie",vo);
-   }
+	public void deleteMovie(MovieVO vo) {
+		mybatis.delete("MovieDAO.deleteMovie", vo);
+	}
 
-   public MovieVO getMovieOne(MovieVO vo) {
-      return mybatis.selectOne("MovieDAO.getMovieOne",vo);
-   }
+	public MovieVO getMovie(MovieVO vo) {
+		return mybatis.selectOne("MovieDAO.getMovie", vo);
+	}
 
-   public List<MovieVO> getMovieList() {
-      return mybatis.selectList("MovieDAO.getMovieList");
-   }
-   
+	public List<MovieVO> getMovieList() {
+		return mybatis.selectList("MovieDAO.getMovieList");
+	}
+
+	public List<MovieVO> getMovieGnr() {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("MovieDAO.getMovieGnr");
+	}
+	
+	public MovieVO getMovieOne(MovieVO vo) {
+		return mybatis.selectOne("MovieDAO.getMovieOne", vo);
+	}
 }

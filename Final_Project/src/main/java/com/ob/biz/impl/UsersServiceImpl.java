@@ -13,7 +13,7 @@ import com.ob.biz.vo.UsersVO;
 public class UsersServiceImpl implements UsersService{
 	@Autowired
 	private UsersDAO usersDAO;
-	
+
 	public UsersServiceImpl() {
 		System.out.println(">> BoardServiceImpl 객체생성");
 	}
@@ -32,7 +32,7 @@ public class UsersServiceImpl implements UsersService{
 	public void deleteUsers(UsersVO vo) {
 		usersDAO.deleteUsers(vo);
 	}
-	
+
 	@Override
 	public UsersVO getUsers(UsersVO vo) {
 		return usersDAO.getUsers(vo);
@@ -47,4 +47,20 @@ public class UsersServiceImpl implements UsersService{
 	public UsersVO getUserOne(UsersVO vo) {
 		return usersDAO.getUserOne(vo);
 	}
+
+	public int idcheck(UsersVO vo) {
+		return usersDAO.idcheck(vo);
+	}
+
+	@Override
+	public UsersVO getApiUsers(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return usersDAO.getApiUsers(vo);
+	}
+
+	@Override
+	public int updateUsersEmail(UsersVO vo) {
+		return usersDAO.updateUsersEmail(vo);
+	}
+
 }
