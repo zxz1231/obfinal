@@ -111,8 +111,8 @@
 											<div class="portfolio-content-inner text-center">
 												<h6>${movieidx.title}</h6>
 												<hr>
-												<h3>
-													<a href="single-portfolio.html"><img alt="예매하기"
+												<h3>		
+													<a href="../biz/movieDetail.do?m_id=${movieidx.m_id}"><img alt="예매하기"
 														src="<%=IMGPath%>/예매.png"></a>
 												</h3>
 											</div>

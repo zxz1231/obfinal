@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>영화제목</h2>
-	<img src="resources/img/다운로드.png">
+	<img src="resources/img/${movieOne.poster }">
 	
 	<h4>제목 : ${movieOne.title }</h4>
 	<h4>장르 : ${movieOne.gnr }</h4>
