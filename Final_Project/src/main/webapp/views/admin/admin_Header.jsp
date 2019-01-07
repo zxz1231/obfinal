@@ -17,7 +17,7 @@
 	<!-- Page Sidebar -->
 	<div class="page-sidebar">
 		<a class="logo-box" href="<%=contextPath%>/admin_Main.do"> <span>OB관리자</span>
-		
+
 		</a>
 		<div class="page-sidebar-inner">
 			<div class="page-sidebar-menu">
@@ -44,25 +44,21 @@
 					</a>
 						<ul class="sub-menu">
 							<li><a href="<%=contextPath%>/admin_searchTheater.do">극장전체조회</a></li>
-							<li><a href="<%=contextPath%>/admin_insertTheaterWriter.do">극장정보 추가</a></li>
+							<li><a href="<%=contextPath%>/admin_insertTheaterWriter.do">극장정보
+									추가</a></li>
 						</ul></li>
 
-					<li><a href="email.html"> <i class="menu-icon icon-inbox"></i><span>Email</span>
-					</a></li>
 					<li><a href="javascript:void(0);"> <i
-							class="menu-icon icon-layers"></i><span>Layouts</span><i
+							class="menu-icon icon-layers"></i><span>상영관</span><i
 							class="accordion-icon fa fa-angle-left"></i>
 					</a>
 						<ul class="sub-menu">
-							<li><a href="layout-blank.html" class="active">Blank
-									Page</a></li>
+							<li><a href="<%=contextPath%>/admin_searchScreen.do" class="active">극장별 상영관
+									조회 </a></li>
 							<li><a href="layout-boxed.html">Boxed Layout</a></li>
 							<li><a href="layout-collapsed-sidebar.html">Collapsed
 									Sidebar</a></li>
-							<li><a href="layout-fixed-header.html">Fixed Header</a></li>
-							<li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-							<li><a href="layout-fixed-sidebar-header.html">Fixed
-									Sidebar &amp; Header</a></li>
+
 						</ul></li>
 					<li><a href="javascript:void(0);"> <i
 							class="menu-icon icon-code"></i><span>Forms</span><i

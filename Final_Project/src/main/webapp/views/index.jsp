@@ -20,7 +20,7 @@
 	<p><a href="../getBoardList.do">글 목록 보러가기</a></p>
 	<p><a href="welcome.jsp">단순 index페이지에서 페이지전환 welcome.jsp 열어보기</a></p>
 	
-	<p><a href="../movieDetail.do?m_id=1">영화 정보</a></p>
+	<p><a href="/movieDetail.do?m_id=1">영화 정보</a></p>
 	
 	<input type=button onclick="openWin();">
 	
