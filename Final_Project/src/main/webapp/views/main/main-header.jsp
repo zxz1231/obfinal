@@ -25,7 +25,7 @@
 					<div class="col-lg-12">
 						<div class="header-inner">
 							<div class="logo">
-								<a href="<%=contextPath%>/mainGO.do"> <img
+								<a href="/mainGO.do"> <img
 									src="<%=KPath%>/images/logo/logo-secondary-light.png"
 									alt="logo secondary dark">
 								</a>

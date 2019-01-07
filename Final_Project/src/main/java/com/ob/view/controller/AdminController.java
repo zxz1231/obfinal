@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ob.biz.service.MovieService;
+import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
 import com.ob.biz.vo.MovieVO;
+import com.ob.biz.vo.ScreenVO;
 import com.ob.biz.vo.TheaterVO;
 
 @Controller
@@ -26,6 +28,8 @@ public class AdminController {
 	private MovieService movieService;
 	@Autowired
 	private TheaterService theaterService;
+	@Autowired
+	private ScreenService screenService;
 
 	// --------------------> 공통(메인페이지) ----------------- 시작
 	@RequestMapping(value = "/admin_Main.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -478,5 +482,30 @@ public class AdminController {
 	}
 
 	// --------------------> 극장 ----------------- 끝
+	
+	
+	
+	// --------------------> 스크린 ----------------- 시작
+	
+	@RequestMapping(value = "/admin_searchScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_searchScreen(MovieVO vo, Model model) {
+		List<ScreenVO> screenList = screenService.getScreenList();
+
+		model.addAttribute("screenList", screenList);
+		model.addAttribute("password", "1234"); // 음.
+		return "/views/admin/admin_searchScreen.jsp";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// --------------------> 스크린 ----------------- 끝
+	
 
 }
