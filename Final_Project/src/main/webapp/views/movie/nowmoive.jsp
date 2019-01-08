@@ -69,7 +69,9 @@
 		<!-- Page Content -->
 		<main class="page-content"> <!-- Portfolio Area -->
 		<section class="portfolio-area section-padding-lg bg-white">
-			<div class="container">
+			<div class="container" style="margin-top: 50px;">
+			
+			
 				<div class="row">
 					<div
 						class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-12 offset-0">

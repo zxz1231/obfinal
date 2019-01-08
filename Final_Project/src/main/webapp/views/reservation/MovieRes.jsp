@@ -36,6 +36,7 @@
 
 <script>
 	//달력
+	
 	$(function() {
 		$('#Date').change(function() {
 			$("#showData").empty();
@@ -282,8 +283,14 @@
 </script>
 </head>
 <body>
+	<!-- 메인 영역 -->
+	<div class="wrapper" id="wrapper">
+
+	<!-- Header -->
+	<jsp:include page="../main/main-header.jsp"></jsp:include>
+	<!-- //Header -->
 	
-	<div class="container" >
+	<div class="container" style="margin-top: 50px;">
 	<div class="row">
 	
 	<div class="container"  style="display: inline-block;text-align: center;">
@@ -390,6 +397,7 @@
 		</tfoot>
 	</table>
 	</form>
+	</div>
 	</div>
 	</div>
 	

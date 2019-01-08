@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="<%=KPath%>/css/plugins.css">
 <link rel="stylesheet" href="<%=KPath%>/style.css">
 
+<link rel="stylesheet" href="<%=KPath%>/css/color-variations.css">
+
 <!-- Cusom css -->
 <link rel="stylesheet" href="<%=KPath%>/css/custom.css">
 
@@ -52,19 +54,23 @@
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
+	
+			<!-- Header -->
+		 <jsp:include page="../main/main-header.jsp"></jsp:include> 
+		<!-- //Header -->
 
 
 		<!-- Page Content -->
 		<main class="page-content"> <!-- Service Details -->
 		<div class="pg-service-area section-padding-lg bg-white">
-			<div class="container">
+			<div class="container" style="margin-top: 50px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<h2 class="pg-service-title">${movieOne.title }</h2>
 					</div>
 					<div class="col-lg-7">
 						<div class="pg-service-thumbs">
-							<img src="/resources/movieimg/(0000)국가부도의날 포스터.jpg" alt="service thumb" style="width: 500px; height: 650px">
+							<img src="/resources/movieimg/${movieOne.poster }" alt="service thumb" style="width: 500px; height: 650px">
 						</div>
 					</div>
 					<div class="col-lg-5">
@@ -89,8 +95,8 @@
 								</li>
 							</ul>
 							<div>
-								<a href="movieRes.do?m_id=1" class="cr-btn cr-btn-sm"
-									style="float: right">예매</a>
+								<a href="movieRes.do?m_id=1" class="cr-btn cr-btn-sm" 
+								style="background-color: #f6644f; float: right">예매</a>
 							</div>
 						</div>
 					</div>
@@ -140,6 +146,10 @@
 			<!--// Service Details -->
 		</main>
 		<!--// Page Content -->
+		
+				<!-- Footer Area -->
+		<jsp:include page="../main/main-footer.jsp"></jsp:include>
+		<!-- //Footer Area -->
 
 	</div>
 	<!-- //Main wrapper -->
