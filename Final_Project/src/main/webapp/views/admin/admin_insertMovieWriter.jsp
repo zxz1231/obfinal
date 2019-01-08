@@ -157,7 +157,7 @@
 								</table>
 							</form>
 							<p>
-								<a href="views/admin/admin_home.jsp">홈(admin_home.jsp)으로 가기</a>
+							
 							</p>
 						</div>
 

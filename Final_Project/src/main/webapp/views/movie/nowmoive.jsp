@@ -134,8 +134,8 @@
 
 
 				<div class="portfolio-load-more-button text-center">
-					<button class="load-more-toggle cr-btn cr-btn">
-						<span>Load More</span>
+					<button class="load-more-toggle cr-btn cr-btn" style="width: 150px;" >
+						<span>더 보기</span>
 					</button>
 				</div>
 			</div>
