@@ -71,7 +71,7 @@ public class PayController {
 		session.setAttribute("reservationList", reservationList);
 		
 		
-		return "/views/pay.jsp";
+		return "/views/reservation/pay.jsp";
 	}
 
 }

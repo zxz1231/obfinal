@@ -62,7 +62,7 @@ public class ScheduleController {
 		
 		model.addAttribute("reservationList", reservationList);
 		
-		return "/views/screen.jsp";
+		return "/views/reservation/screen.jsp";
 	}
 	
 	@RequestMapping("schedule_pre.do")

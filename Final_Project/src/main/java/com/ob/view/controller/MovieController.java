@@ -32,7 +32,7 @@ public class MovieController {
 		
 		System.out.println("movieService.getMovieOne(vo) : " + movieService.getMovieOne(vo));
 		
-		return "/views/MovieDetail.jsp";
+		return "/views/reservation/MovieDetail.jsp";
 	}
 	
 	@RequestMapping("movieRes.do")
@@ -48,7 +48,7 @@ public class MovieController {
 		
 		model.addAttribute("screen", screenService.getScreenList());
 
-		return "/views/MovieRes.jsp";
+		return "/views/reservation/MovieRes.jsp";
 	}
 	
 	@RequestMapping("movie_theater.do")
