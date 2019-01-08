@@ -79,7 +79,8 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="container">
 
 			<div class="portfolio-wrap">
 				<!-- Poftfolio Filters -->
@@ -138,6 +139,7 @@
 						<span>Load More</span>
 					</button>
 				</div>
+			</div>
 			</div>
 
 
