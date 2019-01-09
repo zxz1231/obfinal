@@ -7,6 +7,7 @@
 	String contextPath = request.getContextPath();
 	// theme 까지 들어온 경로 
 	String KPath = contextPath + "/resources/assets";
+	String MovieIMGPath = contextPath + "/resources/movieimg";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,6 +41,7 @@
 <!-- Theme Styles -->
 <link href="<%=KPath%>/css/ecaps.min.css" rel="stylesheet">
 <link href="<%=KPath%>/css/custom.css" rel="stylesheet">
+
 <!-- jquery  -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -59,128 +61,85 @@
 		<div class="page-content">
 			<!-- Page Header -->
 
-
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">Blank Page</h3>
+					<h3 class="breadcrumb-header">스크린 수정페이지</h3>
 				</div>
 				<div id="main-wrapper">
-					<div class="row"></div>
-					<!-- Row -->
+
+
+					<div class="row">
+						<form action="admin_modifyScreen.do" method="post"
+							enctype="multipart/form-data">
+
+							<div class="col-md-5">
+								<div class="panel panel-white">
+									<label class="control-label">스크린 ID</label> <input id="scr_id"
+										type="text" class="input-large form-control m-b-sm" readonly
+										onfocus="this.blur();" value="${screenOne.scr_id }"
+										name="scr_id" /> <label class="control-label">극장변경</label>
+									<p class="input-large form-control m-b-sm">
+
+										<c:forEach items="${theaterList}" var="theater">
+											<c:if test="${screenOne.t_id eq theater.t_id}">${theater.name}  -> </c:if>
+										</c:forEach>
+										<select name="t_id">
+											<option value="${screenOne.t_id}" selected="selected">기본유지
+												<c:forEach items="${theaterList}" var="theater">
+													<option value="${theater.t_id}">${theater.name}
+												</c:forEach>
+										</select>
+
+									</p>
+
+
+									<label class="control-label">상영관이름</label> <input id="scr_name"
+										type="text" name="scr_name" class="input-large form-control m-b-sm"
+										value="${screenOne.scr_name}" /> <label class="control-label">상영관
+										행</label> <input id="scr_seat_row" type="text" name="scr_seat_row"
+										class="input-large form-control m-b-sm"
+										value="${screenOne.scr_seat_row}" /> <label
+										class="control-label">상영관 열</label> <input id="scr_seat_col"
+										type="text" name="scr_seat_col"
+										class="input-large form-control m-b-sm"
+										value="${screenOne.scr_seat_col}" />
+										<input type="hidden" value="${screenOne.scr_seat_tot}" name="scr_seat_tot">
+										
+
+
+								</div>
+
+
+
+
+
+							</div>
+							<div class="col-md-2">
+								<div class="panel panel-white">
+									<input type="submit" value="수정">
+								</div>
+
+							</div>
+
+						</form>
+
+					</div>
+
+
 				</div>
 				<!-- Main Wrapper -->
 
-
-
-				<div class="panel panel-white">
-					<div class="panel-heading clearfix">
-						<h4 class="panel-title">극장별 상영관 조회</h4>
-					</div>
-					<div class="panel-body" style="height: 500px;">
-						<div class="tabs-left" role="tabpanel">
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs" role="tablist" style="height: 500px;">
-								<li role="presentation" class="active"><a href="#기본"
-									role="tab" data-toggle="tab">[극장이름]</a></li>
-								<c:forEach items="${theaterList}" var="theater">
-									<li role="presentation"><a href="#tab${theater.t_id}"
-										role="tab" data-toggle="tab">${theater.name }</a></li>
-								</c:forEach>
-							</ul>
-							<!-- Tab panes -->
-							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active fade in" id="기본">
-									<p>극장별 상영관 수를 볼 수 있습니다.</p>
-								</div>
-								<c:forEach items="${theaterList}" var="theater">
-									<div role="tabpanel" class="tab-pane fade"
-										id="tab${theater.t_id}">
-										${theater.name}
-										<hr>
-										<c:forEach var="screen" items="${screenList}">
-											<c:if test="${theater.t_id eq screen.t_id}">
-                                                    ${screen.scr_name}   
-															<table border="1px">
-													<thead>
-														<tr>
-															<th width="10%">상영관 ID</th>
-															<th width="20%">상영관 행</th>
-															<th width="20%">상영관 열</th>
-															<th width="20%">총 좌석수</th>
-															<th>비고</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>${screen.scr_id}</td>
-															<td>${screen.scr_seat_row}</td>
-															<td>${screen.scr_seat_col}</td>
-															<td>${screen.scr_seat_tot}</td>
-															<td>
-																<div>
-																	<input type="button" value="수정"
-																		onclick="updateGO(${screen.scr_id} ,${theater.t_id})">
-																</div> <input type="button" value="삭제"
-																onclick="deleteGO(${movie.m_id })">
-															</td>
-														</tr>
-													</tbody>
-												</table>
-
-
-
-											</c:if>
-
-										</c:forEach>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- /Page Inner -->
+
 
 		</div>
 		<!-- /Page Content -->
 	</div>
 	<!-- /Page Container -->
-	
-	<!-- 페이지가 로딩될때 먼저 실행되는 곳  -->
-	<script>
-	$(document).ready(function(){
-		var result = "${result}";
-		if(result == "delete"){
-			alert(" 정상 삭제되었습니다.");
-		}
-		if(result =="update"){
-			alert(" 정상 수정되었습니다.");
-		}
-		
 
-	});
-	
-	</script>
-	
-	<!-- 수정 버튼 눌렀을때 -->
-	<script>
-	function updateGO(scr_id , t_id){
-		alert("scr_id = "+scr_id);
-		alert("t_id = "+t_id);
-		var check = confirm("수정 페이지로 이동합니다.");
-		if(check== true){
-			location.href="<%=contextPath%>/admin_updateScreen.do?scr_id="+scr_id+"&t_id="+t_id;
 
-		}else if(check == false){
-			return check;
-		}
-		
-		
-		
-	}
-	</script>
-	<!-- 끝 -->
 
 
 	<!-- Javascripts -->

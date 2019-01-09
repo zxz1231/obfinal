@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ob.biz.service.MovieService;
+import com.ob.biz.service.PlusService;
 import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
 import com.ob.biz.vo.MovieVO;
@@ -30,6 +31,8 @@ public class AdminController {
 	private TheaterService theaterService;
 	@Autowired
 	private ScreenService screenService;
+	@Autowired
+	private PlusService plusService;
 
 	// --------------------> 공통(메인페이지) ----------------- 시작
 	@RequestMapping(value = "/admin_Main.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -488,14 +491,66 @@ public class AdminController {
 	// --------------------> 스크린 ----------------- 시작
 	
 	@RequestMapping(value = "/admin_searchScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String Admin_searchScreen(MovieVO vo, Model model) {
+	public String Admin_searchScreen(ScreenVO vo, Model model) {
+//		List<PlusVO> plusList = plusService.getPlusList();
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
+		
+		System.out.println(theaterList);
 		List<ScreenVO> screenList = screenService.getScreenList();
+		System.out.println(screenList);
+		
 
+		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("screenList", screenList);
 		model.addAttribute("password", "1234"); // 음.
 		return "/views/admin/admin_searchScreen.jsp";
 	}
 	
+	// 단순 페이지 이동
+		@RequestMapping(value = "/admin_updateScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String Admin_updateScreen(ScreenVO vo, Model model) {
+			System.out.println("받은 scr_id :" + vo.getScr_id());
+			System.out.println("받은 t_id : " + vo.getT_id());
+			
+			List<TheaterVO> theaterList = theaterService.getTheaterList();
+			
+			System.out.println(theaterList);
+			
+			
+			
+			ScreenVO screenOne = screenService.getScrOne(vo);
+			model.addAttribute("theaterList",theaterList);
+			model.addAttribute("screenOne", screenOne);
+			
+			System.out.println("dkdkdkdk :" + screenOne);
+
+			return "/views/admin/admin_updateScreen.jsp";
+		}
+		
+		@RequestMapping(value = "/admin_modifyScreen.do", method = RequestMethod.POST)
+		public String Admin_modifyScreen(ScreenVO vo, Model model){
+			System.out.println(">>> --------------------------------------------- <<<<");
+			System.out.println(">>> 영화 등록 요청 처리(/admin_modifyScreen.do)");
+			System.out.println("넘어온 vo : " + vo);
+			int a = Integer.parseInt(vo.getScr_seat_row())*Integer.parseInt(vo.getScr_seat_col());
+			vo.setScr_seat_tot(Integer.toString(a));			
+			System.out.println("수정후 vo : " + vo);
+			
+			screenService.upateScreen(vo);
+			model.addAttribute("result", "update");
+			
+			
+			
+
+
+			
+
+
+//			theaterService.upateTheater(vo);
+//			model.addAttribute("result", "update");
+
+			return "/admin_searchScreen.do";
+		}
 	
 	
 	

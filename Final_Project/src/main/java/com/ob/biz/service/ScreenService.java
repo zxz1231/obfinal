@@ -3,6 +3,7 @@ package com.ob.biz.service;
 import java.util.List;
 
 import com.ob.biz.vo.ScreenVO;
+import com.ob.biz.vo.TheaterVO;
 
 public interface ScreenService {
 	
@@ -11,5 +12,8 @@ public interface ScreenService {
 	
 	//상영관 하나 조회
 	ScreenVO getScrOne(ScreenVO screenVO);
+	
+	// 상영관 수정
+		void upateScreen(ScreenVO vo);
 	
 }

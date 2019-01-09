@@ -21,4 +21,11 @@ import com.ob.biz.vo.ScreenVO;
 		public ScreenVO getScrOne(ScreenVO screenVO) {
 			return mybatis.selectOne("ScreenDAO.getScrOne",screenVO);
 		}
+
+		public void updateScreen(ScreenVO vo) {
+			mybatis.insert("ScreenDAO.updateScreen", vo);
+			
+		}
+		
+		
 }

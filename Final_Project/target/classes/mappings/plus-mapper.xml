@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PlusDAO">
+
+
+	<select id="getPlusALl" resultType="plus">
+	select * from screen scr,theater t ,schedule sch where t.t_id = scr.t_id and t.t_id=sch.t_id
+	</select>
+
+	<insert id="insertMovie" parameterType="movie">
+	<![CDATA[
+		INSERT INTO MOVIE (M_ID, TITLE, GNR, DIRECTOR, RUNNINGTIME, RESTRICT, ONAIR ,POSTER ,IMG1, IMG2, 
+		IMG3, IMG4, IMG5,CONTENT)
+		VALUES ((SELECT NVL(MAX(M_ID),0)+1 FROM MOVIE),
+		       #{title}, #{gnr}, #{director}, #{runningtime}, #{restrict}, #{onair} ,#{poster} ,#{img1}, #{img2},       
+		#{img3}, #{img4}, #{img5} ,#{content}) 
+	]]>
+	</insert>
+	
+	<select id="getMovieOne" resultType="movie">
+		SELECT * FROM MOVIE WHERE M_ID = #{m_id}
+	</select>
+	
+	<delete id="deleteMovieOne" parameterType="movie">
+		DELETE FROM MOVIE WHERE m_id = #{m_id}
+	</delete>
+	
+	<update id="modifyMovieOne" parameterType="movie">
+		UPDATE MOVIE
+		   SET TITLE =  #{title}, GNR= #{gnr}, DIRECTOR=#{director},RUNNINGTIME=#{runningtime},RESTRICT= #{restrict},
+		   ONAIR= #{onair},CONTENT = #{content} WHERE m_id = #{m_id}
+	</update>
+
+</mapper>  

@@ -14,15 +14,23 @@
 		<result property="scr_seat_tot" column="SCR_SEAT_TOT"/>
 	</resultMap>
 	
-	<!-- 영화관 list 조회 -->
+	<!-- 상영관 list 조회 -->
 	<select id="getScreenList" resultMap="screenResult" parameterType="screen">
 		SELECT * FROM SCREEN
 	</select>
 	
-	<!-- 영화관vo 조회 -->
+	<!-- 상영관vo 조회 -->
 	<select id="getScrOne" resultMap="screenResult" parameterType="screen">
 		SELECT * FROM SCREEN WHERE SCR_ID = #{scr_id}
 	</select>
+	
+	<!-- 상영관 업데이트 -->		
+	<update id="updateScreen" parameterType="screen">
+		UPDATE SCREEN
+		SET T_ID =
+		#{t_id}, SCR_NAME = #{scr_name}, SCR_SEAT_ROW = #{scr_seat_row}, SCR_SEAT_COL =
+		#{scr_seat_col},SCR_SEAT_TOT = #{scr_seat_tot} WHERE scr_id = #{scr_id}
+	</update>
 	
 </mapper>
 

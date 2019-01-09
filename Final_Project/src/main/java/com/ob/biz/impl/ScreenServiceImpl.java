@@ -25,6 +25,12 @@ public class ScreenServiceImpl implements ScreenService {
 		return screenDAO.getScrOne(screenVO);
 	}
 
+	@Override
+	public void upateScreen(ScreenVO vo) {
+		screenDAO.updateScreen(vo);
+		
+	}
+
 
 
 	
