@@ -72,9 +72,9 @@ function login(frm){
 			</div>
 			<div class="container">
 
-				<br> <a id="navergogo" href="<%=contextPath%>/navergo.do">네이버
+				<br> <a id="navergogo" href="/navergo.do">네이버
 					로그인</a> <a
-					href="https://kauth.kakao.com/oauth/authorize?client_id=2609b2266d44516fd921046db0f62d8d&redirect_uri=http://localhost:8080/biz/kakaologin.do&response_type=code">카카오
+					href="https://kauth.kakao.com/oauth/authorize?client_id=2609b2266d44516fd921046db0f62d8d&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">카카오
 					로그인</a>
 				
 
