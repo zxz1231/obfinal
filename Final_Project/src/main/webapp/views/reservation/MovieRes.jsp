@@ -1,48 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	// 경로 /biz 부터 시작  [http://localhost:8080/biz/ @@.do 요청 하기 위해]
+	String contextPath = request.getContextPath();
+	// theme 까지 들어온 경로 
+	String KPath = contextPath + "/resources/theme";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="<%=KPath%>/js/vendor/jquery-3.2.1.min.js"></script>
 <head>
 
 <style>
-	/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
-	.ui-datepicker-trigger{cursor: pointer;}
-	/*datepicer input 롤오버 시 손가락 모양 표시*/
-	.hasDatepicker{cursor: pointer;}
-	
-	.table-borderless > tbody > tr > td,
-	.table-borderless > tbody > tr > th,
-	.table-borderless > tfoot > tr > td,
-	.table-borderless > tfoot > tr > th,
-	.table-borderless > thead > tr > td,
-	.table-borderless > thead > tr > th {
-    border: none;
+/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+.ui-datepicker-trigger {
+	cursor: pointer;
 }
-	}
+/*datepicer input 롤오버 시 손가락 모양 표시*/
+.hasDatepicker {
+	cursor: pointer;
+}
+
+.table-borderless>tbody>tr>td, .table-borderless>tbody>tr>th,
+	.table-borderless>tfoot>tr>td, .table-borderless>tfoot>tr>th,
+	.table-borderless>thead>tr>td, .table-borderless>thead>tr>th {
+	border: none;
+}
+}
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="<%=KPath%>/images/favicon.ico">
+<link rel="apple-touch-icon" href="<%=KPath%>/images/icon.png">
+
+<!-- Google font (font-family: 'Roboto', sans-serif;) -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+	rel="stylesheet">
+<!-- Google font (font-family: 'Roboto Condensed', sans-serif;) -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700"
+	rel="stylesheet">
+
+<!-- Stylesheets -->
+<%-- <link rel="stylesheet" href="<%=KPath%>/css/bootstrap.min.css"> --%>
+<link rel="stylesheet" href="<%=KPath%>/css/plugins.css">
+<link rel="stylesheet" href="<%=KPath%>/style.css">
+
+<!-- Color Variations -->
+<!-- 헤더 로그인 버튼 색상 -->
+<link rel="stylesheet" href="<%=KPath%>/css/color-variations.css">
+
+<!-- Cusom css -->
+<%-- <link rel="stylesheet" href="<%=KPath%>/css/custom.css"> --%>
+
+<!-- Modernizer js -->
+<%-- <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script> --%>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <script>
 	//달력
-	
-	$(function() {
-		$('#Date').change(function() {
-			$("#showData").empty();
-			$("#showSeat").empty();
-		});
 		
+		$(document).ready(function() {
+			$('#Date').change(function() {
+				$("#showData").empty();
+				$("#showSeat").empty();
+			});	
+			
 		$('#Date').datepicker({
 			dateFormat: 'yy-mm-dd',
 			language : 'ko', // 화면에 출력될 언어를 한국어로 설정한다.
@@ -51,7 +87,7 @@
 			todayHighlight: true,
 			autoclose: true,
 			showOn: "both",
-			buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+			buttonImage: "resources/img/date.png ", 
 			buttonImageOnly: true, //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
 			buttonText: "선택", //버튼에 마우스 갖다 댔을 때 표시되는 텍스트    
 			yearSuffix: "년",
@@ -110,15 +146,18 @@
 				var strrr = "";
 				
 				$.each(data, function(member){
-					str += '<input type="button" class="btn btn-default" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
+					str += '<input type="button" style="margin-top: 5px;" class="btn btn-light btn-lg" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
+					str += '<input type="button" style="margin-top: 5px;" class="btn btn-light btn-lg" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
+					str += '<input type="button" style="margin-top: 5px;" class="btn btn-light btn-lg" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
+					str += '<input type="button" style="margin-top: 5px;" class="btn btn-light btn-lg" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
+					str += '<input type="button" style="margin-top: 5px;" class="btn btn-light btn-lg" onclick="fnTest('+ m_id + ',' + this.t_id + ',' + "'" + this.img1 + "'," + "'" + this.name + "'" + ')" value=' + this.name + '>';
 					
 				});
 				$("#showTheater").html(str);
-				
-				strr += strr += '<img src="resources/img/' + poster + '" width="100">';
+				strr += strr += '<img src="resources/movieimg/' + poster + '" width="80">';
 				$("#moviePoster").html(strr);
 				
-				strrr += title + '<br>' + director + '<br>' + gnr + '<br>' + runnintime;
+				strrr += '<br>' + title + '<br>' + director + '<br>' + gnr + '<br>' + runnintime;
 				$("#movieDetail").html(strrr)
 				
 			},
@@ -140,7 +179,7 @@
 					var str = "";
 					var i = 1;
 					
-					$("#theater").html(name);
+					$("#theater").html("극장 " + name);
 					
 					var strr = "";
 					strr += '<img src="resources/img/' + img + '" width="300">';
@@ -153,30 +192,32 @@
 						
 						if(num != -1) {
 							if(this.time == 8) {												  
-								str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
 							} else if (this.time == 11){
-								str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
 							} else if (this.time == 14){
-								str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
+								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
 							} else if (this.time == 17){
-								str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
+								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
 							} else if (this.time == 20){
-								str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
+								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
 							}
 						}
 						
 						if(num == -1) {
-						str += '<h4>상영관' + i +'</h4>';
+						str += '<h4 style="font-weight: bold; text-align: center; ">상영관' + i +'</h4>';
 						if(this.time == 8) {
-							str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
 						} else if (this.time == 11){
-							str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
 						} else if (this.time == 14){
-							str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
 						} else if (this.time == 17){
-							str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
 						} else if (this.time == 20){
-							str += '<input type="button" class="btn btn-default" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
+							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
 						}
 						i++;
 						};
@@ -204,11 +245,11 @@
 				
 				var strrr="";
 				strrr = data.scr_name;
-				$("#screen").html(strrr);
+				$("#screen").html("상영관 " + strrr);
 				
 				var strr="";
 				strr = time;
-				$("#time").html(strr);
+				$("#time").html("시간 " + strr);
 				
 				var strrrr="";
 				
@@ -216,16 +257,16 @@
 				str += '좌석:'+data.restSeat;
 				str += '<div class="row">';
 				str += '<div class="col-md-4">';
-				str += '<p><a class="btn btn-default" data-target="#modal" data-toggle="modal" onclick="showSeat(' + m_id + "," + scr_id + "," + time + ",";
+				str += '<p><input type="button" value="좌석" class="btn btn-light btn-lg" data-target="#modal" data-toggle="modal" onclick="showSeat(' + m_id + "," + scr_id + "," + time + ",";
 				str += data.scr_seat_row + "," + data.scr_seat_col;
 				str += ')">';
-				str += '좌석 확인</a></p>';
+				str += '</p>';
 				str += '<input type="hidden" name = "scr_id" value=' + scr_id + '>';
 				str += '<input type="hidden" name = "time" value=' + time + '>';
 				str += '<input type="hidden" name = "t_id" value=' + t_id + '>';
 				str += '<input type="hidden" name = "m_id" value=' + m_id + '>';
 				
-				strrrr += '<input type="submit" value="좌석선택">';
+				strrrr += '<input type="submit" value="좌석선택" class="cr-btn cr-btn-sm" style="margin-top: 30px; background-color: #f6644f;">';
 				$("#next").html(strrrr);
 				
 				str += '</div>';
@@ -279,127 +320,172 @@
 		    }
 		})
 	}
-	
 </script>
 </head>
 <body>
 	<!-- 메인 영역 -->
-	<div class="wrapper" id="wrapper">
-
-	<!-- Header -->
+	<!-- Header 시작 -->
 	<jsp:include page="../main/main-header.jsp"></jsp:include>
-	<!-- //Header -->
-	
-	<div class="container" style="margin-top: 50px;">
-	<div class="row">
-	
-	<div class="container"  style="display: inline-block;text-align: center;">
-	<div class='col-sm-3'><img src="resources/img/영화.png" width="100"></div>
-	<div class='col-sm-3'><img src="resources/img/상영관.png" width="100"></div>
-	<div class='col-sm-3'><img src="resources/img/화살표.png" width="100"></div>
-	<div class='col-sm-3'><img src="resources/img/화살표.png" width="100"></div>
-	</div>
+	<!-- //Header 끝 -->
 
-	<form action="schedule.do" method="post">
+	<div class="container" style="margin-top: 140px;">
+
+		<div class="container"
+			style="display: inline-block; text-align: center;">
+			<div class='col-sm-3'>
+				<img src="resources/img/영화.png" width="100">
+			</div>
+			<div class='col-sm-3'>
+				<img src="resources/img/상영관.png" width="100">
+			</div>
+			<div class='col-sm-3'>
+				<img src="resources/img/화살표.png" width="100">
+			</div>
+			<div class='col-sm-3'>
+				<img src="resources/img/화살표.png" width="100">
+			</div>
+		</div>
+
+
+			<form action="schedule.do" method="post">
+				<div class="pricing-plan card-group d-flex">
+					<div class="card set-price p-1 d-none d-lg-none d-lg-block">
+											<div class="card-header text-center pb-4 item">
+							<h5 class="h1 card-title">영화</h5>
+
+						</div>
+						<div class="card-body d-flex flex-column" style="height: 580px;">
+							<ul class="list-unstyled text-right">
+								<li><c:forEach var="i" begin="0"
+										end="${movieList.size()-1 }" step="1">
+										<c:if test="${movieList[i].m_id == movieRes.m_id}">
+											<a href="#" class="list-group-item"
+												onclick="theater('${movieList[i].m_id }','${movieList[i].title }'
+							,'${movieList[i].director }','${movieList[i].gnr }','${movieList[i].runningtime }','${movieList[i].poster }');  return false;">${movieList[i].title }</a>
+										</c:if>
+
+										<c:if test="${movieList[i].m_id != movieRes.m_id}">
+											<a href="#" class="list-group-item"
+												onclick="theater('${movieList[i].m_id }','${movieList[i].title }'
+							,'${movieList[i].director }','${movieList[i].gnr }','${movieList[i].runningtime }','${movieList[i].poster }'); return false;">${movieList[i].title }</a>
+										</c:if>
+									</c:forEach></li>
+							</ul>
+						</div>
+						<div class="card-footer d-flex flex-column" style="height: 146px;">
+
+							<ul class="list-unstyled text-center">
+								<li>
+									<div class="active">
+										<span id="moviePoster" style="float: left;"></span>
+										<span id="movieDetail" style="font-weight: bold;"></span>
+									</div>
+								</li>
+
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="w-100 d-md-none mt-4"></div>
+
+					<div class="card p-1 starter">
+						<div class="card-header text-center pb-4 item">
+							<h5 class="h1 card-title">극장</h5>
+
+						</div>
+						<div class="card-body d-flex flex-column">
+
+							<ul class="list-unstyled text-center">
+							<li><input id="Date" name="date" onclick="date()" style="width: 192px; height: 36px;"></li>
+							</ul>
+							<span id="showTheater">영화를 선택하면 극장 나옵니다.</span>
+						</div>
+						
+						<div class="card-body d-flex flex-column">
+
+							<ul class="list-unstyled text-center">
+								<li><div id="theaterImg"></div></li>
+							</ul>
+						</div>
+						<div class="card-footer d-flex flex-column" style="height: 146px; font-weight: bold;">
+
+							<ul class="list-unstyled text-center">
+								<li><div id="theaterImg"></div></li>
+							<div id="theaterScreenTime">
+							<div class="active">
+							<br>
+								<span id="theater"></span>
+							</div>
+							<div class="active">
+								<span id="screen"></span>
+							</div>
+							<div class="active">
+								<span id="time"></span>
+							</div>
+							</div>
+							</ul>
+						</div>
+
+					</div>
+
+					<div class="w-100 d-md-none mt-4"></div>
+
+					<div class="card advanced p-1">
+											<div class="card-header text-center pb-4 item">
+							<h5 class="h1 card-title">상영관</h5>
+
+						</div>
+						<div >
+							<span id="showData">영화와 극장을 선택하면 시간표가 나옵니다.</span>
+						</div>
+						<div class="card-body d-flex flex-column">
+							<ul class="list-unstyled text-center">
+								<li><div id="showSeat" style="font-weight: bold;"></div>
+									<div class="row">
+										<div class="modal" id="modal" tabindex="-1">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														좌석';
+														<button class="close" data-dismiss="modal">&times;</button>
+													</div>
+													<div class="modal-body" style="" id="screenSeat">
+														<h1>좌석</h1>
+														<hr>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div></li>
+							</ul>
+						</div>
+						<div class="card-footer d-flex flex-column" style="height: 146px;">
+
+							<ul class="list-unstyled text-center">
+								<li><div id="theaterImg"></div></li>
+							</ul>
+							<div id="next"></div>
+						</div>
+					</div>
+
+					<div class="w-100 d-md-none mt-4"></div>
+
+				</div>
+			</form>
+		</div>
+		<!-- Footer Area -->
+		<jsp:include page="../main/main-footer.jsp"></jsp:include>
+		<!-- //Footer Area -->
+		
+			<!-- JS Files -->
+	<script src="<%=KPath%>/js/popper.min.js"></script>
+	<script src="<%=KPath%>/js/bootstrap.min.js"></script>
+	<script src="<%=KPath%>/js/plugins.js"></script>
+	<script src="<%=KPath%>/js/active.js"></script>
+	<script src="<%=KPath%>/js/scripts.js"></script>
 	
-	<table class="table table-bordered">
-	
-		<thead>
-		<tr>
-			<th>영화</th>		
-			<th>극장</th>
-			<th colspan="2">상영관정보</th>
-		</tr>
-		</thead>
-	
-		<tbody>
-			<tr>
-				<td rowspan="2">
-					<c:forEach var="i" begin="0" end="${movieList.size()-1 }" step="1">
-					<c:if test="${movieList[i].m_id == movieRes.m_id}">
-							<a href="#" class="list-group-item"
-							onclick="theater('${movieList[i].m_id }','${movieList[i].title }'
-							,'${movieList[i].director }','${movieList[i].gnr }','${movieList[i].runningtime }','${movieList[i].poster }')">${movieList[i].title }</a>
-					</c:if>
-					
-					<c:if test="${movieList[i].m_id != movieRes.m_id}">
-							<a href="#" class="list-group-item" 
-							onclick="theater('${movieList[i].m_id }','${movieList[i].title }'
-							,'${movieList[i].director }','${movieList[i].gnr }','${movieList[i].runningtime }','${movieList[i].poster }')">${movieList[i].title }</a>
-					</c:if>
-					</c:forEach>
-					
-				</td>
-				<td>	
-					<h4>날짜선택</h4>
-					<input id="Date" name="date" type="text" onclick="date()"><br>
-					<div id="showTheater"></div>
-					
-				</td>
-				<td colspan="2">
-					극장을 선택하면 상영관 정보가 나옵니다.
-					<div id="showData"></div>
-				</td>
-			</tr>
-			<tr>
-				<td id="theaterImg">
-				</td>
-				<td colspan="2">
-					<div id="showSeat"></div>
-					<div class="row">
-					<div class="modal" id="modal" tabindex="-1">
-					<div class="modal-dialog">
-					<div class="modal-content">
-					<div class="modal-header">
-					좌석';
-					<button class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body" style="text-align; center;" id="screenSeat">
-					<h1>좌석</h1><hr>
-					</div>
-					</div>
-					</div>
-					</div>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr class="active">
-				<td>
-					<table class="table table-borderless table_border_none" style="border-top: none;">
-						<tr class="active" >
-							<td id="moviePoster"></td>
-							<td id="movieDetail"></td>
-						</tr>
-					</table>
-				</td>
-				<td>
-					<table class="table">
-						<tr class="active">
-							<td>극장</td>
-							<td id="theater"></td>
-						</tr>
-						<tr class="active">
-							<td>상영관</td>
-							<td id="screen"></td>
-						</tr>
-						<tr class="active">
-							<td>시간</td>
-							<td id="time"></td>
-						</tr>
-					</table>
-			 	</td>
-				<td>
-					<div id="next"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-	</form>
-	</div>
-	</div>
-	</div>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 </body>
 </html>

@@ -121,8 +121,8 @@
 			<tr class="active">
 				<td>
 					<table class="table table-borderless table_border_none" style="border-top: none;">
-						<tr class="active" >
-							<td id="moviePoster"><img src="resources/img/${movieVO.poster }" width="100"></td>
+						<tr class="active" >  
+							<td id="moviePoster"><img src="resources/movieimg/${movieVO.poster }" width="100"></td>
 							<td id="movieDetail">${movieVO.title }<br>${movieVO.director }
 							<br>${movieVO.gnr }<br>${movieVO.runningtime }<br><a href="movieDetail.do?m_id=' + m_id +'">상세보기</a></td>
 						</tr>
