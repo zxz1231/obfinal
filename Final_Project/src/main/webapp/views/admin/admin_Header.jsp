@@ -56,8 +56,7 @@
 							<li><a href="<%=contextPath%>/admin_searchScreen.do" class="active">극장별 상영관
 									조회 </a></li>
 							<li><a href="/admin_insertScreenWriter.do">상영관추가</a></li>
-							<li><a href="layout-collapsed-sidebar.html">Collapsed
-									Sidebar</a></li>
+						
 
 						</ul></li>
 					<li><a href="javascript:void(0);"> <i
