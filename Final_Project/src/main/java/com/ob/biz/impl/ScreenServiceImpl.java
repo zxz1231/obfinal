@@ -36,4 +36,10 @@ public class ScreenServiceImpl implements ScreenService {
 		return screenDAO.insertScreen(vo);
 	}
 
+	@Override
+	public void deleteScreen(ScreenVO vo) {
+		screenDAO.deleteScreen(vo);
+		
+	}
+
 }

@@ -30,4 +30,8 @@ public class ScreenDAO {
 		return mybatis.insert("ScreenDAO.insertScreen", vo);
 	}
 
+	public void deleteScreen(ScreenVO vo) {
+		mybatis.delete("ScreenDAO.deleteScreen", vo);		
+	}
+
 }

@@ -122,7 +122,7 @@
 																	<input type="button" value="수정"
 																		onclick="updateGO(${screen.scr_id} ,${theater.t_id})">
 																</div> <input type="button" value="삭제"
-																onclick="deleteGO(${movie.m_id })">
+																onclick="deleteGO(${screen.scr_id })">
 															</td>
 														</tr>
 													</tbody>
@@ -181,7 +181,21 @@
 	}
 	</script>
 	<!-- 끝 -->
-
+	
+	<!-- 상영관 삭제 스크립트 -->
+	<script>
+	function deleteGO(scr_id){
+		var check = confirm("정말 삭제하시겠습니까?");
+		if(check== true){
+			location.href="/admin_deleteScreen.do?scr_id="+scr_id;
+		}else if(check == false){
+			return check;
+		}
+		
+		
+	}
+	</script>
+<!-- 상영관 삭제 스크립트 -->
 
 	<!-- Javascripts -->
 	<script src="<%=KPath%>/plugins/jquery/jquery-3.1.0.min.js"></script>

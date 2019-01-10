@@ -576,6 +576,16 @@ public class AdminController {
 			return "redirect:/admin_searchScreen.do";
 		}
 	
+
+		@RequestMapping(value = "/admin_deleteScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String Admin_deleteScreen(ScreenVO vo, Model model) {
+			System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz확인 vo : " + vo);
+			screenService.deleteScreen(vo);
+			model.addAttribute("result", "delete");
+
+			return "/admin_searchScreen.do";
+		}
+
 	
 	
 	

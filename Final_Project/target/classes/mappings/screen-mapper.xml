@@ -41,6 +41,13 @@
 	]]>
 	</insert>
 	
+	<!-- 상영관 삭제 -->
+	<delete id="deleteScreen" parameterType="screen">
+		DELETE FROM SCREEN
+		WHERE scr_id = #{scr_id}
+
+	</delete>
+	
 </mapper>
 
 
