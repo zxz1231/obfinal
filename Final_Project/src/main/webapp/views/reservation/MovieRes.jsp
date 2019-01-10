@@ -37,7 +37,8 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="<%=KPath%>/images/favicon.ico">
@@ -53,7 +54,7 @@
 	rel="stylesheet">
 
 <!-- Stylesheets -->
-<%-- <link rel="stylesheet" href="<%=KPath%>/css/bootstrap.min.css"> --%>
+<link rel="stylesheet" href="<%=KPath%>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=KPath%>/css/plugins.css">
 <link rel="stylesheet" href="<%=KPath%>/style.css">
 
@@ -62,13 +63,10 @@
 <link rel="stylesheet" href="<%=KPath%>/css/color-variations.css">
 
 <!-- Cusom css -->
-<%-- <link rel="stylesheet" href="<%=KPath%>/css/custom.css"> --%>
+<link rel="stylesheet" href="<%=KPath%>/css/custom.css"> 
 
 <!-- Modernizer js -->
-<%-- <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script> --%>
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 
 <script>
 	//달력
@@ -157,7 +155,7 @@
 				strr += strr += '<img src="resources/movieimg/' + poster + '" width="80">';
 				$("#moviePoster").html(strr);
 				
-				strrr += '<br>' + title + '<br>' + director + '<br>' + gnr + '<br>' + runnintime;
+				strrr += title + '<br>' + director + '<br>' + gnr + '<br>' + runnintime;
 				$("#movieDetail").html(strrr)
 				
 			},
@@ -192,32 +190,32 @@
 						
 						if(num != -1) {
 							if(this.time == 8) {												  
-								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+								str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
 							} else if (this.time == 11){
-								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+								str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
 							} else if (this.time == 14){
-								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
+								str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
 							} else if (this.time == 17){
-								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
+								str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
 							} else if (this.time == 20){
-								str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
+								str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
 							}
 						}
 						
 						if(num == -1) {
 						str += '<h4 style="font-weight: bold; text-align: center; ">상영관' + i +'</h4>';
 						if(this.time == 8) {
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',8)" value="8시">';
 						} else if (this.time == 11){
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',11)" value="11시">';
 						} else if (this.time == 14){
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',14)" value="14시">';
 						} else if (this.time == 17){
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',17)" value="17시">';
 						} else if (this.time == 20){
-							str += '<input type="button" style="width: 100px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
+							str += '<input type="button" style="width: 90px;margin-left: 10px;margin-right: 10px;margin-top: 10px;" class="btn btn-light btn-lg" onclick="seat('+ m_id + ',' + this.scr_id + ',' + "'" + t_id + "'" + ',20)" value="20시">';
 						}
 						i++;
 						};
@@ -266,7 +264,7 @@
 				str += '<input type="hidden" name = "t_id" value=' + t_id + '>';
 				str += '<input type="hidden" name = "m_id" value=' + m_id + '>';
 				
-				strrrr += '<input type="submit" value="좌석선택" class="cr-btn cr-btn-sm" style="margin-top: 30px; background-color: #f6644f;">';
+				strrrr += '<input type="submit" value="좌석선택" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #f6644f;height: 58px;">';
 				$("#next").html(strrrr);
 				
 				str += '</div>';
@@ -348,14 +346,14 @@
 
 
 			<form action="schedule.do" method="post">
-				<div class="pricing-plan card-group d-flex">
-					<div class="card set-price p-1 d-none d-lg-none d-lg-block">
+				<div class="pricing-plan card-group d-flex" style="height: 730px;">
+					<div class="card set-price p-1 ">
 											<div class="card-header text-center pb-4 item">
 							<h5 class="h1 card-title">영화</h5>
 
 						</div>
-						<div class="card-body d-flex flex-column" style="height: 580px;">
-							<ul class="list-unstyled text-right">
+						<div class="card-body d-flex flex-column" style="height: 500px; overflow:auto">
+							<ul class="list-unstyled text-center">
 								<li><c:forEach var="i" begin="0"
 										end="${movieList.size()-1 }" step="1">
 										<c:if test="${movieList[i].m_id == movieRes.m_id}">
@@ -381,8 +379,6 @@
 										<span id="movieDetail" style="font-weight: bold;"></span>
 									</div>
 								</li>
-
-
 							</ul>
 						</div>
 					</div>
@@ -394,16 +390,13 @@
 							<h5 class="h1 card-title">극장</h5>
 
 						</div>
-						<div class="card-body d-flex flex-column">
+						<div class="card-body d-flex flex-column"  style="height:500px; overflow:auto">
 
 							<ul class="list-unstyled text-center">
 							<li><input id="Date" name="date" onclick="date()" style="width: 192px; height: 36px;"></li>
 							</ul>
 							<span id="showTheater">영화를 선택하면 극장 나옵니다.</span>
-						</div>
-						
-						<div class="card-body d-flex flex-column">
-
+							<br>
 							<ul class="list-unstyled text-center">
 								<li><div id="theaterImg"></div></li>
 							</ul>
@@ -436,10 +429,10 @@
 							<h5 class="h1 card-title">상영관</h5>
 
 						</div>
+						<div class="card-body d-flex flex-column" style="height:500px;">
 						<div >
 							<span id="showData">영화와 극장을 선택하면 시간표가 나옵니다.</span>
 						</div>
-						<div class="card-body d-flex flex-column">
 							<ul class="list-unstyled text-center">
 								<li><div id="showSeat" style="font-weight: bold;"></div>
 									<div class="row">
@@ -462,9 +455,6 @@
 						</div>
 						<div class="card-footer d-flex flex-column" style="height: 146px;">
 
-							<ul class="list-unstyled text-center">
-								<li><div id="theaterImg"></div></li>
-							</ul>
 							<div id="next"></div>
 						</div>
 					</div>
