@@ -63,7 +63,7 @@
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">Blank Page</h3>
+					<h3 class="breadcrumb-header">상영관 조회</h3>
 				</div>
 				<div id="main-wrapper">
 					<div class="row"></div>

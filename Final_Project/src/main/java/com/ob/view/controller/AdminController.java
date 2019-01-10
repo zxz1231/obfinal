@@ -547,11 +547,34 @@ public class AdminController {
 
 
 //			theaterService.upateTheater(vo);
-//			model.addAttribute("result", "update");
 
 			return "/admin_searchScreen.do";
 		}
+		
+		// 단순 페이지 이동
+		@RequestMapping(value = "/admin_insertScreenWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String Admin_insertScreenWriter(ScreenVO vo, Model model) {
+			List<TheaterVO> theaterList = theaterService.getTheaterList();
+			model.addAttribute("theaterList", theaterList);
+			
+			return "/views/admin/admin_insertScreenWriter.jsp";
+		}
 	
+		@RequestMapping(value = "/admin_insertScreen.do", method = RequestMethod.POST)
+		public String Admin_insertScreen(ScreenVO vo)  {
+			System.out.println(">>> 극장 등록 요청 처리(admin_insertScreen.do)");
+			System.out.println("넘어온 vo : " + vo);
+			
+			int a = Integer.parseInt(vo.getScr_seat_row())*Integer.parseInt(vo.getScr_seat_col());
+			vo.setScr_seat_tot(Integer.toString(a));			
+			System.out.println("수정후 vo cvcvcvcvcv : " + vo);
+			int count = screenService.insertScreen(vo);
+			System.out.println(count+ "건 정상 등록");			
+//			int count = theaterService.insertTheater(vo);
+//			System.out.println(count + "건 정상 등록");
+
+			return "redirect:/admin_searchScreen.do";
+		}
 	
 	
 	

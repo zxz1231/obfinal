@@ -7,7 +7,6 @@
 	String contextPath = request.getContextPath();
 	// theme 까지 들어온 경로 
 	String KPath = contextPath + "/resources/assets";
-	String MovieIMGPath = contextPath + "/resources/movieimg";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -42,11 +41,6 @@
 <link href="<%=KPath%>/css/ecaps.min.css" rel="stylesheet">
 <link href="<%=KPath%>/css/custom.css" rel="stylesheet">
 
-<!-- jquery  -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- jquery  -->
-
 </head>
 <body>
 
@@ -64,69 +58,61 @@
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">스크린 수정페이지</h3>
+					<h3 class="breadcrumb-header">상영관 등록</h3>
 				</div>
 				<div id="main-wrapper">
-
-
 					<div class="row">
-						<form action="admin_modifyScreen.do" method="post"
-							enctype="multipart/form-data" onsubmit="return formCheck();" name="upateForm">
+						<div id="container">
 
-							<div class="col-md-5">
-								<div class="panel panel-white">
-									<label class="control-label">스크린 ID</label> <input id="scr_id"
-										type="text" class="input-large form-control m-b-sm" readonly
-										onfocus="this.blur();" value="${screenOne.scr_id }"
-										name="scr_id" /> <label class="control-label">극장변경</label>
-									<p class="input-large form-control m-b-sm">
-
-										<c:forEach items="${theaterList}" var="theater">
-											<c:if test="${screenOne.t_id eq theater.t_id}">${theater.name}  -> </c:if>
-										</c:forEach>
-										<select name="t_id">
-											<option value="${screenOne.t_id}" selected="selected">기본유지
-												<c:forEach items="${theaterList}" var="theater">
-													<option value="${theater.t_id}">${theater.name}
-												</c:forEach>
-										</select>
-
-									</p>
+							<hr>
+							<form action="admin_insertScreen.do" method="post"
+								class="form-horizontal" onsubmit="return formCheck();"
+								name="insertForm">
+								<table>
+									<tr>
+										<th>극장 선택</th>
 
 
-									<label class="control-label">상영관이름</label> <input id="scr_name"
-										type="text" name="scr_name" class="input-large form-control m-b-sm"
-										value="${screenOne.scr_name}" /> <label class="control-label">상영관
-										행</label> <input id="scr_seat_row" type="text" name="scr_seat_row"
-										class="input-large form-control m-b-sm"
-										value="${screenOne.scr_seat_row}" /> <label
-										class="control-label">상영관 열</label> <input id="scr_seat_col"
-										type="text" name="scr_seat_col"
-										class="input-large form-control m-b-sm"
-										value="${screenOne.scr_seat_col}" />
-										<input type="hidden" value="${screenOne.scr_seat_tot}" name="scr_seat_tot">
-										
+										<td><c:forEach items="${theaterList}" var="theater">
+												<c:if test="${screenOne.t_id eq theater.t_id}">${theater.name}  -> </c:if>
+											</c:forEach> <select name="t_id">
+												<option value="noselect" selected="selected">::목록::
+													<c:forEach items="${theaterList}" var="theater">
+														<option value="${theater.t_id}">${theater.name}
+													</c:forEach>
+										</select></td>
+
+									</tr>
+									<tr>
+										<th>상영관 이름 작성</th>
+										<td><input type="text" name="scr_name"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>상영관 행</th>
+										<td><input type="text" name="scr_seat_row"
+											class="form-control input-rounded"></td>
+									</tr>
+									<tr>
+										<th>상영관 열</th>
+										<td><input type="text" name="scr_seat_col"
+											class="form-control input-rounded"></td>
+										<td><input type="hidden" name="scr_seat_tot"></td>
+									</tr>
 
 
-								</div>
-
-
-
-
-
-							</div>
-							<div class="col-md-2">
-								<div class="panel panel-white">
-									<input type="submit" value="수정">
-								</div>
-
-							</div>
-
-						</form>
+									<tr>
+										<td colspan="2" style="text-align: center;"><input
+											type="submit" value="극장 등록"
+											class="btn btn-success btn-download"></td>
+									</tr>
+								</table>
+							</form>
+							<p></p>
+						</div>
 
 					</div>
-
-
+					<!-- Row -->
 				</div>
 				<!-- Main Wrapper -->
 
@@ -138,18 +124,24 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- /Page Container -->
-	
-		<!-- form 보내기전 체크 -->
+
+
+	<!-- form 보내기전 select Box 체크 -->
 	<script>
 		function formCheck() {
-			var f = document.upateForm;
-			var regNumber = /^[0-9]*$/;			
+			var f = document.insertForm;
+			var regNumber = /^[0-9]*$/;
+			if (f.t_id.value == "noselect") {
+				alert("극장을 선택해 주세요");
+				f.t_id.focus();
+				return false;
+			}
 			if(!regNumber.test(f.scr_seat_row.value)){
-				alert("상영관 행 입력은 숫자만 변경 가능합니다.");
+				alert("상영관 행 입력은 숫자만 허용합니다.");
 				f.scr_seat_row.focus();
 				return false;
 			}if(!regNumber.test(f.scr_seat_col.value)){
-				alert("상영관 열 입력은 숫자만 변경 가능합니다.");
+				alert("상영관 열 입력은 숫자만 허용합니다.");
 				f.scr_seat_col.focus();
 				return false;
 			}
@@ -158,9 +150,7 @@
 
 		}
 	</script>
-	<!-- form 보내기전 체크 -->
-
-
+	<!-- form 보내기전 select Box 체크 -->
 
 
 	<!-- Javascripts -->

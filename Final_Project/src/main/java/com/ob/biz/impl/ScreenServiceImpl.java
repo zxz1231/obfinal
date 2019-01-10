@@ -11,10 +11,10 @@ import com.ob.biz.vo.ScreenVO;
 
 @Service("screenService")
 public class ScreenServiceImpl implements ScreenService {
-	
+
 	@Autowired
 	private ScreenDAO screenDAO;
-	
+
 	@Override
 	public List<ScreenVO> getScreenList() {
 		return screenDAO.getScreenList();
@@ -28,11 +28,12 @@ public class ScreenServiceImpl implements ScreenService {
 	@Override
 	public void upateScreen(ScreenVO vo) {
 		screenDAO.updateScreen(vo);
-		
+
 	}
 
-
-
-	
+	@Override
+	public int insertScreen(ScreenVO vo) {
+		return screenDAO.insertScreen(vo);
+	}
 
 }

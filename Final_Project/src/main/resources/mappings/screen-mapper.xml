@@ -32,6 +32,15 @@
 		#{scr_seat_col},SCR_SEAT_TOT = #{scr_seat_tot} WHERE scr_id = #{scr_id}
 	</update>
 	
+	<!-- 상영관 입력 -->
+	<insert id="insertScreen" parameterType="screen">
+	<![CDATA[
+		INSERT INTO SCREEN (SCR_ID,T_ID,SCR_NAME,SCR_SEAT_ROW,SCR_SEAT_COL,SCR_SEAT_TOT)
+		VALUES ((SELECT NVL(MAX(SCR_ID),0)+1 FROM SCREEN),
+		       #{t_id}, #{scr_name}, #{scr_seat_row}, #{scr_seat_col}, #{scr_seat_tot}) 
+	]]>
+	</insert>
+	
 </mapper>
 
 

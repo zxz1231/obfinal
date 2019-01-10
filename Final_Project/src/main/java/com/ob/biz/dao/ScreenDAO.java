@@ -8,24 +8,26 @@ import org.springframework.stereotype.Repository;
 
 import com.ob.biz.vo.ScreenVO;
 
+@Repository("screenDAO")
+public class ScreenDAO {
+	@Autowired
+	private SqlSessionTemplate mybatis;
 
-	@Repository("screenDAO")
-	public class ScreenDAO {
-		@Autowired
-		private SqlSessionTemplate mybatis;
-		
-		public List<ScreenVO> getScreenList() {
-			return mybatis.selectList("ScreenDAO.getScreenList");
-		}
+	public List<ScreenVO> getScreenList() {
+		return mybatis.selectList("ScreenDAO.getScreenList");
+	}
 
-		public ScreenVO getScrOne(ScreenVO screenVO) {
-			return mybatis.selectOne("ScreenDAO.getScrOne",screenVO);
-		}
+	public ScreenVO getScrOne(ScreenVO screenVO) {
+		return mybatis.selectOne("ScreenDAO.getScrOne", screenVO);
+	}
 
-		public void updateScreen(ScreenVO vo) {
-			mybatis.insert("ScreenDAO.updateScreen", vo);
-			
-		}
-		
-		
+	public void updateScreen(ScreenVO vo) {
+		mybatis.insert("ScreenDAO.updateScreen", vo);
+
+	}
+
+	public int insertScreen(ScreenVO vo) {
+		return mybatis.insert("ScreenDAO.insertScreen", vo);
+	}
+
 }
