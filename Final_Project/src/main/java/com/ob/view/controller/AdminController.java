@@ -23,7 +23,7 @@ import com.ob.biz.vo.TheaterVO;
 
 @Controller
 //// 세션 어트리뷰트 사용해보고 싶었음 . 극장만 해봄
-//@SessionAttributes("theaterOne")
+// @SessionAttributes("theaterOne")
 public class AdminController {
 	@Autowired
 	private MovieService movieService;
@@ -473,7 +473,7 @@ public class AdminController {
 
 		return "/admin_searchTheater.do";
 	}
-	
+
 	@RequestMapping(value = "/admin_deleteTheater.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_deleteTheater(TheaterVO vo, Model model) {
 		System.out.println("요기까징");
@@ -485,115 +485,108 @@ public class AdminController {
 	}
 
 	// --------------------> 극장 ----------------- 끝
-	
-	
-	
+
 	// --------------------> 스크린 ----------------- 시작
-	
+
 	@RequestMapping(value = "/admin_searchScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_searchScreen(ScreenVO vo, Model model) {
-//		List<PlusVO> plusList = plusService.getPlusList();
+		// List<PlusVO> plusList = plusService.getPlusList();
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
-		
+
 		System.out.println(theaterList);
 		List<ScreenVO> screenList = screenService.getScreenList();
 		System.out.println(screenList);
-		
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("screenList", screenList);
 		model.addAttribute("password", "1234"); // 음.
 		return "/views/admin/admin_searchScreen.jsp";
 	}
-	
+
 	// 단순 페이지 이동
-		@RequestMapping(value = "/admin_updateScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
-		public String Admin_updateScreen(ScreenVO vo, Model model) {
-			System.out.println("받은 scr_id :" + vo.getScr_id());
-			System.out.println("받은 t_id : " + vo.getT_id());
-			
-			List<TheaterVO> theaterList = theaterService.getTheaterList();
-			
-			System.out.println(theaterList);
-			
-			
-			
-			ScreenVO screenOne = screenService.getScrOne(vo);
-			model.addAttribute("theaterList",theaterList);
-			model.addAttribute("screenOne", screenOne);
-			
-			System.out.println("dkdkdkdk :" + screenOne);
+	@RequestMapping(value = "/admin_updateScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_updateScreen(ScreenVO vo, Model model) {
+		System.out.println("받은 scr_id :" + vo.getScr_id());
+		System.out.println("받은 t_id : " + vo.getT_id());
 
-			return "/views/admin/admin_updateScreen.jsp";
-		}
-		
-		@RequestMapping(value = "/admin_modifyScreen.do", method = RequestMethod.POST)
-		public String Admin_modifyScreen(ScreenVO vo, Model model){
-			System.out.println(">>> --------------------------------------------- <<<<");
-			System.out.println(">>> 영화 등록 요청 처리(/admin_modifyScreen.do)");
-			System.out.println("넘어온 vo : " + vo);
-			int a = Integer.parseInt(vo.getScr_seat_row())*Integer.parseInt(vo.getScr_seat_col());
-			vo.setScr_seat_tot(Integer.toString(a));			
-			System.out.println("수정후 vo : " + vo);
-			
-			screenService.upateScreen(vo);
-			model.addAttribute("result", "update");
-			
-			
-			
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
 
+		System.out.println(theaterList);
 
-			
+		ScreenVO screenOne = screenService.getScrOne(vo);
+		model.addAttribute("theaterList", theaterList);
+		model.addAttribute("screenOne", screenOne);
 
+		System.out.println("dkdkdkdk :" + screenOne);
 
-//			theaterService.upateTheater(vo);
+		return "/views/admin/admin_updateScreen.jsp";
+	}
 
-			return "/admin_searchScreen.do";
-		}
-		
-		// 단순 페이지 이동
-		@RequestMapping(value = "/admin_insertScreenWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
-		public String Admin_insertScreenWriter(ScreenVO vo, Model model) {
-			List<TheaterVO> theaterList = theaterService.getTheaterList();
-			model.addAttribute("theaterList", theaterList);
-			
-			return "/views/admin/admin_insertScreenWriter.jsp";
-		}
-	
-		@RequestMapping(value = "/admin_insertScreen.do", method = RequestMethod.POST)
-		public String Admin_insertScreen(ScreenVO vo)  {
-			System.out.println(">>> 극장 등록 요청 처리(admin_insertScreen.do)");
-			System.out.println("넘어온 vo : " + vo);
-			
-			int a = Integer.parseInt(vo.getScr_seat_row())*Integer.parseInt(vo.getScr_seat_col());
-			vo.setScr_seat_tot(Integer.toString(a));			
-			System.out.println("수정후 vo cvcvcvcvcv : " + vo);
-			int count = screenService.insertScreen(vo);
-			System.out.println(count+ "건 정상 등록");			
-//			int count = theaterService.insertTheater(vo);
-//			System.out.println(count + "건 정상 등록");
+	@RequestMapping(value = "/admin_modifyScreen.do", method = RequestMethod.POST)
+	public String Admin_modifyScreen(ScreenVO vo, Model model) {
+		System.out.println(">>> --------------------------------------------- <<<<");
+		System.out.println(">>> 영화 등록 요청 처리(/admin_modifyScreen.do)");
+		System.out.println("넘어온 vo : " + vo);
+		int a = Integer.parseInt(vo.getScr_seat_row()) * Integer.parseInt(vo.getScr_seat_col());
+		vo.setScr_seat_tot(Integer.toString(a));
+		System.out.println("수정후 vo : " + vo);
 
-			return "redirect:/admin_searchScreen.do";
-		}
-	
+		screenService.upateScreen(vo);
+		model.addAttribute("result", "update");
 
-		@RequestMapping(value = "/admin_deleteScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
-		public String Admin_deleteScreen(ScreenVO vo, Model model) {
-			System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz확인 vo : " + vo);
-			screenService.deleteScreen(vo);
-			model.addAttribute("result", "delete");
+		return "/admin_searchScreen.do";
+	}
 
-			return "/admin_searchScreen.do";
-		}
+	// 단순 페이지 이동
+	@RequestMapping(value = "/admin_insertScreenWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_insertScreenWriter(ScreenVO vo, Model model) {
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
+		model.addAttribute("theaterList", theaterList);
 
-	
-	
-	
-	
-	
-	
-	
+		return "/views/admin/admin_insertScreenWriter.jsp";
+	}
+
+	@RequestMapping(value = "/admin_insertScreen.do", method = RequestMethod.POST)
+	public String Admin_insertScreen(ScreenVO vo) {
+		System.out.println(">>> 극장 등록 요청 처리(admin_insertScreen.do)");
+		System.out.println("넘어온 vo : " + vo);
+
+		int a = Integer.parseInt(vo.getScr_seat_row()) * Integer.parseInt(vo.getScr_seat_col());
+		vo.setScr_seat_tot(Integer.toString(a));
+		System.out.println("수정후 vo cvcvcvcvcv : " + vo);
+		int count = screenService.insertScreen(vo);
+		System.out.println(count + "건 정상 등록");
+		// int count = theaterService.insertTheater(vo);
+		// System.out.println(count + "건 정상 등록");
+
+		return "redirect:/admin_searchScreen.do";
+	}
+
+	@RequestMapping(value = "/admin_deleteScreen.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_deleteScreen(ScreenVO vo, Model model) {
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz확인 vo : " + vo);
+		screenService.deleteScreen(vo);
+		model.addAttribute("result", "delete");
+
+		return "/admin_searchScreen.do";
+	}
 	// --------------------> 스크린 ----------------- 끝
-	
 
+	
+	
+	
+	// --------------------> 상영정보 ----------------- 시작
+	@RequestMapping(value = "/admin_searchSchedule.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_searchSchedule(ScreenVO vo, Model model) {
+		// List<PlusVO> plusList = plusService.getPlusList();
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
+		System.out.println(theaterList);
+		List<ScreenVO> screenList = screenService.getScreenList();
+		System.out.println(screenList);
+
+		model.addAttribute("theaterList", theaterList);
+		model.addAttribute("screenList", screenList);
+		model.addAttribute("password", "1234"); // 음.
+		return "/views/admin/admin_searchSchedule.jsp";
+	}
 }

@@ -6,7 +6,7 @@
 
 
 	<select id="getPlusALl" resultType="plus">
-	select * from screen scr,theater t ,schedule sch where t.t_id = scr.t_id and t.t_id=sch.t_id
+	select * from schedule sch , screen scr ,theater t ,movie m where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id
 	</select>
 
 	<insert id="insertMovie" parameterType="movie">

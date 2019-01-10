@@ -60,26 +60,18 @@
 
 						</ul></li>
 					<li><a href="javascript:void(0);"> <i
-							class="menu-icon icon-code"></i><span>Forms</span><i
+							class="menu-icon icon-code"></i><span>상영정보</span><i
 							class="accordion-icon fa fa-angle-left"></i>
 					</a>
 						<ul class="sub-menu">
-							<li><a href="form-elements.html">Elements</a></li>
-							<li><a href="form-wizard.html">Form Wizard</a></li>
-							<li><a href="form-file-upload.html">File Upload</a></li>
-							<li><a href="form-image-crop.html">Image Crop</a></li>
-							<li><a href="form-image-zoom.html">Image Zoom</a></li>
-							<li><a href="form-x-editable.html">X-editable</a></li>
+							<li><a href="/admin_searchSchedule.do">영화별</a></li>
+							<li><ul class="sub-menu">						
+							</ul>
+							</li>
+							<li><a href="form-wizard.html">극장별</a></li>
+							<li><a href="form-file-upload.html">상영관별</a></li>
 						</ul></li>
-					<li><a href="javascript:void(0);"> <i
-							class="menu-icon icon-format_list_bulleted"></i><span>Tables</span><i
-							class="accordion-icon fa fa-angle-left"></i>
-					</a>
-						<ul class="sub-menu">
-							<li><a href="table-static.html">Static</a></li>
-							<li><a href="table-responsive.html">Responsive</a></li>
-							<li><a href="table-data.html">Data Tables</a></li>
-						</ul></li>
+				
 					<li><a href="charts.html"> <i
 							class="menu-icon icon-show_chart"></i><span>Charts</span>
 					</a></li>
