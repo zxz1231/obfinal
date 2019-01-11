@@ -9,8 +9,11 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="<%=KPath%>/js/vendor/jquery-3.2.1.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ --><script src="<%=KPath%>/js/vendor/jquery-3.2.1.min.js"></script>
+ 
+ <!-- 모달 작동 -->
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <head>
 
 <style>
@@ -63,10 +66,10 @@
 <link rel="stylesheet" href="<%=KPath%>/css/color-variations.css">
 
 <!-- Cusom css -->
-<link rel="stylesheet" href="<%=KPath%>/css/custom.css"> 
+<%-- <link rel="stylesheet" href="<%=KPath%>/css/custom.css"> --%> 
 
 <!-- Modernizer js -->
-<script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
+<%-- <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script> --%>
 
 <script>
 	//달력
@@ -75,6 +78,7 @@
 			$('#Date').change(function() {
 				$("#showData").empty();
 				$("#showSeat").empty();
+				$("#screenSeat").empty();
 			});	
 			
 		$('#Date').datepicker({
@@ -132,6 +136,7 @@
 		$("#showData").empty();
 		$("#showSeat").empty();
 		$("#theaterImg").empty();
+		$("#screenSeat").empty();
 		
 		$.ajax({
 			type : "POST",
@@ -168,6 +173,7 @@
 	//상영관
 	function fnTest(m_id,t_id,img,name) {
 		$("#showSeat").empty();
+		$("#screenSeat").empty();
 			$.ajax({
 				type : "POST",
 				dataType : "json",
@@ -252,10 +258,12 @@
 				var strrrr="";
 				
 				str += '상영관:'+data.scr_name+'<br>';
-				str += '좌석:'+data.restSeat;
+				str += '좌석:'+data.restSeat+'<br>';
+				str += '예매가능좌석 : <input type="button" name="check_seat" style="width: 12px;height: 12px;padding-right: 0px;padding-left: 0px; background-color: #f6644f;"><br>';
+				str += '예매불가좌석 : <input type="button" name="check_seat" style="width: 12px;height: 12px;padding-right: 0px;padding-left: 0px; background-color: #888;">';
 				str += '<div class="row">';
 				str += '<div class="col-md-4">';
-				str += '<p><input type="button" value="좌석" class="btn btn-light btn-lg" data-target="#modal" data-toggle="modal" onclick="showSeat(' + m_id + "," + scr_id + "," + time + ",";
+				str += '<p><input type="button" value="좌석" class="btn btn-light btn-lg" data-target="#modalSeat" data-toggle="modalSeat" onclick="showSeat(' + m_id + "," + scr_id + "," + time + ",";
 				str += data.scr_seat_row + "," + data.scr_seat_col;
 				str += ')">';
 				str += '</p>';
@@ -288,26 +296,24 @@
 				var a;
 				var b;
 				
-				str += '<table class="table table-bordered">';
 				for(a=1; a<=row; a++) {
-					str += '<tr>';
+					str += '<span>';
 					for(b=1; b<=col; b++) {
-							str += '<td>';
-							str += '<label><input type="checkbox" name="check_seat"';
-							str += 'id = ' + '"' + a + b + '"'
+							str += '<label><input type="button" name="check_seat"';
+							str += 'id = ' + '"' + a + b + '"' + 'style="width: 12px;height: 12px;padding-right: 0px;padding-left: 0px; background-color: #f6644f;"';
 							str += '>';
-							str += a + "," + b;
 							str += '</label>';
-							str += '<td>';
 					}
-					str += '<tr>';
+					str += '<span>';
+					str += '<br>';
 				}
 				$("#screenSeat").html(str);
 				for(a=1; a<=row; a++) {
 					for(b=1; b<=col; b++) {
 						$.each(data, function(member){
 							if(a == this.seat_row && b == this.seat_col) {
-								$("#"+a+b).remove();
+								$("#"+a+b).css('background-color', '#888');
+								
 							}
 						});
 					};
@@ -434,23 +440,26 @@
 							<span id="showData">영화와 극장을 선택하면 시간표가 나옵니다.</span>
 						</div>
 							<ul class="list-unstyled text-center">
-								<li><div id="showSeat" style="font-weight: bold;"></div>
-									<div class="row">
-										<div class="modal" id="modal" tabindex="-1">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
+								<li>
+								<div id="showSeat" style="font-weight: bold;"></div>
+								<div id="screenSeat"></div>
+									<!-- <div class="row">
+										<div class="modalSeat" id="modalSeat" tabindex="-1">
+											<div class="modalSeat-dialog">
+												<div class="modalSeat-content">
+													<div class="modalSeat-header">
 														좌석';
-														<button class="close" data-dismiss="modal">&times;</button>
+														<button class="close" data-dismiss="modalSeat">&times;</button>
 													</div>
-													<div class="modal-body" style="" id="screenSeat">
+													<div class="modalSeat-body" style="" id="screenSeat">
 														<h1>좌석</h1>
 														<hr>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div></li>
+									</div> -->
+								</li>
 							</ul>
 						</div>
 						<div class="card-footer d-flex flex-column" style="height: 146px;">
@@ -468,12 +477,17 @@
 		<jsp:include page="../main/main-footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
 		
-			<!-- JS Files -->
-	<script src="<%=KPath%>/js/popper.min.js"></script>
-	<script src="<%=KPath%>/js/bootstrap.min.js"></script>
-	<script src="<%=KPath%>/js/plugins.js"></script>
-	<script src="<%=KPath%>/js/active.js"></script>
-	<script src="<%=KPath%>/js/scripts.js"></script>
+	<!-- JS Files -->
+	<%-- <script src="<%=KPath%>/js/popper.min.js"></script> --%>
+	<%-- <script src="<%=KPath%>/js/bootstrap.min.js"></script> --%>
+	<%-- <script src="<%=KPath%>/js/plugins.js"></script> --%>
+	<%-- <script src="<%=KPath%>/js/active.js"></script> --%>
+	<%-- <script src="<%=KPath%>/js/scripts.js"></script> --%>
+	
+	 <!-- 모달 작동 -->
+<script src="/resources/bootstrap/js/bootstrap.js"></script>
+	
+	
 	
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
