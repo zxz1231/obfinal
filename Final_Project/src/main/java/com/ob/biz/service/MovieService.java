@@ -22,6 +22,9 @@ public interface MovieService {
 
 	// 영화 목록 전체 조회
 	List<MovieVO> getMovieList();
+	
+	// 보고싶은 명화 득표수 상위 5개 영화 조회
+	List<MovieVO> getMovieListByVote();
 
 	// 영화 장르 전체 조회
 	List<MovieVO> getMovieGnr();

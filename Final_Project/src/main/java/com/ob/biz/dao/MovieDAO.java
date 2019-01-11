@@ -41,4 +41,8 @@ public class MovieDAO {
 	public MovieVO getMovieOne(MovieVO vo) {
 		return mybatis.selectOne("MovieDAO.getMovieOne", vo);
 	}
+	
+	public List<MovieVO> getMovieListByVote() {
+		return mybatis.selectList("MovieDAO.getMovieListByVote");
+	}
 }

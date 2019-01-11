@@ -52,4 +52,9 @@ public class MovieServiceImpl implements MovieService {
     public MovieVO getMovieOne(MovieVO vo) {
        return movieDAO.getMovieOne(vo);
     }
+    
+	@Override
+	public List<MovieVO> getMovieListByVote() {
+		return movieDAO.getMovieListByVote();
+	}
 }
