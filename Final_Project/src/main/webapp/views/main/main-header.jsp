@@ -38,6 +38,7 @@
 											<li><a href="index-creative-studio.html">상영예정작</a></li>
 											<li><a href="index-marketing-agency.html">상영시간표</a></li>
 											<li><a href="index-creative-agency.html">(관람가이드)</a></li>
+											<li><a href="/getVoteList.do">보고싶은 명화</a></li>
 										</ul></li>
 									<li class="cr-dropdown"><a href="about-us.html">극장</a>
 										<ul>
