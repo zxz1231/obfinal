@@ -143,6 +143,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 			<!--// Service Details -->
 		</main>
 		<!--// Page Content -->

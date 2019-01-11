@@ -25,9 +25,8 @@
 	
 	<update id="updateUsers" parameterType="users">
 		UPDATE USERS 
-		   SET PASSWORD = #{password}, NAME = #{name}, NICKNAME = #{nickname}
-			 , BIRTH = #{birth}, PHONE = #{phone}, ADD1 = #{add1}, ADD2 = #{add2}
-			 , GENDER = #{gender}, GRADE = #{grade}, EMAIL = #{email}
+		   SET PASSWORD = #{password}, NAME = #{name}
+			 , BIRTH = #{birth}, PHONE = #{phone}, GRADE = #{grade}, EMAIL = #{email}, VOTEDMOVIE = #{votedmovie}
 		 WHERE U_ID = #{u_id}
 	</update>
 	

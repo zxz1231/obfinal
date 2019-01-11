@@ -14,6 +14,16 @@ public class UsersVO {
 	private int u_id, grade;
 	private String id, password, name, phone, email;
 	private Date birth;
+	
+	private int votedmovie;
+
+	public int getVotedmovie() {
+		return votedmovie;
+	}
+
+	public void setVotedmovie(int votedmovie) {
+		this.votedmovie = votedmovie;
+	}
 
 	public int getU_id() {
 		return u_id;
@@ -82,7 +92,7 @@ public class UsersVO {
 	@Override
 	public String toString() {
 		return "UsersVO [u_id=" + u_id + ", grade=" + grade + ", id=" + id + ", password=" + password + ", name=" + name
-				+ ", phone=" + phone + ", email=" + email + "]";
+				+ ", phone=" + phone + ", email=" + email + ", birth=" + birth + ", votedmovie=" + votedmovie + "]";
 	}
 
 }

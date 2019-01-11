@@ -67,6 +67,15 @@
 		BY M_ID
 	</select>
 
+	<select id="getMovieListByVote" resultType="movie">
+	<![CDATA[
+		SELECT *
+		  FROM (SELECT ROWNUM RN, M.*
+		          FROM (SELECT * FROM MOVIE ORDER BY VOTE DESC, TITLE ASC) M)
+		 WHERE RN<=5
+	]]>
+	</select>
+	
 	<select id="getMovieGnr" resultType="movie">
 		SELECT DISTINCT GNR FROM
 		MOVIE WHERE GNR IS NOT NULL
