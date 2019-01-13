@@ -54,49 +54,30 @@ body {
 
 
 	<div class="tab">
-	
-	<c:forEach items="${theaterList }" var="theater">
-	<button class="tablinks" onclick="openCity(event, 'London')">${theater.name }</button>
+
+		<c:forEach items="${theaterList }" var="theater">
+			<button class="tablinks"
+				onclick="openTheater(event, '${theater.t_id}')">${theater.name }</button>
+		</c:forEach>
+
+
+
+
+	</div>
+	<c:forEach var="theater" items="${theaterList }">
+		<div id="${theater.t_id }" class="tabcontent">
+			<div>${theater.name }극장에서 상영하고 있는 영화는</div>
+			<c:forEach var="screen" items="${screenList }">
+			${screen }
+			</c:forEach>
+
+
+		</div>
 	</c:forEach>
 
 
-		<button class="tablinks" onclick="openCity(event, 'London')">London</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-
-
-	</div>
-
-	<div id="London" class="tabcontent">
-		<h3>London</h3>
-		<p>London is the capital city of England.</p>
-	</div>
-
-	<div id="Paris" class="tabcontent">
-		<h3>Paris</h3>
-		<p>Paris is the capital of France.</p>
-	</div>
-
-	<div id="Tokyo" class="tabcontent">
-		<h3>Tokyo</h3>
-		<p>Tokyo is the capital of Japan.</p>
-	</div>
-
 	<script>
-		function openCity(evt, cityName) {
+		function openTheater(evt, t_id) {
 			var i, tabcontent, tablinks;
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
@@ -107,7 +88,7 @@ body {
 				tablinks[i].className = tablinks[i].className.replace(
 						" active", "");
 			}
-			document.getElementById(cityName).style.display = "block";
+			document.getElementById(t_id).style.display = "block";
 			evt.currentTarget.className += " active";
 		}
 	</script>

@@ -18,6 +18,7 @@ import com.ob.biz.service.PlusService;
 import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
 import com.ob.biz.vo.MovieVO;
+import com.ob.biz.vo.PlusVO;
 import com.ob.biz.vo.ScreenVO;
 import com.ob.biz.vo.TheaterVO;
 
@@ -583,9 +584,13 @@ public class AdminController {
 		System.out.println(theaterList);
 		List<ScreenVO> screenList = screenService.getScreenList();
 		System.out.println(screenList);
+		
+		List<PlusVO> plusList= plusService.getPlusList();
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("screenList", screenList);
+		model.addAttribute("plusList", plusList);
+		
 		model.addAttribute("password", "1234"); // 음.
 		return "/views/admin/admin_searchSchedule.jsp";
 	}
