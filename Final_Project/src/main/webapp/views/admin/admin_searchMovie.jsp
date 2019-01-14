@@ -110,6 +110,7 @@
 														<td>${movie.runningtime}</td>
 														<td>${movie.restrict}</td>
 														<td><c:choose>
+																<c:when test="${movie.onair eq -1}">상영예정 </c:when>
 																<c:when test="${movie.onair eq 1}">상영중 </c:when>
 																<c:when test="${movie.onair eq 0}">상영종료 </c:when>
 															</c:choose></td>
@@ -119,8 +120,7 @@
 															<div>
 																<input type="button" value="수정"
 																	onclick="updateGO(${movie.m_id})">
-															</div> <input type="button" value="삭제"
-															onclick="deleteGO(${movie.m_id })"></td>
+															</div> <input type="button" value="삭제" onclick="deleteGO(${movie.m_id })"></td>
 													</tr>
 												</c:forEach>
 											</tbody>

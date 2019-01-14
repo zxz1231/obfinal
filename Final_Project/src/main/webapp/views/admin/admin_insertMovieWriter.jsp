@@ -113,6 +113,8 @@
 									<tr>
 										<th>상영중</th>
 										<td><select name="onair" class="form-control">
+										
+												<option value="-1">상영예정
 												<option value="0">상영종료
 												<option value="1">상영중
 										</select></td>

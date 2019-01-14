@@ -64,9 +64,9 @@
 							class="accordion-icon fa fa-angle-left"></i>
 					</a>
 						<ul class="sub-menu">
-							<li><a href="/admin_searchSchedule.do">상영정보 전체조회</a></li>
-							
+							<li><a href="/admin_searchSchedule.do">상영정보 전체조회</a></li>							
 							<li><a href="/admin_insertScheduleWriter.do">상영정보 추가 </a></li>
+							<li><a href="/updateOnairkimWriter.do">상영예정작 한번에 작업 </a></li>
 						</ul></li>
 
 					<li><a href="charts.html"> <i

@@ -106,7 +106,7 @@
 
 	<!-- 상영예정 상태인 영화 목록 조회(영화제목순) -->
 	<select id="getMovieListPreair" resultType="movie">
-		SELECT * FROM MOVIE ORDER BY M_ID WHERE ONAIR=-1
+		SELECT * FROM MOVIE Where ONAIR=-1 ORDER BY M_ID 
 	</select>
 
 	<!-- 득표수 상위 5개 영화 목록 조회(득표수 내림차순, 영화제목순) -->

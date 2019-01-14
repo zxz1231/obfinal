@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ob.biz.service.MovieService;
+import com.ob.biz.service.Movie_HistoryService;
 import com.ob.biz.service.PlusService;
 import com.ob.biz.service.ScheduleService;
 import com.ob.biz.service.ScreenService;
@@ -37,6 +38,8 @@ public class AdminController {
 	private ScreenService screenService;
 	@Autowired
 	private ScheduleService scheduleService;
+	@Autowired
+	private Movie_HistoryService movie_HistoryService;
 	@Autowired
 	private PlusService plusService;
 
@@ -602,6 +605,7 @@ public class AdminController {
 	public String Admin_insertScheduleWriter(ScreenVO vo, Model model) {
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
 		List<MovieVO> movieList = movieService.getMovieList();
+		
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("movieList", movieList);
@@ -635,11 +639,51 @@ public class AdminController {
 		System.out.println("넘어온 데이터" + vo);
 		List<PlusVO> title_poster = plusService.getPlusTitlebyt_id(vo);
 		System.out.println("맞냐 :" + title_poster);
-		
+
 		return title_poster;
-		
-		
 
 	}
+
+	
+    //----------------------------------------------------수정 start	
+	// 단순 페이지 이동
+	@RequestMapping(value = "/updateOnairkimWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateOnairkimWriter(Model model) {
+		List<MovieVO> movieList = movieService.getMovieListPreair();
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
+		if(movieList.size()==0) {
+			System.out.println("상영 예정작인 영화가 없습니다.");
+			return "redirect:/admin_searchSchedule.do";			
+		}else {
+			System.out.println("상영 예정작인 영화가 있어서 페이지를 이동합니.");
+			
+			model.addAttribute("theaterList", theaterList);
+			model.addAttribute("movieList", movieList);
+
+			return "/views/admin/admin_insertScheduleKimWriter.jsp";
+		}
+
+	}
+
+	@RequestMapping(value = "/updateOnairkim.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateOnairkim(Model model) {
+		System.out.println("updateOnair() 실행");
+		// 상영중(1)이던 영화 상영종료(0) 처리
+		movieService.updateMovieOnair0();
+		// 상영예정(-1)인 영화 극장 - 상영관 - 스케쥴 등록
+
+		// 상영예정(-1)이던 영화 상영중(1) 처리
+		movieService.updateMovieOnair1();
+		// 상영한 영화(1) 상영 내역에 반영
+		movie_HistoryService.insertMovie_History_Onair();
+		// 보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
+		movieService.updateMoviePreair();
+		// vote 초기화
+		movieService.updateMovieVoteTo0();
+		System.out.println("음.");
+		return null;
+	}
+	//----------------------------------------------------수정 end	
+
 
 }
