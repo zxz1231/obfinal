@@ -84,7 +84,7 @@ public class MovieController {
 	
 	
 	//
-	@RequestMapping(value="updateOnair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/updateOnair.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public void updateOnair(Model model) {
 		System.out.println("updateOnair() 실행");
 		//상영중(1)이던 영화 상영종료(0) 처리
@@ -101,7 +101,7 @@ public class MovieController {
 		movieService.updateMovieVoteTo0();
 	}
 	
-	@RequestMapping(value="getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public List<MovieVO> getPreair(){
 		//상영예정(-1)인 영화 목록 조회

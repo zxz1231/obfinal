@@ -12,7 +12,7 @@
    
    <insert id="insertMovie_History_Onair" parameterType="movie">
       INSERT INTO MOVIE_HISTORY (H_ID, M_ID, DAY_START, DAY_END)
-      SELECT (SELECT NVL(MAX(H_ID),0)+1 FROM MOVIE_HISTORY), M_ID, SYSDATE, SYSDATE+7
+      SELECT SEQ_MOVIE_HISTORY.NEXTVAL, M_ID, SYSDATE, SYSDATE+7
         FROM MOVIE
        WHERE ONAIR=1
    </insert>
