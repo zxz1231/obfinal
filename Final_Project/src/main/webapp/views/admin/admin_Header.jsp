@@ -53,10 +53,10 @@
 							class="accordion-icon fa fa-angle-left"></i>
 					</a>
 						<ul class="sub-menu">
-							<li><a href="<%=contextPath%>/admin_searchScreen.do" class="active">극장별 상영관
-									조회 </a></li>
+							<li><a href="<%=contextPath%>/admin_searchScreen.do"
+								class="active">극장별 상영관 조회 </a></li>
 							<li><a href="/admin_insertScreenWriter.do">상영관추가</a></li>
-						
+
 
 						</ul></li>
 					<li><a href="javascript:void(0);"> <i
@@ -65,12 +65,10 @@
 					</a>
 						<ul class="sub-menu">
 							<li><a href="/admin_searchSchedule.do">상영정보 전체조회</a></li>
-							<li><ul class="sub-menu">						
-							</ul>
-							</li>
+							
 							<li><a href="/admin_insertScheduleWriter.do">상영정보 추가 </a></li>
 						</ul></li>
-				
+
 					<li><a href="charts.html"> <i
 							class="menu-icon icon-show_chart"></i><span>Charts</span>
 					</a></li>

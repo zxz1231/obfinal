@@ -578,9 +578,6 @@ public class AdminController {
 	}
 	// --------------------> 스크린 ----------------- 끝
 
-	
-	
-	
 	// --------------------> 상영정보 ----------------- 시작
 	@RequestMapping(value = "/admin_searchSchedule.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_searchSchedule(ScreenVO vo, Model model) {
@@ -589,55 +586,60 @@ public class AdminController {
 		System.out.println(theaterList);
 		List<ScreenVO> screenList = screenService.getScreenList();
 		System.out.println(screenList);
-		
-		List<PlusVO> plusList= plusService.getPlusList();
+
+		List<PlusVO> plusList = plusService.getPlusList();
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("screenList", screenList);
 		model.addAttribute("plusList", plusList);
-		
+
 		model.addAttribute("password", "1234"); // 음.
 		return "/views/admin/admin_searchSchedule.jsp";
 	}
-		// 단순 페이지 이동
-		@RequestMapping(value = "/admin_insertScheduleWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
-		public String Admin_insertScheduleWriter(ScreenVO vo, Model model) {
-			List<TheaterVO> theaterList = theaterService.getTheaterList();
-			List<MovieVO> movieList = movieService.getMovieList();
-			
-			
-			model.addAttribute("theaterList", theaterList);
-			model.addAttribute("movieList", movieList);
 
-			return "/views/admin/admin_insertScheduleWriter.jsp";
-		}
+	// 단순 페이지 이동
+	@RequestMapping(value = "/admin_insertScheduleWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_insertScheduleWriter(ScreenVO vo, Model model) {
+		List<TheaterVO> theaterList = theaterService.getTheaterList();
+		List<MovieVO> movieList = movieService.getMovieList();
+
+		model.addAttribute("theaterList", theaterList);
+		model.addAttribute("movieList", movieList);
+
+		return "/views/admin/admin_insertScheduleWriter.jsp";
+	}
+
+	// ajax 처리 m_id로 screen 정보 구하기
+	@RequestMapping(value = "/getScrOne_m.do", method = RequestMethod.POST)
+	public @ResponseBody List<ScreenVO> getScrOne_m(ScreenVO vo, HttpSession session) {
+		System.out.println("넘어온 데이터" + vo);
+		List<ScreenVO> scrList = screenService.getScrOne_m(vo);
+		System.out.println("aaa" + scrList);
+		return scrList;
+
+	}
+
+	@RequestMapping(value = "/admin_insertSchedule.do", method = RequestMethod.POST)
+	public String Admin_insertSchedule(ScheduleVO vo) {
+		System.out.println(">>> 극장 등록 요청 처리(admin_insertSchedule.do)");
+		System.out.println("넘어온 vo : " + vo);
+
+		int count = scheduleService.insertSchedule(vo);
+		System.out.println(count + "건 정상 처리");
+		return "redirect:/admin_searchSchedule.do";
+	}
+
+	// ajax 처리 t_id로 plus 정보 구하기
+	@RequestMapping(value = "/getPlusTitlebyt_id.do", method = RequestMethod.POST)
+	public @ResponseBody List<PlusVO> getPlusTitlebyt_id(PlusVO vo, HttpSession session) {
+		System.out.println("넘어온 데이터" + vo);
+		List<PlusVO> title_poster = plusService.getPlusTitlebyt_id(vo);
+		System.out.println("맞냐 :" + title_poster);
 		
-		//ajax 처리 m_id로 screen 정보 구하기
-		@RequestMapping(value = "/getScrOne_m.do", method = RequestMethod.POST)
-		public @ResponseBody List<ScreenVO> getScrOne_m(ScreenVO vo, HttpSession session) {
-			System.out.println("넘어온 데이터" + vo);
-			List<ScreenVO> scrList = screenService.getScrOne_m(vo);
-			System.out.println("aaa" + scrList);
-			return scrList;
+		return title_poster;
 		
-		}
-		@RequestMapping(value = "/admin_insertSchedule.do", method = RequestMethod.POST)
-		public String Admin_insertSchedule(ScheduleVO vo) {
-			System.out.println(">>> 극장 등록 요청 처리(admin_insertSchedule.do)");
-			System.out.println("넘어온 vo : " + vo);
+		
 
-//			int a = Integer.parseInt(vo.getScr_seat_row()) * Integer.parseInt(vo.getScr_seat_col());
-//			vo.setScr_seat_tot(Integer.toString(a));
-//			System.out.println("수정후 vo cvcvcvcvcv : " + vo);
-//			int count = screenService.insertScreen(vo);
-//			System.out.println(count + "건 정상 등록");
-			// int count = theaterService.insertTheater(vo);
-			// System.out.println(count + "건 정상 등록");
+	}
 
-			int count = scheduleService.insertSchedule(vo);
-			System.out.println(count +"건 정상 처리");
-			return "redirect:/admin_searchSchedule.do";
-		}
-	
-	
 }
