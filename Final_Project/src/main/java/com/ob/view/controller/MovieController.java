@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ob.biz.service.MovieService;
+import com.ob.biz.service.Movie_HistoryService;
 import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
 import com.ob.biz.vo.MovieVO;
@@ -20,6 +21,8 @@ import com.ob.biz.vo.MovieVO;
 public class MovieController {
 	@Autowired
 	private MovieService movieService;
+	@Autowired
+	private Movie_HistoryService movie_HistoryService;
 	@Autowired
 	private TheaterService theaterService;
 	@Autowired
@@ -77,6 +80,30 @@ public class MovieController {
 		
 
 		return "/views/movie/nowmoive.jsp";
+	}
+	
+	
+	//
+	@RequestMapping(value="updateOnair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public void updateOnair(Model model) {
+		System.out.println("updateOnair() 실행");
+		//상영중(1)이던 영화 상영종료(0) 처리
+		movieService.updateMovieOnair0();
+		//상영예정(-1)인 영화 극장 - 상영관 - 스케쥴 등록
+		
+		//상영예정(-1)이던 영화 상영중(1) 처리
+		movieService.updateMovieOnair1();
+		//상영한 영화(1) 상영 내역에 반영
+		movie_HistoryService.insertMovie_History_Onair();
+		//보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
+		movieService.updateMoviePreair();
+	}
+	
+	@RequestMapping(value="getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public List<MovieVO> getPreair(){
+		//상영예정(-1)인 영화 목록 조회
+		return movieService.getMovieListPreair();
 	}
 }
 

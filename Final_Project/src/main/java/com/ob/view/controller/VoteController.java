@@ -69,7 +69,7 @@ public class VoteController {
 	private Movie_HistoryService movie_HistoryService;
 	
 	private UsersVO uvo;
-	//객체 다중 리턴을 위한 map 선언
+	//집합객체 다중 리턴을 위한 map 선언
 	private Map<String,Object> map;
 	
 	//********************************************
@@ -118,7 +118,7 @@ public class VoteController {
 		uvo = (UsersVO)session.getAttribute("Logininformation");
 		
 		//로그인체크
-		int loginChk = loginChk();
+		int loginChk = _loginChk();
 		map.put("loginChk", loginChk);
 		
 		//선택한 영화
@@ -162,7 +162,7 @@ public class VoteController {
 
 	//********************************************************************************
 		//로그인체크(loginChk == 0 : 로그인안됨 / loginChk == 1 : 로그인 됨)
-		private int loginChk() {
+		private int _loginChk() {
 			int loginChk = 0;
 			if(uvo==null) {		//로그인 안된 경우
 				System.out.println("로그인안됨");
@@ -220,6 +220,16 @@ public class VoteController {
 			movieService.updateMovie(mvo);
 			
 			return map;
+		}
+		
+		//onair update 처리(일주일 단위 자동반복 - interval 사용?)
+		//상영중(onair==1) -> 상영종료(onair==0)
+		//상영예정작(onair==-1) -> 상영중(onair==1)
+		//	movie_history에 반영
+		//	schedule에 분배
+		//보고싶은 명화 페이지 득표수 상위 5개영화 상영예정(onair==-1)처리
+		private void updateOnair() {
+			
 		}
 	//********************************************************************************
 }
