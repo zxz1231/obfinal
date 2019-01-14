@@ -21,6 +21,11 @@ public class MovieDAO {
 		mybatis.update("MovieDAO.updateMovie", vo);
 	}
 	
+	//영화 투표수 초기화
+	public void updateMovieVoteTo0() {
+		mybatis.update("MovieDAO.updateMovieVoteTo0");
+	}
+	
 	//상영예정(ONAIR=-1) -> 상영중(ONAIR=1)
 	public void updateMovieOnair1() {
 		mybatis.update("MovieDAO.updateMovieOnair1");

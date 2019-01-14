@@ -21,6 +21,12 @@ public class MovieServiceImpl implements MovieService {
 		movieDAO.insertMovie(vo);
 	}
 
+	// 영화 투표수 초기화
+	@Override
+	public void updateMovieVoteTo0() {
+		movieDAO.updateMovieVoteTo0();
+	}
+	
 	@Override
 	public void updateMovie(MovieVO vo) {
 		movieDAO.updateMovie(vo);

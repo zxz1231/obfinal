@@ -97,6 +97,8 @@ public class MovieController {
 		movie_HistoryService.insertMovie_History_Onair();
 		//보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
 		movieService.updateMoviePreair();
+		//vote 초기화
+		movieService.updateMovieVoteTo0();
 	}
 	
 	@RequestMapping(value="getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})

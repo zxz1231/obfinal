@@ -44,6 +44,11 @@
 		 WHERE m_id = #{m_id}
 	</update>
 
+	<!-- 투표수 초기화 -->
+	<update id="updateMovieVoteTo0" parameterType="movie">
+		UPDATE MOVIE SET VOTE = 0
+	</update>
+
 	<!-- 상영예정(ONAIR=-1) -> 상영중(ONAIR=1)  -->
 	<!-- parameterType="movie" 없어도 되나 -->
 	<update id="updateMovieOnair1" >
@@ -73,6 +78,7 @@
 		 				WHERE M.M_ID = S.M_ID)
  	]]>
 	</update>
+	
 
 	<delete id="deleteMovie" parameterType="movie">
 		DELETE FROM MOVIE WHERE m_id = #{m_id}

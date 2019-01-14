@@ -11,6 +11,9 @@ public interface MovieService {
 
 	// 영화 수정
 	void updateMovie(MovieVO vo);
+	
+	// 영화 투표수 초기화
+	void updateMovieVoteTo0();
 
 	//상영예정(ONAIR=-1) -> 상영중(ONAIR=1)
 	void updateMovieOnair1();
