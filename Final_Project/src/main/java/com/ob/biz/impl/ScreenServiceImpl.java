@@ -42,4 +42,10 @@ public class ScreenServiceImpl implements ScreenService {
 		
 	}
 
+	@Override
+	public List<ScreenVO> getScrOne_m(ScreenVO screenVO) {
+		return screenDAO.getScrOne_m(screenVO);
+	
+	}
+
 }

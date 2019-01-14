@@ -25,4 +25,7 @@ public class ScheduleDAO {
 	public ScheduleVO getSchOne(ScheduleVO scheduleVO) {
 		return mybatis.selectOne("ScheduleDAO.getSchOne", scheduleVO);
 	}
+	public int insertSchedule(ScheduleVO vo) {
+		return mybatis.insert("ScheduleDAO.insertSchedule", vo);
+	}
 }

@@ -48,6 +48,10 @@
 
 	</delete>
 	
+	<!-- m_id로 상영관 가져오기 -->
+	<select id="getScrOne_m" parameterType="screen" resultType="screen">
+	        select * from screen where t_id =#{t_id}
+	</select>
 </mapper>
 
 

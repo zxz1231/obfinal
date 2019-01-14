@@ -3,7 +3,6 @@ package com.ob.biz.service;
 import java.util.List;
 
 import com.ob.biz.vo.ScreenVO;
-import com.ob.biz.vo.TheaterVO;
 
 public interface ScreenService {
 
@@ -21,5 +20,9 @@ public interface ScreenService {
 
 	// 상영관 삭제
 	void deleteScreen(ScreenVO vo);
+	
+	// m_id로 상영관 조회
+	
+	List<ScreenVO> getScrOne_m(ScreenVO screenVO);
 
 }

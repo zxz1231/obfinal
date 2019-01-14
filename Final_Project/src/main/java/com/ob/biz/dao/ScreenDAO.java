@@ -33,5 +33,9 @@ public class ScreenDAO {
 	public void deleteScreen(ScreenVO vo) {
 		mybatis.delete("ScreenDAO.deleteScreen", vo);		
 	}
+	
+	public List<ScreenVO> getScrOne_m(ScreenVO screenVO) {
+		return mybatis.selectList("ScreenDAO.getScrOne_m", screenVO);
+	}
 
 }

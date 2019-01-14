@@ -37,6 +37,15 @@
 		WHERE SCR_ID = #{scr_id} AND M_ID=#{m_id} AND TIME=#{time}
 	</select>
 	
+	<!-- 상영정보 입력 -->
+	<insert id="insertSchedule" parameterType="screen">
+	<![CDATA[
+		INSERT INTO SCHEDULE (SCH_ID,M_ID,T_ID,SCR_ID,TIME,PRICE)
+		VALUES ((SELECT NVL(MAX(SCH_ID),0)+1 FROM SCHEDULE),
+		       #{m_id}, #{t_id}, #{scr_id}, #{time}, #{price}) 
+	]]>
+	</insert>
+	
 	
 </mapper>
 

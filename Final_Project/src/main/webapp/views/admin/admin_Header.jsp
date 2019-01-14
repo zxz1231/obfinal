@@ -64,12 +64,11 @@
 							class="accordion-icon fa fa-angle-left"></i>
 					</a>
 						<ul class="sub-menu">
-							<li><a href="/admin_searchSchedule.do">상영정보 젠체조회</a></li>
+							<li><a href="/admin_searchSchedule.do">상영정보 전체조회</a></li>
 							<li><ul class="sub-menu">						
 							</ul>
 							</li>
-							<li><a href="form-wizard.html">극장별</a></li>
-							<li><a href="form-file-upload.html">상영관별</a></li>
+							<li><a href="/admin_insertScheduleWriter.do">상영정보 추가 </a></li>
 						</ul></li>
 				
 					<li><a href="charts.html"> <i

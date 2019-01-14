@@ -14,4 +14,8 @@ public interface ScheduleService {
 	
 	//아이디 조회
 	ScheduleVO getSchId(ScheduleVO scheduleVO);
+	
+	//스케쥴 입력
+	// 상영관 입력
+	int insertSchedule(ScheduleVO vo);
 }
