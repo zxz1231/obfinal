@@ -28,4 +28,7 @@ public class ScheduleDAO {
 	public int insertSchedule(ScheduleVO vo) {
 		return mybatis.insert("ScheduleDAO.insertSchedule", vo);
 	}
+	public List<ScheduleVO> getTIME(ScheduleVO vo) {
+		return mybatis.selectList("ScheduleDAO.getTIME",vo);
+	}
 }

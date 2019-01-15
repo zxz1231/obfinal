@@ -17,7 +17,6 @@ import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
 import com.ob.biz.service.UsersService;
 import com.ob.biz.vo.MovieVO;
-import com.ob.biz.vo.UsersVO;
 
 @Controller
 public class MovieController {
@@ -98,7 +97,8 @@ public class MovieController {
 		movieService.updateMoviePreair();
 		//vote 초기화
 		movieService.updateMovieVoteTo0();
-		//Users 안의 votedmovie 초기화
+		//Users에 votedmovie 초기화 할 것 
+		usersService.resetVotedMovie();
 	}
 	
 	@RequestMapping(value="/getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})

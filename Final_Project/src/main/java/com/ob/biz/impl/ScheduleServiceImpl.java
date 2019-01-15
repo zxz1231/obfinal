@@ -36,4 +36,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDAO.insertSchedule(vo);
 	}
 
+	@Override
+	public List<ScheduleVO> getTIME(ScheduleVO vo) {
+		return scheduleDAO.getTIME(vo);
+	}
+
 }

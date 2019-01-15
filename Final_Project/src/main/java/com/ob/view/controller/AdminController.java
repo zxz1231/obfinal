@@ -605,7 +605,6 @@ public class AdminController {
 	public String Admin_insertScheduleWriter(ScreenVO vo, Model model) {
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
 		List<MovieVO> movieList = movieService.getMovieList();
-		
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("movieList", movieList);
@@ -644,18 +643,17 @@ public class AdminController {
 
 	}
 
-	
-    //----------------------------------------------------수정 start	
+	// ----------------------------------------------------수정 start
 	// 단순 페이지 이동
 	@RequestMapping(value = "/updateOnairkimWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateOnairkimWriter(Model model) {
 		List<MovieVO> movieList = movieService.getMovieListPreair();
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
-		if(movieList.size()==0) {
+		if (movieList.size() == 0) {
 			System.out.println("상영 예정작인 영화가 없습니다.");
 			// 상영중(1)이던 영화 상영종료(0) 처리
 			movieService.updateMovieOnair0();
-			
+
 			// 상영예정(-1)이던 영화 상영중(1) 처리
 			movieService.updateMovieOnair1();
 			// 상영한 영화(1) 상영 내역에 반영
@@ -664,10 +662,10 @@ public class AdminController {
 			movieService.updateMoviePreair();
 			// vote 초기화
 			movieService.updateMovieVoteTo0();
-			return "redirect:/admin_searchSchedule.do";			
-		}else {
+			return "redirect:/admin_searchSchedule.do";
+		} else {
 			System.out.println("상영 예정작인 영화가 있어서 페이지를 이동합니다.");
-			
+
 			model.addAttribute("theaterList", theaterList);
 			model.addAttribute("movieList", movieList);
 
@@ -694,7 +692,16 @@ public class AdminController {
 		System.out.println("음.");
 		return null;
 	}
-	//----------------------------------------------------수정 end	
+	// ----------------------------------------------------수정 end
 
+	// ajax 처리 t_id로 plus 정보 구하기
+	@RequestMapping(value = "/getTIME.do", method = RequestMethod.POST)
+	public @ResponseBody List<ScheduleVO> getTIME(ScheduleVO vo, HttpSession session) {
+		System.out.println("넘어온 데이터" + vo);
 
+		List<ScheduleVO> TIMELIST = scheduleService.getTIME(vo);
+		System.out.println("체체체체크 : " + TIMELIST);
+		return TIMELIST;
+
+	}
 }

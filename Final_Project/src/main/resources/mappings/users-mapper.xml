@@ -30,6 +30,12 @@
 		 WHERE U_ID = #{u_id}
 	</update>
 	
+	<!-- votedmovie 초기화 -->
+	<update id="resetVotedMovie" parameterType="users">
+		UPDATE USERS 
+		   SET VOTEDMOVIE = 0
+	</update>
+	
 	<delete id="deleteUsers" parameterType="users">
 		DELETE FROM USERS WHERE U_ID = #{u_id}
 	</delete>

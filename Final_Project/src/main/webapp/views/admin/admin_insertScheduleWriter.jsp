@@ -46,48 +46,63 @@
 
 <!-- ajax 처리하기 -->
 <script>
-	$(document)
-			.ready(
-					function() {
-						$("#t_id")
-								.change(
-										function() {
-											alert("왜");
-											var t_id = $("select[name=t_id]")
-													.val();
-											alert(t_id);
-											$
-													.ajax({
-														url : '/getScrOne_m.do',
-														type : 'post',
-														data : {
-															't_id' : t_id
-														},
-														dataType : 'json',
-														success : function(
-																result) {
-															console.log(result);
-
-															var str = "";
-															str += "<select name='scr_id' id='scr_id'>";
-															str += "<option value='noselectScreen' selected='selected'>::목록::";
-															for (var i = 0; i < result.length; i++) {
-																str += "<option value ="+result[i].scr_id+">"
-																		+ result[i].scr_name
-															}
-															str += "</option>"
-															str += "</select>";
-															$("#screenAdd")
-																	.html(str);
-															for (var i = 0; i < result.length; i++) {
-																alert(result[i].scr_name);
-
-															}
-
-														}
-													})
-										});
+	$(document).ready(function() {
+		$("#t_id").change(function() {
+		var t_id = $("select[name=t_id]").val();	
+						
+		$.ajax({url : '/getScrOne_m.do',
+				type : 'post',
+				data : {
+					't_id' : t_id
+					},
+					dataType : 'json',
+					success : function(result) {
+						console.log(result);
+						var str = "";
+						str += "<select name='scr_id' id='scr_id'>";
+						str += "<option value='noselectScreen' selected='selected'>::목록::";
+						for (var i = 0; i < result.length; i++) {
+							str += "<option value ="+result[i].scr_id+">"
+							+ result[i].scr_name}
+						str += "</option>"
+						str += "</select>";
+						$("#screenAdd").html(str);
+						for (var i = 0; i < result.length; i++) {
+							}
+						}
+					})
 					});
+		$("#screenAdd").change(function() {								
+			alert("바뀜");
+			var t_id = $('#t_id option:selected').val();
+			var scr_id = $('#scr_id option:selected').val();
+			$.ajax({url : '/getTIME.do',
+				type : 'post',
+				data : {
+					't_id' : t_id,
+					'scr_id' : scr_id
+					},
+					dataType : 'json',
+					success : function(result) {
+						var jbAry = [ '8', '11', '14','17','20' ];
+						for (var i = 0; i < result.length; i++) {
+							jbAry.splice(jbAry.indexOf(result[i].time),1);
+							/* alert(result[i].time); */
+						}
+						var str = "";			
+						str += "<select name='time' id='time'>"
+						str += "<option value='noselectTime' selected='selected'>::목록::"
+						for(var i = 0; i<jbAry.length;i++){
+							str+= "<option value="+jbAry[i]+">"+jbAry[i]+"시";
+							}
+						str+="</select>";
+						$("#timeAdd").html(str);
+						
+					}
+					
+					})			
+					});			
+		});
 </script>
 </head>
 <body>
@@ -140,26 +155,18 @@
 									</tr>
 									<tr>
 										<th>상영관 선택</th>
-										<td><span id="screenAdd"></span>
-											<span id="sADD" style="color: red"></span></td>
+										<td><span id="screenAdd"></span> <span id="sADD"
+											style="color: red"></span></td>
 									</tr>
 									<tr>
 										<th>시간 추가</th>
-										<td><select name="time" id="time">
-												<option value="noselectTime" selected="selected">::목록::
-												
-												<option value="8">오전 8시
-												<option value="11">오전 11시
-												<option value="14">오후 1시
-												<option value="17">오후 5시
-												<option value="20">오후 8시
-												<option value="23">오후 11시
-										</select><span id="tiADD" style="color: red"></span></td>
+										<td><span id="timeAdd"></span><span id="tiADD" style="color: red"></span></td>
 									</tr>
 									<tr>
 										<th>영화 가격 작성</th>
 										<td><input type="text" name="price"
-											class="form-control input-rounded"><span id="pADD" style="color: red"></span></td>
+											class="form-control input-rounded"><span id="pADD"
+											style="color: red"></span></td>
 									</tr>
 
 
@@ -229,20 +236,20 @@
 		}
 	</script>
 	<!-- form 보내기전 select Box 체크 -->
-	
+
 	<script>
-	$("#m_id").change(function() {
-		$("#mADD").html("  선택 완료").css("color","blue");
-	});
-	$("#t_id").change(function() {
-		$("#tADD").html("  선택 완료").css("color","blue");
-	});	
-	$("#time").change(function() {
-		$("#tiADD").html("  선택 완료").css("color","blue");
-	});
-	$("#price").change(function() {
-		$("#pADD").html("  선택 완료").css("color","blue");
-	});
+		$("#m_id").change(function() {
+			$("#mADD").html("  선택 완료").css("color", "blue");
+		});
+		$("#t_id").change(function() {
+			$("#tADD").html("  선택 완료").css("color", "blue");
+		});
+		$("#time").change(function() {
+			$("#tiADD").html("  선택 완료").css("color", "blue");
+		});
+		$("#price").change(function() {
+			$("#pADD").html("  선택 완료").css("color", "blue");
+		});
 	</script>
 
 

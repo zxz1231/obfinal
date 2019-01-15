@@ -93,7 +93,7 @@ body {
 	</div>
 	<c:forEach var="theater" items="${theaterList }">
 		<div id="${theater.t_id }" class="tabcontent">
-			<div>${theater.name }극장에서상영하고있는영화는</div>
+			<div>${theater.name } 에서 상영하고 있는 영화는</div>
 			<div class="row">
 				
 			</div>
@@ -137,7 +137,9 @@ body {
 												
 						str += "<div class='column'>";
 						str += "<img src='resources/movieimg/"+result[i].poster+"' alt='"+result[i].poster+"' style='width: 50%'>";
-							str+="</div>";
+						str+="<span>"+ result[i].time+"시</span>"	
+						str+="</div>";
+							
 					}
 					str+="</div>";
 				

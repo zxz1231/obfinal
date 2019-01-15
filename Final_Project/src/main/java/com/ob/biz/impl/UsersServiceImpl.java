@@ -27,6 +27,11 @@ public class UsersServiceImpl implements UsersService{
 	public void updateUsers(UsersVO vo) {
 		usersDAO.updateUsers(vo);
 	}
+	
+	@Override
+	public void resetVotedMovie() {
+		usersDAO.resetVotedMovie();
+	}
 
 	@Override
 	public void deleteUsers(UsersVO vo) {
