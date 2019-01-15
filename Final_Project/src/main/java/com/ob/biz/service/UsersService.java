@@ -10,6 +10,9 @@ public interface UsersService {
 
 	// 회원정보 수정
 	public void updateUsers(UsersVO vo);
+	
+	// votedmovie 초기화
+	public void resetVotedMovie();
 
 	// 회원 탈퇴
 	public void deleteUsers(UsersVO vo);
@@ -31,4 +34,5 @@ public interface UsersService {
 
 	// 이메일 추가 하기
 	public int updateUsersEmail(UsersVO vo);
+
 }

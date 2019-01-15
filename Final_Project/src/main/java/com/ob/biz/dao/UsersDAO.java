@@ -23,6 +23,11 @@ public class UsersDAO {
 		System.out.println("==========================> Mybatis2로 updateUsers() 처리");
 		mybatis.update("UsersDAO.updateUsers", vo);
 	};
+	//votedmovie 초기화
+	public void resetVotedMovie() {
+		System.out.println("==========================> Mybatis2로 resetVotedMovie() 처리");
+		mybatis.update("UsersDAO.resetVotedMovie");
+	};
 	//회원 탈퇴
 	public void deleteUsers(UsersVO vo) {
 		System.out.println("==========================> Mybatis2로 deleteUsers() 처리");
