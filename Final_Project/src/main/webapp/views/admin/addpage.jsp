@@ -134,13 +134,17 @@ body {
 					str+= "<div class='row'>";					
 					
 					var a = "";
-					
 					for (var i = 0; i < result.length; i++) {
-						
+						var onairStatus = '';
+						if(result[i].onair==1) {
+							onairStatus="상영중";
+						} else if(result[i].onair==0){
+							onairStatus="상영종료";
+						}
 												
 						str += "<div class='column'>";
 						str += "<img src='resources/movieimg/"+result[i].poster+"' alt='"+result[i].poster+"' style='width: 50%'>";
-						str+="<span>"+ result[i].time+"시</span><div>상영정보 : "+result[i].onair+"</div>"	
+						str+="<span>"+ result[i].time+"시</span><div>상영정보 : "+ onairStatus +"</div>"	
 						
 						str+="</div>";
 							
