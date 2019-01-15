@@ -61,10 +61,10 @@
 		SELECT *
 		FROM MOVIE WHERE M_ID = #{m_id}
 	</select>
-
+	
+	<!-- 현재상영중인전체영화조회 -->
 	<select id="getMovieList" resultType="movie">
-		SELECT * FROM MOVIE ORDER
-		BY M_ID
+		SELECT * FROM MOVIE WHERE ONAIR = 1
 	</select>
 
 	<select id="getMovieListByVote" resultType="movie">

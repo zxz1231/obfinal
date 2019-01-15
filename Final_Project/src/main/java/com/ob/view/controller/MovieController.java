@@ -58,23 +58,18 @@ public class MovieController {
 		//선택한 영화가 상영되는 극장 조회
 		List<MovieVO> theaterList = theaterService.getTheater_movieList(movieVO.getM_id());
 		
-		System.out.println("theaterList : " + theaterList);
-		
-
 		return theaterList;
 
 	}
 
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String checkMovieList(MovieVO vo, Model model) {
-		System.out.println(">> 영화 리스트 보기");
 		List<MovieVO> movieList = movieService.getMovieList();
 		List<MovieVO> gnrList = movieService.getMovieGnr();
 		
 		// Model 형식으로 저장해서 DispatcherServervlet에 전달
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("gnrList", gnrList);
-		
 
 		return "/views/movie/nowmoive.jsp";
 	}
