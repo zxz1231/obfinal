@@ -15,6 +15,7 @@ import com.ob.biz.service.MovieService;
 import com.ob.biz.service.Movie_HistoryService;
 import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
+import com.ob.biz.service.UsersService;
 import com.ob.biz.vo.MovieVO;
 
 @Controller
@@ -27,6 +28,8 @@ public class MovieController {
 	private TheaterService theaterService;
 	@Autowired
 	private ScreenService screenService; 
+	@Autowired
+	private UsersService usersService;
 	
 	@RequestMapping("movieDetail.do")
 	public String movieDetail(MovieVO vo, Model model) {
@@ -88,17 +91,19 @@ public class MovieController {
 	public void updateOnair(Model model) {
 		System.out.println("updateOnair() 실행");
 		//상영중(1)이던 영화 상영종료(0) 처리
-		movieService.updateMovieOnair0();
+//		movieService.updateMovieOnair0();
 		//상영예정(-1)인 영화 극장 - 상영관 - 스케쥴 등록
 		
 		//상영예정(-1)이던 영화 상영중(1) 처리
-		movieService.updateMovieOnair1();
+//		movieService.updateMovieOnair1();
 		//상영한 영화(1) 상영 내역에 반영
-		movie_HistoryService.insertMovie_History_Onair();
+//		movie_HistoryService.insertMovie_History_Onair();
 		//보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
 		movieService.updateMoviePreair();
 		//vote 초기화
 		movieService.updateMovieVoteTo0();
+		//Users에 votedmovie 초기화 할 것 
+		usersService.resetVotedMovie();
 	}
 	
 	@RequestMapping(value="getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
