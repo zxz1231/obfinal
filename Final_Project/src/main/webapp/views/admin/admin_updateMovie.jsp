@@ -165,6 +165,7 @@
 										<c:choose>
 											<c:when test="${movieOne.onair eq 1}">상영중 -> </c:when>
 											<c:when test="${movieOne.onair eq 0}">상영종료 -> </c:when>
+											<c:when test="${movieOne.onair eq -1}">상영예정 -> </c:when>
 										</c:choose>
 										<select name="onair">
 											<option value="${movieOne.onair}" selected="selected">기본유지

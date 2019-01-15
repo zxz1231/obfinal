@@ -47,7 +47,7 @@ public class MovieController {
 		model.addAttribute("movieRes",movieService.getMovieOne(movieVO));
 		
 		//영화 전체 조회
-		model.addAttribute("movieList",movieService.getMovieList());
+		model.addAttribute("movieList",movieService.getMovieListOnair());
 		
 		//선택한 영화가 상영되는 극장 조회
 		model.addAttribute("theater", theaterService.getTheater_movieList(movieVO.getM_id()));
@@ -64,30 +64,25 @@ public class MovieController {
 		//선택한 영화가 상영되는 극장 조회
 		List<MovieVO> theaterList = theaterService.getTheater_movieList(movieVO.getM_id());
 		
-		System.out.println("theaterList : " + theaterList);
-		
-
 		return theaterList;
 
 	}
 
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String checkMovieList(MovieVO vo, Model model) {
-		System.out.println(">> 영화 리스트 보기");
-		List<MovieVO> movieList = movieService.getMovieList();
+		List<MovieVO> movieList = movieService.getMovieListOnair();
 		List<MovieVO> gnrList = movieService.getMovieGnr();
 		
 		// Model 형식으로 저장해서 DispatcherServervlet에 전달
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("gnrList", gnrList);
-		
 
 		return "/views/movie/nowmoive.jsp";
 	}
 	
 	
 	//
-	@RequestMapping(value="updateOnair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/updateOnair.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public void updateOnair(Model model) {
 		System.out.println("updateOnair() 실행");
 		//상영중(1)이던 영화 상영종료(0) 처리
@@ -106,7 +101,7 @@ public class MovieController {
 		usersService.resetVotedMovie();
 	}
 	
-	@RequestMapping(value="getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/getPreair.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public List<MovieVO> getPreair(){
 		//상영예정(-1)인 영화 목록 조회

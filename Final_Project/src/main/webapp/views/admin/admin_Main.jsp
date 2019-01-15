@@ -60,6 +60,7 @@
 			<div class="page-inner">
 				<div class="page-title">
 					<h3 class="breadcrumb-header">Blank Page</h3>
+					<a href="/updateOnair.do">체크</a>
 				</div>
 				<div id="main-wrapper">
 					<div class="row"></div>
