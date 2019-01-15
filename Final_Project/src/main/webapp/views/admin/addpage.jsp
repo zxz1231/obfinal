@@ -129,15 +129,19 @@ body {
 				},
 				dataType : 'json',
 				success : function(result) {
+					console.log(result);
 					var str = "";
 					str+= "<div class='row'>";					
+					
+					var a = "";
 					
 					for (var i = 0; i < result.length; i++) {
 						
 												
 						str += "<div class='column'>";
 						str += "<img src='resources/movieimg/"+result[i].poster+"' alt='"+result[i].poster+"' style='width: 50%'>";
-						str+="<span>"+ result[i].time+"시</span>"	
+						str+="<span>"+ result[i].time+"시</span><div>상영정보 : "+result[i].onair+"</div>"	
+						
 						str+="</div>";
 							
 					}

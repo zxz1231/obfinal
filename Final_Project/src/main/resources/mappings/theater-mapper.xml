@@ -70,7 +70,6 @@
 		WHERE M_ID = #{m_id})
 	</select>
 
-
 </mapper>  
 
 

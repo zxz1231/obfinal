@@ -600,11 +600,11 @@ public class AdminController {
 		return "/views/admin/admin_searchSchedule.jsp";
 	}
 
-	// 단순 페이지 이동
+	// 단순 페이지 이동 //상영중인 영화만
 	@RequestMapping(value = "/admin_insertScheduleWriter.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String Admin_insertScheduleWriter(ScreenVO vo, Model model) {
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
-		List<MovieVO> movieList = movieService.getMovieList();
+		List<MovieVO> movieList = movieService.getMovieListOnair();
 
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("movieList", movieList);
