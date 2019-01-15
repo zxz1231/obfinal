@@ -13,7 +13,7 @@
 	<select id="getPlusTitlebyt_id" resultType="plus">
 	    select  *
         from schedule sch , screen scr ,theater t ,movie m 
-        where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id and sch.t_id =#{t_id}
+        where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id and sch.t_id =#{t_id} 
 	</select>
 	
 

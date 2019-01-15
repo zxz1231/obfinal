@@ -653,9 +653,20 @@ public class AdminController {
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
 		if(movieList.size()==0) {
 			System.out.println("상영 예정작인 영화가 없습니다.");
+			// 상영중(1)이던 영화 상영종료(0) 처리
+			movieService.updateMovieOnair0();
+			
+			// 상영예정(-1)이던 영화 상영중(1) 처리
+			movieService.updateMovieOnair1();
+			// 상영한 영화(1) 상영 내역에 반영
+			movie_HistoryService.insertMovie_History_Onair();
+			// 보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
+			movieService.updateMoviePreair();
+			// vote 초기화
+			movieService.updateMovieVoteTo0();
 			return "redirect:/admin_searchSchedule.do";			
 		}else {
-			System.out.println("상영 예정작인 영화가 있어서 페이지를 이동합니.");
+			System.out.println("상영 예정작인 영화가 있어서 페이지를 이동합니다.");
 			
 			model.addAttribute("theaterList", theaterList);
 			model.addAttribute("movieList", movieList);

@@ -113,6 +113,8 @@
 						<div id="container">
 
 							<hr>
+							<div class="col-md-6">
+							<div class="panel panel-white">
 							<form action="admin_insertSchedule.do" method="post"
 								class="form-horizontal" onsubmit="return formCheck();"
 								name="insertForm">
@@ -157,7 +159,7 @@
 										</select><span id="tiADD" style="color: red"></span></td>
 									</tr>
 									<tr>
-										<th>영화 가격 작성</th>
+										<th>영화 가격</th>
 										<td><input type="text" name="price"
 											class="form-control input-rounded"><span id="pADD" style="color: red"></span></td>
 									</tr>
@@ -169,8 +171,12 @@
 											class="btn btn-success btn-download"></td>
 									</tr>
 								</table>
-							</form>
-							<p></p>
+							</form>							
+						
+									
+								</div>
+								</div>
+								
 						</div>
 
 					</div>
