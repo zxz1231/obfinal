@@ -182,7 +182,7 @@
 					$("#theater").html("극장 " + name);
 					
 					var strr = "";
-					strr += '<img src="resources/img/' + img + '" width="300">';
+					strr += '<img src="resources/theaterimg/' + img + '" width="300">';
 					
 					$("#theaterImg").html(strr);
 					

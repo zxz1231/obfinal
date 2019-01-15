@@ -44,7 +44,7 @@ public class MovieController {
 		model.addAttribute("movieRes",movieService.getMovieOne(movieVO));
 		
 		//영화 전체 조회
-		model.addAttribute("movieList",movieService.getMovieList());
+		model.addAttribute("movieList",movieService.getMovieListOnair());
 		
 		//선택한 영화가 상영되는 극장 조회
 		model.addAttribute("theater", theaterService.getTheater_movieList(movieVO.getM_id()));
@@ -67,7 +67,7 @@ public class MovieController {
 
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String checkMovieList(MovieVO vo, Model model) {
-		List<MovieVO> movieList = movieService.getMovieList();
+		List<MovieVO> movieList = movieService.getMovieListOnair();
 		List<MovieVO> gnrList = movieService.getMovieGnr();
 		
 		// Model 형식으로 저장해서 DispatcherServervlet에 전달

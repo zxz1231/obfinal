@@ -100,8 +100,16 @@
 				var col = str.substring(1, 2);
 				var rowCol = row + "/" + col
 				
-				$("#seat").html("좌석  " + rowCol);
+				console.log($("#seat").html());
+				alert($("#seat").html());
 				
+				if($("#seat").html() == "") {
+					alert("내용없음");
+					$("#seat").html("좌석  " + rowCol);
+				} else if ($("#seat").html() != "") {
+					alert("내용있음");
+					$("#seat").append("좌석  " + rowCol);
+				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 		        alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
@@ -109,7 +117,7 @@
 		})
     }
     
-    function sendSeat(form) {
+    function sendSeat(form) {  
     	form.action = "pay.do";
     	form.submit();
     }
