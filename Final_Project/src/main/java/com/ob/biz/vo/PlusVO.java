@@ -1,10 +1,11 @@
 package com.ob.biz.vo;
 
-// screen table , schedule, table ,theater table 3개 vo 합친거
+// screen table , schedule, table ,theater table , movie 4개 vo 필요한것 합친거
 public class PlusVO {
 	private int sch_id, m_id, t_id, scr_id, scr_seat_row, scr_seat_col, scr_seat_tot, scr_num;
 	private String time, price, scr_name, name, phone, adress, content, img1, img2, img3, img4, img5;
-
+	private String title, gnr, director, runningtime, restrict, poster;
+	private int onair , vote;
 	public int getSch_id() {
 		return sch_id;
 	}
@@ -125,14 +126,65 @@ public class PlusVO {
 	public void setImg5(String img5) {
 		this.img5 = img5;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getGnr() {
+		return gnr;
+	}
+	public void setGnr(String gnr) {
+		this.gnr = gnr;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public String getRunningtime() {
+		return runningtime;
+	}
+	public void setRunningtime(String runningtime) {
+		this.runningtime = runningtime;
+	}
+	public String getRestrict() {
+		return restrict;
+	}
+	public void setRestrict(String restrict) {
+		this.restrict = restrict;
+	}
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public int getOnair() {
+		return onair;
+	}
+	public void setOnair(int onair) {
+		this.onair = onair;
+	}
+	public int getVote() {
+		return vote;
+	}
+	public void setVote(int vote) {
+		this.vote = vote;
+	}
 	@Override
 	public String toString() {
 		return "PlusVO [sch_id=" + sch_id + ", m_id=" + m_id + ", t_id=" + t_id + ", scr_id=" + scr_id
 				+ ", scr_seat_row=" + scr_seat_row + ", scr_seat_col=" + scr_seat_col + ", scr_seat_tot=" + scr_seat_tot
 				+ ", scr_num=" + scr_num + ", time=" + time + ", price=" + price + ", scr_name=" + scr_name + ", name="
 				+ name + ", phone=" + phone + ", adress=" + adress + ", content=" + content + ", img1=" + img1
-				+ ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + "]";
+				+ ", img2=" + img2 + ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + ", title=" + title
+				+ ", gnr=" + gnr + ", director=" + director + ", runningtime=" + runningtime + ", restrict=" + restrict
+				+ ", poster=" + poster + ", onair=" + onair + ", vote=" + vote + "]";
 	}
 	
-
+	
+	
 }

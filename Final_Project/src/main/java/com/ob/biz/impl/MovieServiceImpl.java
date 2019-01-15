@@ -21,9 +21,31 @@ public class MovieServiceImpl implements MovieService {
 		movieDAO.insertMovie(vo);
 	}
 
+	// 영화 투표수 초기화
+	@Override
+	public void updateMovieVoteTo0() {
+		movieDAO.updateMovieVoteTo0();
+	}
+	
 	@Override
 	public void updateMovie(MovieVO vo) {
 		movieDAO.updateMovie(vo);
+	}
+
+	@Override
+	public void updateMovieOnair1() {
+		movieDAO.updateMovieOnair1();
+	}
+
+	@Override
+	public void updateMovieOnair0() {
+		movieDAO.updateMovieOnair0();
+	}
+
+	@Override
+	public void updateMoviePreair() {
+		movieDAO.updateMoviePreair();
+		
 	}
 
 	@Override
@@ -39,7 +61,6 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public List<MovieVO> getMovieList() {
-		// TODO Auto-generated method stub
 		return movieDAO.getMovieList();
 	}
 
@@ -56,5 +77,15 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<MovieVO> getMovieListByVote() {
 		return movieDAO.getMovieListByVote();
+	}
+
+	@Override
+	public List<MovieVO> getMovieListOnair() {
+		return movieDAO.getMovieListOnair();
+	}
+
+	@Override
+	public List<MovieVO> getMovieListPreair() {
+		return movieDAO.getMovieListPreair();
 	}
 }

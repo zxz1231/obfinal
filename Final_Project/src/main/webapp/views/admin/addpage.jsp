@@ -1,9 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><!DOCTYPE html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	// 경로 /biz 부터 시작  [http://localhost:8080/biz/ @@.do 요청 하기 위해]
+	String contextPath = request.getContextPath();
+	// theme 까지 들어온 경로 
+	String KPath = contextPath + "/resources/assets";
+	String MovieIMGPath = contextPath + "/resources/movieimg";
+%>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 이미지 css -->
+<style>
+* {
+	box-sizing: border-box;
+}
+
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+</style>
+
 <style>
 body {
 	font-family: Arial;
@@ -66,10 +93,11 @@ body {
 	</div>
 	<c:forEach var="theater" items="${theaterList }">
 		<div id="${theater.t_id }" class="tabcontent">
-			<div>${theater.name }극장에서 상영하고 있는 영화는</div>
-			<c:forEach var="screen" items="${screenList }">
-			${screen }
-			</c:forEach>
+			<div>${theater.name }극장에서상영하고있는영화는</div>
+			<div class="row">
+				
+			</div>
+			<div class="addPoster"></div>
 
 
 		</div>
@@ -80,6 +108,7 @@ body {
 		function openTheater(evt, t_id) {
 			var i, tabcontent, tablinks;
 			alert(t_id);
+			
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
@@ -91,6 +120,35 @@ body {
 			}
 			document.getElementById(t_id).style.display = "block";
 			evt.currentTarget.className += " active";
+			/*  */
+			$.ajax({
+				url : '/getPlusTitlebyt_id.do',
+				type : 'post',
+				data : {
+					't_id' : t_id
+				},
+				dataType : 'json',
+				success : function(result) {
+					var str = "";
+					str+= "<div class='row'>";					
+					
+					for (var i = 0; i < result.length; i++) {
+						
+												
+						str += "<div class='column'>";
+						str += "<img src='resources/movieimg/"+result[i].poster+"' alt='"+result[i].poster+"' style='width: 50%'>";
+							str+="</div>";
+					}
+					str+="</div>";
+				
+					$(".addPoster").html(str);
+					console.log(result);
+					console.log(str);
+				}
+
+			});
+
+			/*  */
 		}
 	</script>
 

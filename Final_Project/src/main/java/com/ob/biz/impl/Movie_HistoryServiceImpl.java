@@ -18,6 +18,12 @@ public class Movie_HistoryServiceImpl implements Movie_HistoryService{
 	public void insertMovie_History(Movie_HistoryVO vo) {
 		movie_HistoryDAO.insertMovie_History(vo);
 	}
+	
+	//현재상영중(onair=1)인 영화 movie_history에 추가
+	@Override
+	public void insertMovie_History_Onair() {
+		movie_HistoryDAO.insertMovie_History_Onair();
+	}
 
 	@Override
 	public void updateMovie_History(Movie_HistoryVO vo) {
@@ -38,6 +44,7 @@ public class Movie_HistoryServiceImpl implements Movie_HistoryService{
 	public List<Movie_HistoryVO> getMovie_HistoryList() {
 		return movie_HistoryDAO.getMovie_HistoryList();
 	}
+
 
 	
 	

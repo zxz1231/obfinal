@@ -9,6 +9,15 @@
       		, #{m_id}, #{day_start}, #{day_end}) 
    </insert>
    
+   
+   <insert id="insertMovie_History_Onair" parameterType="movie">
+      INSERT INTO MOVIE_HISTORY (H_ID, M_ID, DAY_START, DAY_END)
+      SELECT SEQ_MOVIE_HISTORY.NEXTVAL, M_ID, SYSDATE, SYSDATE+7
+        FROM MOVIE
+       WHERE ONAIR=1
+   </insert>
+   
+   
    <update id="updateMovie_History" parameterType="movie_history">
    	  UPDATE MOVIE_HISTORY
    	  	 SET DAY_START = #{day_start}, DAY_END = #{day_end}

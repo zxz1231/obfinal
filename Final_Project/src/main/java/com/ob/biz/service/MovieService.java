@@ -11,6 +11,18 @@ public interface MovieService {
 
 	// 영화 수정
 	void updateMovie(MovieVO vo);
+	
+	// 영화 투표수 초기화
+	void updateMovieVoteTo0();
+
+	//상영예정(ONAIR=-1) -> 상영중(ONAIR=1)
+	void updateMovieOnair1();
+	
+	//상영중(ONAIR=1) -> 상영종료(ONAIR=0)
+	void updateMovieOnair0();
+	
+	//득표수 상위 5개 영화 -> 상영예정(ONAIR=-1)
+	void updateMoviePreair();
 
 	// 영화 삭제
 	void deleteMovie(MovieVO vo);
@@ -22,6 +34,12 @@ public interface MovieService {
 
 	// 영화 목록 전체 조회
 	List<MovieVO> getMovieList();
+
+	//상영중 상태인 영화 목록 조회(영화제목순)
+	List<MovieVO> getMovieListOnair();
+	
+	//상영예정 상태인 영화 목록 조회(영화제목순)
+	List<MovieVO> getMovieListPreair();
 	
 	// 보고싶은 명화 득표수 상위 5개 영화 조회
 	List<MovieVO> getMovieListByVote();

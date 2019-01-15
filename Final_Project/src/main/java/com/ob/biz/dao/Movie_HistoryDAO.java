@@ -17,6 +17,11 @@ public class Movie_HistoryDAO {
 		mybatis.insert("Movie_HistoryDAO.insertMovie_History",vo);
 	}
 	
+	//현재상영중(onair=1)인 영화 movie_history에 추가
+	public void insertMovie_History_Onair() {
+		mybatis.insert("Movie_HistoryDAO.insertMovie_History_Onair");
+	}
+	
 	public void updateMovie_History(Movie_HistoryVO vo) {
 		mybatis.update("Movie_HistoryDAO.updateMovie_History",vo);		
 	}

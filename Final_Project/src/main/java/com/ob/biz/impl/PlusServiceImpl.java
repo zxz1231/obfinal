@@ -19,4 +19,9 @@ public class PlusServiceImpl implements PlusService {
 		return plusDAO.getPlusList();
 	}
 
+	@Override
+	public List<PlusVO> getPlusTitlebyt_id(PlusVO vo) {
+		return plusDAO.getPlusTitlebyt_id(vo);
+	}
+
 }

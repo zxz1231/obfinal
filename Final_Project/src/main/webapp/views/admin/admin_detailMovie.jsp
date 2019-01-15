@@ -139,6 +139,9 @@
 									<c:when test="${test eq 0}">
 										<c:set var="test2" value="상영종료"></c:set>
 									</c:when>
+									<c:when test="${test eq -1}">
+										<c:set var="test2" value="상영예정"></c:set>
+									</c:when>
 								</c:choose>
 								<label class="control-label">상영정보</label> <input id="onair"
 									type="text" class="input-large form-control m-b-sm" readonly

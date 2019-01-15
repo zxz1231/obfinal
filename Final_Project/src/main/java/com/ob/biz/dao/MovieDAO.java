@@ -18,7 +18,27 @@ public class MovieDAO {
 	}
 
 	public void updateMovie(MovieVO vo) {
-		mybatis.insert("MovieDAO.updateMovie", vo);
+		mybatis.update("MovieDAO.updateMovie", vo);
+	}
+	
+	//영화 투표수 초기화
+	public void updateMovieVoteTo0() {
+		mybatis.update("MovieDAO.updateMovieVoteTo0");
+	}
+	
+	//상영예정(ONAIR=-1) -> 상영중(ONAIR=1)
+	public void updateMovieOnair1() {
+		mybatis.update("MovieDAO.updateMovieOnair1");
+	}
+	
+	//상영중(ONAIR=1) -> 상영종료(ONAIR=0)
+	public void updateMovieOnair0() {
+		mybatis.update("MovieDAO.updateMovieOnair0");
+	}
+	
+	//득표수 상위 5개 영화 -> 상영예정(ONAIR=-1)
+	public void updateMoviePreair() {
+		mybatis.update("MovieDAO.updateMoviePreair");
 	}
 
 	public void deleteMovie(MovieVO vo) {
@@ -33,16 +53,26 @@ public class MovieDAO {
 		return mybatis.selectList("MovieDAO.getMovieList");
 	}
 
+	//상영중 상태인 영화 목록 조회(영화제목순)
+	public List<MovieVO> getMovieListOnair() {
+		return mybatis.selectList("MovieDAO.getMovieListOnair");
+	}
+	
+	//상영예정 상태인 영화 목록 조회(영화제목순)
+	public List<MovieVO> getMovieListPreair() {
+		return mybatis.selectList("MovieDAO.getMovieListPreair");
+	}
+	
+	//득표수 상위 5개 영화 목록 조회(득표수 내림차순, 영화제목순)
+	public List<MovieVO> getMovieListByVote() {
+		return mybatis.selectList("MovieDAO.getMovieListByVote");
+	}
+
 	public List<MovieVO> getMovieGnr() {
-		// TODO Auto-generated method stub
 		return mybatis.selectList("MovieDAO.getMovieGnr");
 	}
 	
 	public MovieVO getMovieOne(MovieVO vo) {
 		return mybatis.selectOne("MovieDAO.getMovieOne", vo);
-	}
-	
-	public List<MovieVO> getMovieListByVote() {
-		return mybatis.selectList("MovieDAO.getMovieListByVote");
 	}
 }
