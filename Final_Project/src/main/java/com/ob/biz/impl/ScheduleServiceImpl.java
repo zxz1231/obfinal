@@ -41,4 +41,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDAO.getTIME(vo);
 	}
 
+	@Override
+	public int updateSchedule(ScheduleVO vo) {
+		return scheduleDAO.updateSchedule(vo);
+	}
+
 }

@@ -9,11 +9,16 @@
 	select * from schedule sch , screen scr ,theater t ,movie m where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id
 	</select>
 	
-	<!-- 이거 바꾸고 확인하면 됩니다.  -->
 	<select id="getPlusTitlebyt_id" resultType="plus">
 	    select  *
         from schedule sch , screen scr ,theater t ,movie m 
-        where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id and sch.t_id =#{t_id} order by sch_id
+        where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id and sch.t_id =#{t_id} order by scr_name ,m.m_id
+	</select>
+	
+	<select id="getPlusTitlebysch_id" resultType="plus">
+	    select  *
+        from schedule sch, screen scr ,theater t ,movie m 
+        where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id and sch.sch_id = #{sch_id} 
 	</select>
 	
 

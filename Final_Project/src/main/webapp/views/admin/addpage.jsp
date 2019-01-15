@@ -20,7 +20,7 @@
 .column {
 	float: left;
 	width: 33.33%;
-	padding: 5px;
+	padding: 3px;
 }
 
 /* Clearfix (clear floats) */
@@ -93,12 +93,9 @@ body {
 	</div>
 	<c:forEach var="theater" items="${theaterList }">
 		<div id="${theater.t_id }" class="tabcontent">
-			<div>${theater.name } 에서 상영하고 있는 영화는</div>
-			<div class="row">
-				
-			</div>
+			<div>${theater.name } 전체 상영 스케쥴</div>
+			<div class="row"></div>
 			<div class="addPoster"></div>
-
 
 		</div>
 	</c:forEach>
@@ -108,7 +105,7 @@ body {
 		function openTheater(evt, t_id) {
 			var i, tabcontent, tablinks;
 			alert(t_id);
-			
+
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
@@ -130,27 +127,31 @@ body {
 				dataType : 'json',
 				success : function(result) {
 					console.log(result);
-					var str = "";
-					str+= "<div class='row'>";					
+
 					
+					var str = "";
 					var a = "";
+					str += "<div class='row'>";
 					for (var i = 0; i < result.length; i++) {
 						var onairStatus = '';
-						if(result[i].onair==1) {
-							onairStatus="상영중";
-						} else if(result[i].onair==0){
-							onairStatus="상영종료";
+						if (result[i].onair == 1) {
+							onairStatus = "상영중";
+						} else if (result[i].onair == 0) {
+							onairStatus = "상영종료";
 						}
-												
 						str += "<div class='column'>";
-						str += "<img src='resources/movieimg/"+result[i].poster+"' alt='"+result[i].poster+"' style='width: 50%'>";
-						str+="<span>"+ result[i].time+"시</span><div>상영정보 : "+ onairStatus +"</div>"	
-						
-						str+="</div>";
-							
+						str += "<a href=admin_modifyShedule.do?sch_id="+result[i].sch_id+">";
+						str += "<img src='resources/movieimg/"
+								+ result[i].poster + "' alt='"
+								+ result[i].poster + "' style='width: 45%'></a>";
+						str += "<div>" + result[i].time
+								+ "시</div><div>상영정보 : " + onairStatus
+								+ "</div>" + "<div>상영관 : " + result[i].scr_name
+								+ "</div>"
+						str += "</div>";
 					}
-					str+="</div>";
 				
+					str += "</div>";
 					$(".addPoster").html(str);
 					console.log(result);
 					console.log(str);

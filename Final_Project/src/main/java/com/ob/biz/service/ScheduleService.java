@@ -20,5 +20,12 @@ public interface ScheduleService {
 	// 상영관 입력
 	int insertSchedule(ScheduleVO vo);
 	
+	//스케쥴 시간 구하기
 	List<ScheduleVO> getTIME(ScheduleVO vo);
+	
+	//updateSchedule 스케쥴 업데이트 
+	int updateSchedule(ScheduleVO vo);
+	
+	
+	
 }

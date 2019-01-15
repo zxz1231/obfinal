@@ -31,4 +31,7 @@ public class ScheduleDAO {
 	public List<ScheduleVO> getTIME(ScheduleVO vo) {
 		return mybatis.selectList("ScheduleDAO.getTIME",vo);
 	}
+	public int updateSchedule(ScheduleVO vo) {
+		return mybatis.update("ScheduleDAO.updateSchedule",vo);
+	}
 }

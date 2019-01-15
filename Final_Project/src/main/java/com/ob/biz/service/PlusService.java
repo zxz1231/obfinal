@@ -10,6 +10,8 @@ public interface PlusService {
 	List<PlusVO> getPlusList();
 	
 	List<PlusVO> getPlusTitlebyt_id(PlusVO vo);
+	//겟
+	PlusVO getPlusTitlebysch_id(PlusVO vo);
 	
 	
 }

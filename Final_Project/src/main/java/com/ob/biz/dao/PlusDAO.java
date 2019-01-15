@@ -22,5 +22,9 @@ import com.ob.biz.vo.PlusVO;
 			return mybatis.selectList("PlusDAO.getPlusTitlebyt_id", vo);
 		}
 
+		public PlusVO getPlusTitlebysch_id(PlusVO vo) {
+			return mybatis.selectOne("PlusDAO.getPlusTitlebysch_id", vo);
+		}
+
 		
 }

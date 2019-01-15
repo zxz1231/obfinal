@@ -36,13 +36,10 @@
 <!-- Theme Styles -->
 <link href="<%=KPath%>/css/ecaps.min.css" rel="stylesheet">
 <link href="<%=KPath%>/css/custom.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+
 </head>
 <body>
 
@@ -82,7 +79,22 @@
 	</div>
 	<!-- /Page Container -->
 	</div>
+	<!-- /Page Container -->
+	<!-- 페이지가 로딩될때 먼저 실행되는 곳  -->
+	<script>
+	$(document).ready(function(){
+		var result = "${result}";
+		if(result == "delete"){
+			alert(" 정상 삭제되었습니다.");
+		}
+		if(result =="update"){
+			alert(" 정상 수정되었습니다.");
+		}
+		
 
+	});
+	
+	</script>
 
 	<!-- Javascripts -->
 	<script src="<%=KPath%>/plugins/jquery/jquery-3.1.0.min.js"></script>

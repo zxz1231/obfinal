@@ -2,6 +2,7 @@ package com.ob.view.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -703,5 +704,49 @@ public class AdminController {
 		System.out.println("체체체체크 : " + TIMELIST);
 		return TIMELIST;
 
+	}
+
+	@RequestMapping(value = "/admin_modifyShedule.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_modifySchedule(PlusVO vo, Model model) {
+		System.out.println(">>> --------------------------------------------- <<<<");
+		System.out.println(">>> 영화 등록 요청 처리(/admin_modifySchedule.do)");
+		System.out.println("넘어온 vo : " + vo);
+		PlusVO SchVO = plusService.getPlusTitlebysch_id(vo);
+		System.out.println("새로운 newVO : " + SchVO);
+		List<MovieVO> moviename = movieService.getMovieListOnair();
+		ScheduleVO addvo = new ScheduleVO();
+		addvo.setScr_id(SchVO.getScr_id());
+		addvo.setT_id(SchVO.getT_id());
+		List<ScheduleVO> TIMELIST = scheduleService.getTIME(addvo);
+		System.out.println("TIMELIST는 : " + TIMELIST);
+		List<String> atimeList = new ArrayList<String>();
+		atimeList.add("8");
+		atimeList.add("11");
+		atimeList.add("14");
+		atimeList.add("17");
+		atimeList.add("20");
+		for (int i = 0; i<TIMELIST.size() ; i++) {
+			atimeList.remove(TIMELIST.get(i).getTime());
+		}
+		atimeList.add(SchVO.getTime());
+		model.addAttribute("moviename", moviename);
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzz:" + moviename);
+
+		model.addAttribute("SchVO", SchVO);
+		model.addAttribute("atimeList", atimeList);
+
+		return "/views/admin/admin_updateSchedule.jsp";
+	}
+	
+	@RequestMapping(value = "/admin_modifySchedule.do", method = RequestMethod.POST)
+	public String Admin_modifySchedule(ScheduleVO vo, Model model) {
+		System.out.println(">>> --------------------------------------------- <<<<");
+		System.out.println(">>> 영화 등록 요청 처리(/admin_modifySchedule.do)");
+		System.out.println("넘어온 vo : " + vo);
+		int count = scheduleService.updateSchedule(vo);
+		System.out.println(count +" 건이 정상 수정 되었습니다.");
+		model.addAttribute("result", "update");
+
+		return "/admin_searchSchedule.do";
 	}
 }

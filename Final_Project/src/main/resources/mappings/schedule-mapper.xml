@@ -51,6 +51,12 @@
 		select time from schedule where scr_id = #{scr_id} and t_id = #{t_id}
 	</select>
 	
+		<!-- 스케쥴 업데이트 -->		
+	<update id="updateSchedule" parameterType="schedule">
+		UPDATE SCHEDULE
+		SET M_ID = #{m_id}, TIME = #{time}, PRICE = #{price} WHERE SCH_ID = #{sch_id}
+	</update>
+	
 	
 </mapper>
 
