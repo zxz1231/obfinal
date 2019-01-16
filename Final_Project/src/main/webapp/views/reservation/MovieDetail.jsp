@@ -45,6 +45,17 @@
 <!-- Modernizer js -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <title>Insert title here</title>
+<script>
+function reservation(){
+	alert("reservation실행");
+	loginChk();
+	
+}
+function loginChk(){
+	alert("loginChk실행");
+	alert("${Logininformation}");
+}
+</script>
 </head>
 <body>
 
@@ -95,7 +106,7 @@
 								</li>
 							</ul>
 							<div>
-								<a href="movieRes.do?m_id=1" class="cr-btn cr-btn-sm" 
+								<a onclick="reservation(${movieOne.m_id})" class="cr-btn cr-btn-sm" 
 								style="background-color: #f6644f; float: right">예매</a>
 							</div>
 						</div>

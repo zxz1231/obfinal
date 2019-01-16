@@ -85,6 +85,7 @@ public class VoteController {
 	@RequestMapping(value="/getVoteList.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String getVoteList(Model model, HttpSession session){
 		System.out.println("getVoteList실행");
+		session.setAttribute("pageType", "vote");
 //		map = voteRefresh(session);
 //		model.addAttribute("voteMap", map);
 //		System.out.println("voteMap(getVoteList) : " + map);
