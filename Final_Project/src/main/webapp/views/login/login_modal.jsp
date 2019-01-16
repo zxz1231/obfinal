@@ -28,9 +28,11 @@ function login(frm){
 			if(result == "success"){
 				alert("로그인 되었습니다.");
 <%-- 				frm.action = "<%=contextPath%>/mainGO.do?pageType=${pageType}"; --%>
+<%-- 				frm.action = "<%=contextPath%>/mainGO.do?pageType=${pageType}"; --%>
+/* frm.action = "/mainGO.do"; */
 				window.location.reload();
-							frm.submit();
-							return false;
+				//			frm.submit();
+				//			return false;
 						} else if (result == "fail") {
 							alert("아이디비밀번호를 확인해 주세요");
 							frm.id.value = "";
@@ -74,17 +76,20 @@ function login(frm){
 			</div>
 			<div class="container">
 
-				<br> <a id="navergogo" href="/navergo.do"><img alt="네이버" src="<%=BPath%>/네이버버튼.png"></a> <a
+				<br> <a id="navergogo" href="/navergo.do"><img alt="네이버"
+					src="<%=BPath%>/네이버버튼.png"></a> <a
 					href="https://kauth.kakao.com/oauth/authorize?client_id=2609b2266d44516fd921046db0f62d8d&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
-					<img alt="카카오" src="<%=BPath%>/카카오버튼.png"></a>
-				
+					<img alt="카카오" src="<%=BPath%>/카카오버튼.png">
+				</a>
+
 
 
 			</div>
 			<div class="container" style="background-color: #f1f1f1">
 				<button type="button" class="btn btn-success btn-sm"
-					style="width: 100px; height: 40px;"  onclick="location.href='<%=contextPath%>/joinUS.do'">회원가입</button>
-				
+					style="width: 100px; height: 40px;"
+					onclick="location.href='<%=contextPath%>/joinUS.do'">회원가입</button>
+
 				<span class="psw"><a href="#">비밀번호찾기</a></span> <span class="psw"><a
 					href="#">아이디찾기</a>&nbsp;&nbsp;</span>
 			</div>

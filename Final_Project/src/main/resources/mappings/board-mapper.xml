@@ -3,115 +3,83 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- mapper 태그의 namespace 속성 필수 작성  -->  
+<!-- mapper 태그의 namespace 속성 필수 작성 -->
 <mapper namespace="BoardDAO">
-	<!-- <resultMap id="boardResult" type="board">
-		<result property="b_id" column="B_ID"/>
-		<result property="b_type" column="B_TYPE"/>
-		<result property="id" column="ID"/>
-		<result property="nickname" column="NICKNAME"/>
-		<result property="m_id" column="M_ID"/>
-		<result property="title" column="TITLE"/>
-		<result property="content" column="CONTENT"/>
-		<result property="regdate" column="REGDATE"/>
-		<result property="hit" column="HIT"/>
-		<result property="img1" column="IMG1"/>
-		<result property="img2" column="IMG2"/>
-		<result property="img3" column="IMG3"/>
-		<result property="img4" column="IMG4"/>
-		<result property="img5" column="IMG5"/>
-		<result property="u_id" column="U_ID"/>
-		<result property="t_id" column="T_ID"/>
-	</resultMap> -->
-	
-	<insert id="insertBoard" parameterType="board">
-		INSERT INTO BOARD (B_ID, B_TYPE, ID, NICKNAME, M_ID, TITLE, CONTENT, REGDATE, HIT
-						 , IMG1, IMG2, IMG3, IMG4, IMG5, U_ID, T_ID)
-		VALUES (
-		<if test="b_type == 0">
-				 SEQ_BOARD_NOTICE.NEXTVAL
-		</if>
-		<if test="b_type == 1">
-				 SEQ_BOARD_REVIEW_MOVIE.NEXTVAL
-		</if>
-		<if test="b_type == 2">
-				 SEQ_BOARD_REVIEW_THEATER.NEXTVAL
-		</if>
-		<if test="b_type == 3">
-				 SEQ_BOARD_FAME.NEXTVAL
-		</if>
-		<if test="b_type == 4">
-				 SEQ_BOARD_RECOM.NEXTVAL
-		</if>
-		<if test="b_type == 5">
-				 SEQ_BOARD_EVENT.NEXTVAL
-		</if>
-		<if test="b_type == 6">
-				 SEQ_BOARD_QNA.NEXTVAL
-		</if>
-			   , #{b_type}, #{id}, #{nickname}, #{m_id}, #{title}, #{content}
-			   , SYSDATE, 0, #{img1}, #{img2}, #{img3}, #{img4}, #{img5}, #{u_id}, #{t_id}) 
+
+	<resultMap id="boardResult" type="board">
+		<result property="b_id" column="B_ID" />
+		<result property="b_type" column="B_TYPE" />
+		<result property="id" column="ID" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="m_id" column="M_ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
+		<result property="hit" column="HIT" />
+		<result property="u_id" column="U_ID" />
+		<result property="t_id" column="T_ID" />
+		<result property="img1" column="IMG1" />
+		<result property="img2" column="IMG2" />
+		<result property="img3" column="IMG3" />
+		<result property="img4" column="IMG4" />
+		<result property="img5" column="IMG5" />
+	</resultMap>
+
+	<!-- 공지사항 부분 -->
+	<insert id="insertNotice" parameterType="board">
+
+		INSERT INTO BOARD (B_ID,
+		B_TYPE, TITLE, ID, CONTENT, REGDATE, HIT)
+		VALUES ((SELECT NVL(MAX(B_ID),0)+1 FROM BOARD), #{b_type}, #{title},
+		#{id},
+		#{content}, SYSDATE, 0)
+		<!-- <![CDATA[ INSERT INTO BOARD (B_ID, B_TYPE, TITLE, ID, CONTENT, REGDATE, 
+			HIT, IMG1, IMG2, IMG3, IMG4, IMG5) VALUES ((SELECT NVL(MAX(B_ID),0)+1 FROM 
+			BOARD), #{b_type}, #{title}, #{id}, #{content}, SYSDATE, 0, #{img1}, #{img2}, 
+			#{img3}, #{img4}, #{img5}) ]]> -->
 	</insert>
-	
-	<update id="updateBoard" parameterType="board">
+
+	<update id="updateNotice" parameterType="board">
 		UPDATE BOARD
-		   SET M_ID = #{m_id},
-		   	   T_ID = #{t_id},
-			   TITLE = #{title},
-		       CONTENT = #{content},
-		       <!-- REGDATE = #{regdate}, -->	<!-- REGDATE를 수정할 때마다 업데이트 할 지 최초 글 등록일로 할지 고민 -->
-		       IMG1 = #{img1},
-		       IMG2 = #{img2},
-		       IMG3 = #{img3},
-		       IMG4 = #{img4},
-		       IMG5 = #{img5}
-		       
-		 WHERE B_ID = #{b_id}
+		SET TITLE =
+		#{title},
+		CONTENT = #{content}
+		WHERE B_ID = #{b_id}
 	</update>
-	
-	<delete id="deleteBoard" parameterType="board">
-		DELETE FROM BOARD WHERE B_ID = #{b_id}
+
+	<delete id="deleteNotice" parameterType="board">
+		DELETE FROM BOARD WHERE
+		B_ID = #{b_id}
 	</delete>
-	
-	<select id="getBoard" parameterType="board" resultType="board">
-		<!-- resultMap="boardResult"> -->
-		SELECT * FROM BOARD WHERE B_ID = #{b_id}
+
+	<select id="getNoticeList" resultType="board">
+		SELECT R_NUM, B_ID,
+		B_TYPE, ID, TITLE, CONTENT, REGDATE, HIT, NAME
+		FROM (SELECT ROWNUM
+		R_NUM, B.*
+		FROM (SELECT BOARD.B_ID, BOARD.B_TYPE, BOARD.ID,
+		BOARD.TITLE,
+		BOARD.CONTENT, BOARD.REGDATE, BOARD.HIT, USERS.NAME
+		FROM
+		BOARD, USERS
+		WHERE BOARD.ID = USERS.ID ORDER BY B_ID DESC)B )
+		WHERE
+		R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-	
-	<!-- 게시판별(B_TYPE) 게시물 전체 조회 -->
-	<select id="getBoardList"  resultType="board">
-			<!-- resultMap="board"> -->
-		SELECT * FROM BOARD
-		 WHERE B_TYPE = #{b_type}
-		 ORDER BY B_ID DESC
+
+	<select id="getNotice" parameterType="board" resultType="board">
+		SELECT *
+		FROM BOARD WHERE B_ID = #{b_id}
 	</select>
-	
-	<select id="getBoardListWhere" resultType="board">
-			<!-- resultMap="board"> -->
-		SELECT * FROM BOARD
-		<where>
-		<if test="searchCondition == 'TITLE'">
-		   AND TITLE LIKE '%' || #{searchKeyword} || '%'	
-		</if>
-		<if test="searchCondition == 'CONTENT'">
-		   AND CONTENT LIKE '%' || #{searchKeyword} || '%'	
-		</if>
-		</where>
-		ORDER BY SEQ DESC
+
+	<update id="noticeViewCnt" parameterType="board">
+		UPDATE BOARD
+		SET HIT =
+		HIT + 1
+		WHERE B_ID = #{b_id}
+	</update>
+
+	<select id="totalCnt" resultType="int">
+		SELECT COUNT(B_ID) FROM BOARD
 	</select>
-	
-	<select id="getBoardSeqSmall" parameterType="int">
-	<![CDATA[
-		SELECT * FROM BOARD WHERE SEQ < #{seq}
-	]]>
-	</select>
-	
-	<!-- 히트수 증가  -->
-	
-</mapper>  
-
-
-
-
-
-
+</mapper> 

@@ -50,10 +50,10 @@ public class LoginController {
 
 	@RequestMapping(value = "/logOUT.do", method = RequestMethod.GET)
 	public String loginOUT(UsersVO vo, HttpSession session) {
-//		System.out.println(">>> 로그아웃 요청 처리(logout)");
-//		System.out.println("session" + session);
+	System.out.println(">>> 로그아웃 요청 처리(logout)");
+		System.out.println("session" + session);
 		session.invalidate();
-		return "/mainGO.do";
+		return "redirect: /mainGO.do";
 	}
 
 	@RequestMapping(value = "/loginchk.do", method = RequestMethod.POST)

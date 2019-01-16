@@ -63,7 +63,7 @@
 
 									<li class="cr-dropdown"><a href="contact-us.html">고객센터</a>
 										<ul>
-											<li><a href="contact-us.html">공지사항</a></li>
+											<li><a href="<%=contextPath%>/getNoticeList.do?b_type=0&cPage=1">공지사항</a></li>
 											<li><a href="contact-us-2.html">문의사항</a></li>
 											<li><a href="contact-us-3.html">뭐쓸까?</a></li>
 											<li><a href="contact-us-4.html">모행?</a></li>

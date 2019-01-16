@@ -14,7 +14,9 @@
  	<typeAlias alias="theater" type="com.ob.biz.vo.TheaterVO"/>
 	<typeAlias alias="screen" type="com.ob.biz.vo.ScreenVO"/>
 	<typeAlias alias="schedule" type="com.ob.biz.vo.ScheduleVO"/>
-	<typeAlias alias="plus" type="com.ob.biz.vo.PlusVO"/>
+	
+	<typeAlias alias="page" type="com.ob.biz.vo.PageVO"/>
+	
   </typeAliases>
   
   <mappers>
@@ -28,17 +30,5 @@
     <mapper resource="mappings/schedule-mapper.xml" />
 	<mapper resource="mappings/theater-mapper.xml" />
 	<mapper resource="mappings/screen-mapper.xml" />
-	<mapper resource="mappings/plus-mapper.xml" />
   </mappers>
 </configuration>
-
-
-
-
-
-
-
-
-
-
-

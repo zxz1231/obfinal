@@ -29,6 +29,11 @@ public class UsersServiceImpl implements UsersService{
 	}
 	
 	@Override
+	public void updateUsersVote(UsersVO vo) {
+		usersDAO.updateUsersVote(vo);
+	}
+	
+	@Override
 	public void resetVotedMovie() {
 		usersDAO.resetVotedMovie();
 	}
@@ -67,5 +72,7 @@ public class UsersServiceImpl implements UsersService{
 	public int updateUsersEmail(UsersVO vo) {
 		return usersDAO.updateUsersEmail(vo);
 	}
+
+
 
 }

@@ -7,7 +7,6 @@
 	<!-- 비즈니스 영역의 빈생성 및 필드 주입 처리 -->
 	<context:component-scan
 		base-package="com.ob.biz"></context:component-scan>
-
 	<!-- ================================ -->
 	<!-- Spring JDBC 관련 설정 -->
 	<!-- DataSource 설정 -->
