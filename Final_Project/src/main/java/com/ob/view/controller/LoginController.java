@@ -18,41 +18,42 @@ public class LoginController {
 
 	@RequestMapping(value = "/logIN.do", method = RequestMethod.POST)
 	public String loginIN(UsersVO vo, HttpSession session) {
-		System.out.println("입력받은 : 아이디" + vo);
+//		System.out.println("입력받은 : 아이디" + vo);
 		UsersVO login = usersService.getUsers(vo);
 		if (login != null) {
 			session.setAttribute("Logininformation", login);
-			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
-			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);
+//			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
+//			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);
 
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 		} else {
 			System.out.println("로그인 실패");
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 		}
 	}
 
 	@RequestMapping(value = "/logIN.do", method = RequestMethod.GET)
 	public String loginINget(UsersVO vo, HttpSession session) {
-		System.out.println("입력받은 : 아이디" + vo);
+//		System.out.println("입력받은 : 아이디" + vo);
 		UsersVO login = usersService.getUsers(vo);
 		if (login != null) {
 			session.setAttribute("Logininformation", login);
-			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
-			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);
+//			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
+//			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);
 
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 		} else {
 			System.out.println("로그인 실패");
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 		}
 	}
 
 	@RequestMapping(value = "/logOUT.do", method = RequestMethod.GET)
 	public String loginOUT(UsersVO vo, HttpSession session) {
-		System.out.println(">>> 로그아웃 요청 처리(logout)");
+//		System.out.println(">>> 로그아웃 요청 처리(logout)");
+//		System.out.println("session" + session);
 		session.invalidate();
-		return "/views/main/main.jsp";
+		return "/mainGO.do";
 	}
 
 	@RequestMapping(value = "/loginchk.do", method = RequestMethod.POST)
@@ -61,8 +62,8 @@ public class LoginController {
 		UsersVO login = usersService.getUsers(vo);
 		if (login != null) {
 			session.setAttribute("Logininformation", login);
-			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
-			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);			
+//			System.out.println("[로그]:로그인 성공후 메인페이지로 전환");
+//			System.out.println("[로그]:로그인 성공후 vo 확인: " + login);			
 				return "success";
 			} else {
 				return "fail";

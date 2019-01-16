@@ -26,8 +26,8 @@
 						<div class="header-inner">
 							<div class="logo">
 								<a href="/mainGO.do"> <img
-									src="<%=KPath%>/images/logo/logo-secondary-light.png"
-									alt="logo secondary dark">
+									src="/views/logo/로고1.png"
+									alt="logo secondary dark" style="height: 100px;width: 150px;">
 								</a>
 							</div>
 							<nav class="menu">

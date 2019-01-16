@@ -42,9 +42,36 @@
 <!-- Cusom css -->
 <link rel="stylesheet" href="<%=KPath%>/css/custom.css">
 
+<script src="<%=KPath%>/js/vendor/jquery-3.2.1.min.js"></script>
+
 <!-- Modernizer js -->
-<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <title>Insert title here</title>
+<script>
+
+function idChk(){
+	alert("idChk실행 - Logininformaion : " + "${Logininformaion}");
+	if("${Logininformaion}" != null) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+ function res(m_id){
+ 	console.log("${Logininformation}");
+ 	alert("${Logininformation}");
+ 	alert("${Logininformation.u_id}");
+ 	
+ 	var u_id = "${Logininformation.u_id}";
+ 	if(u_id != ""){
+ 		alert("아이디있음");
+  		location.href="movieRes.do";
+  	} else {
+  		alert("아이디없음");
+  		document.getElementById("id01").style="display:block";
+	} 
+}
+
+</script>
 </head>
 <body>
 
@@ -94,8 +121,8 @@
 								<li>등급 : <span> ${movieOne.restrict } </span>
 								</li>
 							</ul>
-							<div>
-								<a href="movieRes.do?m_id=1" class="cr-btn cr-btn-sm" 
+							<div>			
+								<a href="#" onclick="res(${movieOne.m_id })" class="cr-btn cr-btn-sm" 
 								style="background-color: #f6644f; float: right">예매</a>
 							</div>
 						</div>
@@ -156,7 +183,6 @@
 	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

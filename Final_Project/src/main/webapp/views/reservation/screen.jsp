@@ -101,14 +101,20 @@
 				var rowCol = row + "/" + col
 				
 				console.log($("#seat").html());
-				alert($("#seat").html());
 				
 				if($("#seat").html() == "") {
 					alert("내용없음");
-					$("#seat").html("좌석  " + rowCol);
+					$("#seat").html(rowCol);
 				} else if ($("#seat").html() != "") {
-					alert("내용있음");
-					$("#seat").append("좌석  " + rowCol);
+					if($("#seat").html().indexOf(rowCol) == -1) {
+						alert("내용없음");
+						$("#seat").append(" " + rowCol);
+					} else {
+						alert("내용있음");
+						alert($("#seat").html().indexOf(rowCol));
+						alert($("#seat").html());
+						$("#seat").html($("#seat").html().replace(rowCol, ''));
+					}
 				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
