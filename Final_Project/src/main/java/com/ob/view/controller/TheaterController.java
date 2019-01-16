@@ -41,6 +41,16 @@ public class TheaterController {
 		
 		return scheduleList;
 	}
+	@RequestMapping("theaterList.do")
+	public String theaterList(TheaterVO theaterVO,Model model) {
+		theaterVO = theaterService.getTheater(theaterVO);
+		
+		System.out.println("theaterList : " + theaterVO);
+		
+		model.addAttribute("theaterVO", theaterService.getTheater(theaterVO));
+		
+		return "/views/theater/theaterDetail.jsp";
+	}
 }
 
 

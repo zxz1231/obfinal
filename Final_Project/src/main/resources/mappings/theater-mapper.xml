@@ -20,6 +20,9 @@
 		<result property="img3" column="IMG3" />
 		<result property="img4" column="IMG4" />
 		<result property="img5" column="IMG5" />
+		<result property="restraunt_title" column="RESTRAUNT_TITLE" />
+		<result property="restraunt_phone" column="RESTRAUNT_PHONE" />
+		<result property="restraunt_address" column="RESTRAUNT_ADDRESS" />
 	</resultMap>
 
 	<select id="getTheaterList" resultType="theater">
