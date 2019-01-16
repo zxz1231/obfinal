@@ -37,4 +37,7 @@ public class ScheduleDAO {
 	public Object deleteSchedule(ScheduleVO vo) {
 		return mybatis.delete("ScheduleDAO.deleteSchedule",vo);
 	}
+	public int getCountSchedule() {
+		return mybatis.selectOne("ScheduleDAO.getCountSchedule");
+	}
 }

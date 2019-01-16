@@ -88,4 +88,14 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVO> getMovieListPreair() {
 		return movieDAO.getMovieListPreair();
 	}
+
+	@Override
+	public int updateMovieOnairOne(int m_id) {
+		return movieDAO.updateMovieOnairOne(m_id);
+	}
+
+	@Override
+	public int getCountMovie() {
+		return movieDAO.getCountMovie();
+	}
 }

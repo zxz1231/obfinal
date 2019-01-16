@@ -59,15 +59,78 @@
 			<!-- Page Inner -->
 			<div class="page-inner">
 				<div class="page-title">
-					<h3 class="breadcrumb-header">Blank Page</h3>
-					<a href="/updateOnair.do">체크</a>
+					<h3 class="breadcrumb-header">관리자 메인</h3>
 				</div>
 				<div id="main-wrapper">
-					<div class="row"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-white">
+								<div class="panel-body">
+									<div class="row white">
+										<div class="block">
+
+											<div class="col-xs-12 col-sm-6 col-md-3">
+												<ul class="pricing">
+													<li>
+														<h1>영화</h1>
+													</li>
+													<li>등록된 영화 :${mCount}개</li>
+
+													<li>
+														<button type="button" class="btn btn-success btn-rounded" onclick="location.href='admin_searchMovie.do'">조회</button>
+													</li>
+												</ul>
+											</div>
+
+											<div class="col-xs-12 col-sm-6 col-md-3">
+												<ul class="pricing">
+													<li>
+														<h1>극장</h1>
+													</li>
+													<li>등록된 극장 :${tCount}개</li>
+
+													<li>
+														<button type="button" class="btn btn-success btn-rounded"  onclick="location.href='admin_searchTheater.do'">조회</button>
+													</li>
+												</ul>
+											</div>
+
+											<div class="col-xs-12 col-sm-6 col-md-3">
+												<ul class="pricing">
+													<li>
+														<h1>상영관</h1>
+													</li>
+													<li>등록된 상영관  :${scrCount}개</li>
+													<li>
+														<button type="button" class="btn btn-success btn-rounded" onclick="location.href='admin_searchScreen.do'">조회</button>
+													</li>
+												</ul>
+											</div>
+
+											<div class="col-xs-12 col-sm-6 col-md-3">
+												<ul class="pricing">
+													<li>
+														<h1>상영정보</h1>
+													</li>
+													<li>등록된 상영정보:${schCount}개</li>
+													<li>
+														<button type="button" class="btn btn-success btn-rounded" onclick="location.href='/admin_searchSchedule.do'">조회</button>
+													</li>
+												</ul>
+											</div>
+
+
+										</div>
+										<!-- /block -->
+									</div>
+									<!-- /row -->
+								</div>
+							</div>
+						</div>
+					</div>
 					<!-- Row -->
 				</div>
 				<!-- Main Wrapper -->
-
 			</div>
 			<!-- /Page Inner -->
 

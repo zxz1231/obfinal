@@ -21,16 +21,20 @@ import com.ob.biz.service.PlusService;
 import com.ob.biz.service.ScheduleService;
 import com.ob.biz.service.ScreenService;
 import com.ob.biz.service.TheaterService;
+import com.ob.biz.service.UsersService;
 import com.ob.biz.vo.MovieVO;
 import com.ob.biz.vo.PlusVO;
 import com.ob.biz.vo.ScheduleVO;
 import com.ob.biz.vo.ScreenVO;
 import com.ob.biz.vo.TheaterVO;
+import com.ob.biz.vo.UsersVO;
 
 @Controller
 //// 세션 어트리뷰트 사용해보고 싶었음 . 극장만 해봄
 // @SessionAttributes("theaterOne")
 public class AdminController {
+	@Autowired
+	private UsersService usersService;
 	@Autowired
 	private MovieService movieService;
 	@Autowired
@@ -46,8 +50,17 @@ public class AdminController {
 
 	// --------------------> 공통(메인페이지) ----------------- 시작
 	@RequestMapping(value = "/admin_Main.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String GoAdminIndexPage(MovieVO vo, HttpSession session) {
+	public String GoAdminIndexPage(Model model) {
 
+		int mCount = movieService.getCountMovie();
+		int tCount = theaterService.getCountTheater();
+		int scrCount = screenService.getCountScreen();
+		int schCount = scheduleService.getCountSchedule();
+		model.addAttribute("mCount", mCount);
+		model.addAttribute("tCount", tCount);
+		model.addAttribute("scrCount", scrCount);
+		model.addAttribute("schCount", schCount);
+		
 		return "/views/admin/admin_Main.jsp";
 	}
 	// --------------------> 공통(메인페이지) ----------------- 끝
@@ -612,6 +625,20 @@ public class AdminController {
 
 		return "/views/admin/admin_insertScheduleWriter.jsp";
 	}
+	
+	
+	///admin_insertScheduleWriterPreOnair.do
+	// 단순 페이지 이동 //상영예정중인 영화만
+		@RequestMapping(value = "/admin_insertScheduleWriterPreOnair.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String Admin_insertScheduleWriterPreOnair(Model model) {
+			List<TheaterVO> theaterList = theaterService.getTheaterList();
+			List<MovieVO> movieList = movieService.getMovieListPreair();
+
+			model.addAttribute("theaterList", theaterList);
+			model.addAttribute("movieList", movieList);
+
+			return "/views/admin/admin_insertScheduleWriterPreOnair.jsp";
+		}
 
 	// ajax 처리 m_id로 screen 정보 구하기
 	@RequestMapping(value = "/getScrOne_m.do", method = RequestMethod.POST)
@@ -630,6 +657,19 @@ public class AdminController {
 
 		int count = scheduleService.insertSchedule(vo);
 		System.out.println(count + "건 정상 처리");
+		return "redirect:/admin_searchSchedule.do";
+	}
+	
+	@RequestMapping(value = "/admin_insertSchedulePreonair.do", method = RequestMethod.POST)
+	public String Admin_insertSchedulePreonair(ScheduleVO vo ) {
+		System.out.println(">>> 극장 등록 요청 처리(admin_insertSchedulePreonair.do)");
+		System.out.println("넘어온 vo : " + vo);
+		int m_id = vo.getM_id();
+		int count = scheduleService.insertSchedule(vo);
+		System.out.println(count + "건 정상 처리");
+		
+		System.out.println("상태 변경~");
+		movieService.updateMovieOnairOne(m_id);
 		return "redirect:/admin_searchSchedule.do";
 	}
 
@@ -758,4 +798,19 @@ public class AdminController {
 
 		return "/admin_searchSchedule.do";
 	}
+	
+	///admin_voteRefresh.do
+	@RequestMapping(value = "/admin_voteRefresh.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_deleteSchedule(MovieVO vo, UsersVO uvo, Model model) {
+		// 보고싶은 명화에서 득표순 상위 5개 영화 상영예정(-1) 처리
+		movieService.updateMoviePreair();
+		// vote 초기화
+		movieService.updateMovieVoteTo0();
+		// 회원 투표도 초기화
+		usersService.resetVotedMovie();
+		
+
+		return "/admin_Main.do";
+	}
+	
 }

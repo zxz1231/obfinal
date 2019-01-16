@@ -24,5 +24,8 @@ public interface ScreenService {
 	// m_id로 상영관 조회
 	
 	List<ScreenVO> getScrOne_m(ScreenVO screenVO);
+	
+	// 스크린 갯수 구하기
+	int getCountScreen();
 
 }

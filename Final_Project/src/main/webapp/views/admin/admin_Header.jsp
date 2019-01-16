@@ -66,40 +66,18 @@
 						<ul class="sub-menu">
 							<li><a href="/admin_searchSchedule.do">상영정보 전체조회</a></li>							
 							<li><a href="/admin_insertScheduleWriter.do">상영중 영화(상영정보) 추가 </a></li>
-							<li><a href="/updateOnairkimWriter.do">상영예정작 한번에 작업 </a></li>
+							<li><a href="/admin_insertScheduleWriterPreOnair.do">상영예정 영화(상영정보) 추가 </a></li>
 						</ul></li>
 
-					<li><a href="charts.html"> <i
-							class="menu-icon icon-show_chart"></i><span>Charts</span>
+					<li><a href="/admin_voteRefresh.do"> <i
+							class="menu-icon icon-show_chart"></i><span>투표갱신</span>
 					</a></li>
-					<li><a href="javascript:void(0);"> <i
-							class="menu-icon icon-my_location"></i><span>Maps</span><i
-							class="accordion-icon fa fa-angle-left"></i>
-					</a>
-						<ul class="sub-menu">
-							<li><a href="maps-google.html">Google</a></li>
-							<li><a href="maps-vector.html">Vector</a></li>
-						</ul></li>
-					<li><a href="javascript:void(0);"> <i
-							class="menu-icon icon-star"></i><span>Extra</span><i
-							class="accordion-icon fa fa-angle-left"></i>
-					</a>
-						<ul class="sub-menu">
-							<li><a href="invoice.html">Invoice</a></li>
-							<li><a href="404.html">404 Page</a></li>
-							<li><a href="500.html">500 Page</a></li>
-							<li><a href="profile.html">Profile</a></li>
-							<li><a href="login.html">Login</a></li>
-							<li><a href="register.html">Register</a></li>
-							<li><a href="lockscreen.html">Lockscreen</a></li>
-							<li><a href="todo.html">Todo</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="pricing-tables.html">Pricing Tables</a></li>
-							<li><a href="timeline.html">Timeline</a></li>
-						</ul></li>
+				
+				<!--  -->
+					
 					<li class="menu-divider"></li>
 					<li><a href="<%=contextPath%>/mainGO.do"> <i
-							class="menu-icon icon-help_outline"></i><span>OBMainHOME</span>
+							class="menu-icon icon-help_outline"></i><span>영화관 홈페이지</span>
 					</a></li>
 
 				</ul>

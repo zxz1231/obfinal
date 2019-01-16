@@ -138,6 +138,8 @@ body {
 							onairStatus = "상영중";
 						} else if (result[i].onair == 0) {
 							onairStatus = "상영종료";
+						} else if (result[i].onair == -1){
+							onairStatus = "상영예정작";
 						}
 						str += "<div class='column'>";
 						str += "<a href=admin_modifyShedule.do?sch_id="+result[i].sch_id+">";

@@ -69,6 +69,10 @@
 		WHERE T_ID IN (SELECT T_ID FROM SCHEDULE
 		WHERE M_ID = #{m_id})
 	</select>
+		<!-- 관리자 메인에서 쓸것 -->
+		<select id="getCountTheater" resultType="int">
+		          select count(t_id) from theater
+	</select>
 
 </mapper>  
 
