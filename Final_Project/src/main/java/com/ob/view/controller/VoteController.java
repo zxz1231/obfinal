@@ -212,7 +212,7 @@ public class VoteController {
 			System.out.println("uvo : " + uvo);
 			System.out.println("m_id : " + m_id);
 			uvo.setVotedmovie(m_id);
-			usersService.updateUsers(uvo);
+			usersService.updateUsersVote(uvo);
 			
 			//새로 선택한 영화 vote+1
 			mvo.setM_id(m_id);
