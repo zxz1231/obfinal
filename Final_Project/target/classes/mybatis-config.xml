@@ -17,6 +17,7 @@
 	<typeAlias alias="plus" type="com.ob.biz.vo.PlusVO"/>
 	<typeAlias alias="page" type="com.ob.biz.vo.PageVO"/>
 	
+	<!--  -->
   </typeAliases>
   
   <mappers>
