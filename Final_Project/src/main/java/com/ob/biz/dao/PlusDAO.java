@@ -15,7 +15,7 @@ import com.ob.biz.vo.PlusVO;
 		private SqlSessionTemplate mybatis;
 		
 		public List<PlusVO> getPlusList() {
-			return mybatis.selectList("PlusDAO.getPlusALl");
+			return mybatis.selectList("PlusDAO.getPlusALL");
 		}
 
 		public List<PlusVO> getPlusTitlebyt_id(PlusVO vo) {
