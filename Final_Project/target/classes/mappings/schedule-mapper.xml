@@ -64,6 +64,10 @@
 
 	</delete>
 	
+			<!-- 관리자 메인에서 쓸것 -->
+		<select id="getCountSchedule" resultType="int">
+		 select count(sch_id) from SCHEDULE
+	</select>
 	
 </mapper>
 

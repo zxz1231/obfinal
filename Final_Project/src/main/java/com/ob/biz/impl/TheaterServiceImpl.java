@@ -56,4 +56,9 @@ public class TheaterServiceImpl implements TheaterService {
 	public List<MovieVO> getTheater_movieList(int m_id) {
 		return theaterDAO.getTheater_movieList(m_id);
 	}
+
+	@Override
+	public int getCountTheater() {
+		return theaterDAO.getCountTheater();
+	}
 }

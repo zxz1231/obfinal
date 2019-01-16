@@ -46,7 +46,7 @@ a.cr-readmore2:hover,
 .service-content h4 a:hover,
 .service-content h5 a:hover,
 .service-content h6 a:hover {
-    color: #f6644f;
+    color: #ce2c3c;
 }
 
 .cr-btn,
@@ -70,14 +70,14 @@ button.cr-btn.cr-btn-transparent b,
 .single-team-style-2::after,
 .single-banner-content a.cr-btn.cr-btn-white b,
 .single-banner-content button.cr-btn.cr-btn-white b {
-    background: #f6644f;
+    background: #ce2c3c;
 }
 
 .bg-theme,
 .cr-slider-navigation-2 .cr-slider-nav:hover,
 .testimonial-wrap.testimonial-slider-active ul.slick-dots li.slick-active button,
 .testimonial-wrap.testimonial-slider-active ul.slick-dots li:hover button {
-    background: #f6644f !important;
+    background: #ce2c3c !important;
 }
 
 .cr-btn.cr-btn-transparent:hover,
@@ -89,7 +89,7 @@ button.cr-btn.cr-btn-transparent:hover,
 .testimonial-wrap.testimonial-style-5.testimonial-slider-active ul.slick-dots li:hover button,
 .testimonial-wrap.testimonial-style-5.sidemenu-wrapper-testimonial-slider-active ul.slick-dots li.slick-active button,
 .testimonial-wrap.testimonial-style-5.sidemenu-wrapper-testimonial-slider-active ul.slick-dots li:hover button {
-    border-color: #f6644f;
+    border-color: #ce2c3c;
 }
 
 .portfolio-content a:hover {

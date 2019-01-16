@@ -89,6 +89,7 @@ public class VoteController {
 //		map = voteRefresh(session);
 //		model.addAttribute("voteMap", map);
 //		System.out.println("voteMap(getVoteList) : " + map);
+//		session.setAttribute("pageType","vote");
 		return "/views/vote/getVoteList.jsp";
 	}
 	

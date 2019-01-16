@@ -3,6 +3,7 @@ package com.ob.view.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,17 +33,21 @@ public class MovieController {
 	private UsersService usersService;
 	
 	@RequestMapping("movieDetail.do")
-	public String movieDetail(MovieVO vo, Model model) {
+	public String movieDetail(MovieVO vo, Model model,HttpSession session) {
 		
 		model.addAttribute("movieOne",movieService.getMovieOne(vo));
 		
 		System.out.println("movieService.getMovieOne(vo) : " + movieService.getMovieOne(vo));
-		
+
+		//페이지 정보 저장
+//		session.setAttribute("pageType","MovieDetail");
 		return "/views/reservation/MovieDetail.jsp";
 	}
 	
 	@RequestMapping("movieRes.do")
-	public String movieRes(MovieVO movieVO, Model model, HttpServletRequest request) {
+	public String movieRes(MovieVO movieVO, Model model, HttpSession session, HttpServletRequest request) {
+		//로그이
+		
 		
 		model.addAttribute("movieRes",movieService.getMovieOne(movieVO));
 		
@@ -69,7 +74,7 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String checkMovieList(MovieVO vo, Model model) {
+	public String checkMovieList(MovieVO vo, Model model, HttpSession session) {
 		List<MovieVO> movieList = movieService.getMovieListOnair();
 		List<MovieVO> gnrList = movieService.getMovieGnr();
 		
@@ -77,7 +82,23 @@ public class MovieController {
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("gnrList", gnrList);
 
+		//페이지 정보 저장
+//		session.setAttribute("pageType","nowmoive");
 		return "/views/movie/nowmoive.jsp";
+	}
+	
+	//상영예정작
+	@RequestMapping(value = "getMovieListPreair.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getMovieListPreair(MovieVO vo, Model model, HttpSession session) {
+		List<MovieVO> movieList = movieService.getMovieListPreair();
+		List<MovieVO> gnrList = movieService.getMovieListPreairGnr();
+		
+		// Model 형식으로 저장해서 DispatcherServervlet에 전달
+		model.addAttribute("movieListPreair", movieList);
+		model.addAttribute("gnrListPreair", gnrList);
+		
+		//페이지 정보 저장
+		return "/views/movie/preair.jsp";
 	}
 	
 	

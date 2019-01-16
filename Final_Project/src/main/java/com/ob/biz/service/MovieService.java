@@ -35,11 +35,14 @@ public interface MovieService {
 	// 영화 목록 전체 조회
 	List<MovieVO> getMovieList();
 
-	//상영중 상태인 영화 목록 조회(영화제목순)
+	//상영중 상태인 영화 목록 조회
 	List<MovieVO> getMovieListOnair();
 	
-	//상영예정 상태인 영화 목록 조회(영화제목순)
+	//상영예정 상태인 영화 목록 조회
 	List<MovieVO> getMovieListPreair();
+	
+	//상영예정 상태인 영화 목록 조회(장르별)
+	List<MovieVO> getMovieListPreairGnr();
 	
 	// 보고싶은 명화 득표수 상위 5개 영화 조회
 	List<MovieVO> getMovieListByVote();
@@ -49,5 +52,8 @@ public interface MovieService {
 	
 	// 영화 m_id 한개를 상영예정(-1) -> 상영중(1) 바꾸기
 	int  updateMovieOnairOne(int m_id);
+	
+	//관리자 메인에서 쓸것 movie 갯수 구하기
+	int getCountMovie();
 
 }

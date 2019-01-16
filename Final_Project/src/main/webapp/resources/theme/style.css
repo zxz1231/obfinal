@@ -967,7 +967,7 @@ blockquote footer {
 }
 
 .bg-dark {
-    background: #111119 !important;
+    background: #333333 !important;
 }
 
 .bg-black {
@@ -1469,7 +1469,7 @@ blockquote footer {
 }
 
 [data-black-overlay]:before {
-    background-color: #000000;
+    background-color: #333333;
 }
 
 [data-overlay="1"]:before,

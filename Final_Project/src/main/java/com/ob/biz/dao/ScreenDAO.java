@@ -38,4 +38,8 @@ public class ScreenDAO {
 		return mybatis.selectList("ScreenDAO.getScrOne_m", screenVO);
 	}
 
+	public int getCountScreen() {
+		return mybatis.selectOne("ScreenDAO.getCountScreen");
+	}
+
 }
