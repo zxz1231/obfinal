@@ -46,4 +46,10 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDAO.updateSchedule(vo);
 	}
 
+	@Override
+	public void deleteSchedule(ScheduleVO vo) {
+		 scheduleDAO.deleteSchedule(vo);
+		
+	}
+
 }

@@ -131,6 +131,7 @@
 							<div class="col-md-2">
 								<div class="panel panel-white">
 									<input type="submit" value="수정">
+									<input type="button" value="삭제"  onclick="deleteGO(${SchVO.sch_id })">
 								</div>
 
 							</div>
@@ -151,6 +152,22 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- /Page Container -->
+	
+			<!-- 삭제 버튼 눌렀을때 -->
+	<script>
+	function deleteGO(sch_id){
+		var check = confirm("정말 삭제하시겠습니까?.");
+		if(check== true){
+			location.href="/admin_deleteSchedule.do?sch_id="+sch_id;
+		}else if(check == false){
+			return check;
+		}
+		
+		
+		
+	}
+	</script>
+	<!-- 끝 -->
 
 	<!-- form 보내기전 체크 -->
 	<script>

@@ -57,6 +57,13 @@
 		SET M_ID = #{m_id}, TIME = #{time}, PRICE = #{price} WHERE SCH_ID = #{sch_id}
 	</update>
 	
+	<!-- 스케쥴 삭제 -->
+	<delete id="deleteSchedule" parameterType="schedule">
+		DELETE FROM SCHEDULE
+		WHERE sch_id = #{sch_id}
+
+	</delete>
+	
 	
 </mapper>
 

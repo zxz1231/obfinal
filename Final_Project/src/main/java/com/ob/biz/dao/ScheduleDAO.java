@@ -34,4 +34,7 @@ public class ScheduleDAO {
 	public int updateSchedule(ScheduleVO vo) {
 		return mybatis.update("ScheduleDAO.updateSchedule",vo);
 	}
+	public Object deleteSchedule(ScheduleVO vo) {
+		return mybatis.delete("ScheduleDAO.deleteSchedule",vo);
+	}
 }

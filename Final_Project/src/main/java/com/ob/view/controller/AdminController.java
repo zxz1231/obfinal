@@ -749,4 +749,13 @@ public class AdminController {
 
 		return "/admin_searchSchedule.do";
 	}
+	
+	@RequestMapping(value = "/admin_deleteSchedule.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Admin_deleteSchedule(ScheduleVO vo, Model model) {
+		System.out.println("QQQQQQQQQQQQQQQQQQQQ확인 vo : " + vo);
+		scheduleService.deleteSchedule(vo);
+		model.addAttribute("result", "delete");
+
+		return "/admin_searchSchedule.do";
+	}
 }

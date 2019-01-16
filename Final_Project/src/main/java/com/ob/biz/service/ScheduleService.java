@@ -3,6 +3,7 @@ package com.ob.biz.service;
 import java.util.List;
 
 import com.ob.biz.vo.ScheduleVO;
+import com.ob.biz.vo.ScreenVO;
 
 public interface ScheduleService {
 	
@@ -25,6 +26,9 @@ public interface ScheduleService {
 	
 	//updateSchedule 스케쥴 업데이트 
 	int updateSchedule(ScheduleVO vo);
+	
+	// 스케쥴 삭제
+		void deleteSchedule(ScheduleVO vo);
 	
 	
 	
