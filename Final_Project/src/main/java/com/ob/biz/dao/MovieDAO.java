@@ -75,4 +75,8 @@ public class MovieDAO {
 	public MovieVO getMovieOne(MovieVO vo) {
 		return mybatis.selectOne("MovieDAO.getMovieOne", vo);
 	}
+
+	public int updateMovieOnairOne(int m_id) {
+		return mybatis.update("MovieDAO.updateMovieOnairOne", m_id);
+	}
 }

@@ -130,6 +130,12 @@
 		M_ID = #{m_id}
 	</select>
 
+<!-- 영화 m_id 한개를 상영종료(-1) -> 상영중(1)로 바꾸기 -->
+	<update id="updateMovieOnairOne" >
+		UPDATE MOVIE
+		   SET ONAIR = 1
+		 WHERE m_id = #{m_id}
+	</update>
 	<!-- M_ID TITLE GNR DIRECTOR RUNNINGTIME RESTRICT ONAIR POSTER IMG1 IMG2 
 		IMG3 IMG4 IMG5 -->
 </mapper>
