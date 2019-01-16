@@ -26,7 +26,8 @@ function login(frm){
 			alert(result);
 			if(result == "success"){
 				alert("로그인 되었습니다.");
-				frm.action = "<%=contextPath%>/mainGO.do";
+<%-- 				frm.action = "<%=contextPath%>/mainGO.do?pageType=${pageType}"; --%>
+				window.location.reload();
 							frm.submit();
 							return false;
 						} else if (result == "fail") {
