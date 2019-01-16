@@ -50,8 +50,17 @@ public class AdminController {
 
 	// --------------------> 공통(메인페이지) ----------------- 시작
 	@RequestMapping(value = "/admin_Main.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String GoAdminIndexPage(MovieVO vo, HttpSession session) {
+	public String GoAdminIndexPage(Model model) {
 
+		int mCount = movieService.getCountMovie();
+		int tCount = theaterService.getCountTheater();
+		int scrCount = screenService.getCountScreen();
+		int schCount = scheduleService.getCountSchedule();
+		model.addAttribute("mCount", mCount);
+		model.addAttribute("tCount", tCount);
+		model.addAttribute("scrCount", scrCount);
+		model.addAttribute("schCount", schCount);
+		
 		return "/views/admin/admin_Main.jsp";
 	}
 	// --------------------> 공통(메인페이지) ----------------- 끝

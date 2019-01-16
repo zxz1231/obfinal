@@ -52,4 +52,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 		
 	}
 
+	@Override
+	public int getCountSchedule() {
+		return scheduleDAO.getCountSchedule();
+	}
+
 }

@@ -79,4 +79,8 @@ public class MovieDAO {
 	public int updateMovieOnairOne(int m_id) {
 		return mybatis.update("MovieDAO.updateMovieOnairOne", m_id);
 	}
+
+	public int getCountMovie() {
+		return mybatis.selectOne("MovieDAO.getCountMovie");
+	}
 }

@@ -45,4 +45,8 @@ public class TheaterDAO {
 		return mybatis.selectList("TheaterDAO.getTheater_movieList",m_id);
 		
 	}
+
+	public int getCountTheater() {
+		return mybatis.selectOne("TheaterDAO.getCountTheater");
+	}
 }

@@ -49,5 +49,8 @@ public interface MovieService {
 	
 	// 영화 m_id 한개를 상영예정(-1) -> 상영중(1) 바꾸기
 	int  updateMovieOnairOne(int m_id);
+	
+	//관리자 메인에서 쓸것 movie 갯수 구하기
+	int getCountMovie();
 
 }

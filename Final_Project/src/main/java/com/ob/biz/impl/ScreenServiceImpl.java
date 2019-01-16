@@ -48,4 +48,9 @@ public class ScreenServiceImpl implements ScreenService {
 	
 	}
 
+	@Override
+	public int getCountScreen() {
+		return screenDAO.getCountScreen();
+	}
+
 }

@@ -93,4 +93,9 @@ public class MovieServiceImpl implements MovieService {
 	public int updateMovieOnairOne(int m_id) {
 		return movieDAO.updateMovieOnairOne(m_id);
 	}
+
+	@Override
+	public int getCountMovie() {
+		return movieDAO.getCountMovie();
+	}
 }

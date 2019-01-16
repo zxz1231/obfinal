@@ -138,6 +138,11 @@
 	</update>
 	<!-- M_ID TITLE GNR DIRECTOR RUNNINGTIME RESTRICT ONAIR POSTER IMG1 IMG2 
 		IMG3 IMG4 IMG5 -->
+		
+		<!-- 관리자 메인에서 쓸것 -->
+		<select id="getCountMovie" resultType="int">
+		 select count(m_id) from movie 
+	</select>
 </mapper>
 
 

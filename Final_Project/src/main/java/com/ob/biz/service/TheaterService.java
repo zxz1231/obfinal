@@ -28,4 +28,7 @@ public interface TheaterService {
 	// 선택 영화 극장 조회
 	List<MovieVO> getTheater_movieList(int m_id);
 
+	//관리자 메인에서 쓸것 theater 갯수 구하기
+	int getCountTheater();
+
 }

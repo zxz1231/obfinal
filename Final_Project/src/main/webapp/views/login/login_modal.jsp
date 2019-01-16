@@ -7,6 +7,7 @@
 	String contextPath = request.getContextPath();
 	// theme 까지 들어온 경로 
 	String KPath = contextPath + "/resources/theme";
+	String BPath = contextPath + "/resources/img";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -72,10 +73,9 @@ function login(frm){
 			</div>
 			<div class="container">
 
-				<br> <a id="navergogo" href="/navergo.do">네이버
-					로그인</a> <a
-					href="https://kauth.kakao.com/oauth/authorize?client_id=2609b2266d44516fd921046db0f62d8d&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">카카오
-					로그인</a>
+				<br> <a id="navergogo" href="/navergo.do"><img alt="네이버" src="<%=BPath%>/네이버버튼.png"></a> <a
+					href="https://kauth.kakao.com/oauth/authorize?client_id=2609b2266d44516fd921046db0f62d8d&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
+					<img alt="카카오" src="<%=BPath%>/카카오버튼.png"></a>
 				
 
 

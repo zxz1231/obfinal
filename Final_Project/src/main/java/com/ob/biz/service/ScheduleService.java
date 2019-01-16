@@ -29,6 +29,9 @@ public interface ScheduleService {
 	
 	// 스케쥴 삭제
 		void deleteSchedule(ScheduleVO vo);
+		
+		//메인에서 쓸 스케쥴 총 수
+		int getCountSchedule();
 	
 	
 	

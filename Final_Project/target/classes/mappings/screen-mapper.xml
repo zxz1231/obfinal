@@ -52,6 +52,12 @@
 	<select id="getScrOne_m" parameterType="screen" resultType="screen">
 	        select * from screen where t_id =#{t_id}
 	</select>
+	
+			<!-- 관리자 메인에서 쓸것 -->
+		<select id="getCountScreen" resultType="int">
+		 select count(scr_id) from SCREEN
+	</select>
+	
 </mapper>
 
 
