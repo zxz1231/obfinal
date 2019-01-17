@@ -71,5 +71,9 @@ public class UsersDAO {
 		 return mybatis.delete("UsersDAO.updateUsersEmail", vo);
 		
 	}
+	//아이디 찾기
+	public String findIDchk(UsersVO vo) {
+		return mybatis.selectOne("UsersDAO.findIDchk",vo);
+	}
 	
 }

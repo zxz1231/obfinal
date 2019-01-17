@@ -82,6 +82,7 @@ public class VoteController {
 	//2-1.영화 득표수 상위 5개 득표순으로 뿌려주기(getMovieListByVote)-Ajax
 	//2-2.전체 명화 리스트 
 	
+	//페이지 처음 열릴 시에 투표 페이지로 이동처리
 	@RequestMapping(value="/getVoteList.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String getVoteList(Model model, HttpSession session){
 		System.out.println("getVoteList실행");
@@ -93,6 +94,7 @@ public class VoteController {
 		return "/views/vote/getVoteList.jsp";
 	}
 	
+	//투표(영화 클릭)시 voteRefresh처리
 	@RequestMapping(value="/vote.do", method={RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String,Object> vote(int m_id, HttpSession session){
@@ -112,6 +114,7 @@ public class VoteController {
 		return map;
 	}
 	
+	//실제 vote 기능
 	@RequestMapping(value="/voteRefresh.do", method={RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String,Object> voteRefresh(HttpSession session){

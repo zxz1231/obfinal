@@ -41,7 +41,7 @@ public class PageChangeController {
 	}
 	@RequestMapping(value = "/joinUS.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String joinUS() {
-		return "/views/joinus/joinus.jsp";
+		return "/views/mypage/joinus.jsp";
 	}
 	
 	

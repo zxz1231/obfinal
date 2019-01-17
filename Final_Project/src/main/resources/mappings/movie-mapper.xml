@@ -73,6 +73,7 @@
 		 				 FROM (SELECT *
 		 				 		 FROM (SELECT *
 		 				 		 		 FROM MOVIE
+		 				 		 		WHERE VOTE>0 AND ONAIR=0
 		 				 		 		ORDER BY VOTE DESC, TITLE ASC)
 		 				 		WHERE ROWNUM<=5) S
 		 				WHERE M.M_ID = S.M_ID)
@@ -97,6 +98,11 @@
 		  FROM MOVIE
 		 WHERE ONAIR = 1
 		 ORDER BY M_ID
+	</select>
+
+	<!-- 상영중 상태인 영화 목록 조회 -->
+	<select id="getMovieListOnair0" resultType="movie">
+		SELECT * FROM MOVIE WHERE ONAIR=0 ORDER BY TITLE
 	</select>
 
 	<!-- 상영중 상태인 영화 목록 조회 -->

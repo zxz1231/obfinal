@@ -131,13 +131,14 @@ function voteListing(result){
 	var str ='';
 	str += '<div class="mList-content container">';
 	for(var i in mList){
-// 		if(mList[i].onair==0){
-			str += '<a onclick="vote('+mList[i].m_id+')">';
-			str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block>';
-// 		} else {
-// 			str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block; background-color:red>';
-// 			str += '<div class="disabled">';
-// 		}
+		console.log(mList[i].onair);
+		if(mList[i].onair==0){
+		str += '<a onclick="vote('+mList[i].m_id+')">';
+		str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block>';
+		} else {
+		str += '<a>';
+		str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block; background-color:red>';
+		}
 		str += '	<div class="card-header" style="padding:0">';
 		str += 			'<div class="counter text-center">';	
 		str += 				'<h3 class="counter-active">' + mList[i].vote + '</h3>';
@@ -150,13 +151,8 @@ function voteListing(result){
 		str += '		<h5 class="card-title" style="margin: ">' + mList[i].title + '</h5>';
 		str += '		<p class="card-text"><a href="#">상세보기</a></p>';
 		str += '	</div>';
-// 		if(mList[i].onair==0){
-			str += '</div>';
-			str += '</a>';
-// 		} else {
-// 			str += '</div>';
-// 			str += '</a>';
-// 		}
+		str += '</div>';
+		str += '</a>';
 		str += '</div>';
 	};
 	str += '</div>';

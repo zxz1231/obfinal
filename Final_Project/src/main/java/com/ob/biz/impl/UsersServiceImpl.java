@@ -74,6 +74,11 @@ public class UsersServiceImpl implements UsersService{
 		return usersDAO.updateUsersEmail(vo);
 	}
 
+	@Override
+	public String findIDchk(UsersVO vo) {
+		return usersDAO.findIDchk(vo);
+	}
+
 
 
 }

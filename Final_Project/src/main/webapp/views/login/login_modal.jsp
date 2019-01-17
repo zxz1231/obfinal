@@ -91,8 +91,7 @@ function login(frm){
 					style="width: 100px; height: 40px;"
 					onclick="location.href='<%=contextPath%>/joinUS.do'">회원가입</button>
 
-				<span class="psw"><a href="#">비밀번호찾기</a></span> <span class="psw"><a
-					href="#">아이디찾기</a>&nbsp;&nbsp;</span>
+				<span class="psw"><a href="/findIDPW.do">아이디/비밀번호찾기</a></span> 
 			</div>
 		</form>
 	</div>
