@@ -81,7 +81,12 @@
 	 select id  from users where name = #{name} and email = #{email} and NOT id LIKE ('%n_%') AND NOT id like ('%k_%')
 	</select>
 	
-	
+	<update id="update_pw" parameterType="users">
+		update USERS set password = #{password} where id = #{id}
+	</update>
+	<select id="findPWchk" parameterType="users" resultType="int">
+	select count(*) from USERS where ID = #{id} AND email= #{email}
+	</select>
 </mapper>  
 
 

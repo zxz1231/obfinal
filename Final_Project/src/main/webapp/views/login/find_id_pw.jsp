@@ -52,11 +52,11 @@
 	function findIDGO(frm) {
 		var email = $("#email_1").val();
 		var name = $("#name_1").val();
-		if(name ==''){
+		if (name == '') {
 			alert("이름을 입력하세요");
 			return false;
 		}
-		
+
 		if (email == '') {
 			alert('이메일을 입력하세요');
 			$("#email_1").focus();
@@ -78,22 +78,51 @@
 			data : commentData,
 			dataType : "text",
 			success : function(result) {
-				var okID = result;
-				var noID = "notfound";
+				
+				
 
-				if (result == noID) {
-					$("#show").css("display", "block");
-					$("#nouser").css("display","none");
-					$("#userID").html("일치하는 정보가 없습니다").css("color", "red");
+			}
+		});
 
-				} else if (result == okID) {
-					alert("아이디가 있고");
-					$("#userID").html("회원님의 아이디는  : "+ result).css("color", "blue");
-					$("#show").css("display", "block");
+		/* 여기까지 */
+	}
+	
+	
+	/* 여기서부턴 비밀번호 찾기 */
+	function findPWGO(frm) {
+		var email = $("#email_2").val();
+		var id = $("#id_2").val();
+		if (id == '') {
+			alert("ID를 입력하세요");
+			return false;
+		}
+
+		if (email == '') {
+			alert('이메일을 입력하세요');
+			$("#email_2").focus();
+			return false;
+		} else {
+			var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if (!emailRegex.test(email)) {
+				alert('이메일 주소가 유효하지 않습니다. ex)abc@gmail.com');
+				$("#email_2").focus();
+				return false;
+			}
+		}
+		var commentData = $("form[name=findPW]").serialize();
+
+		/* 여기부터 */
+		$.ajax({
+			url : "/findPWchk.do",
+			type : "post",
+			data : commentData,
+			dataType : "text",
+			success : function(result) {
+				
 
 				}
 
-			}
+			
 		});
 
 		/* 여기까지 */
@@ -170,32 +199,34 @@
 					<div
 						class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-12 offset-0 bg-grey">
 						<div class="section-title text-center">
-							<h6>Password찾기</h6>
-							<div class="row no-gutters">
-								<div class="col-md-1 ">
-									<h6 style="margin-bottom: 0px; margin-top: 20px;">ID:</h6>
-								</div>
-								<div class="col-md-3">
-									<input type="text" name="id" placeholder="ID">
-								</div>
-								<div class="col-md-1 offset-1">
-									<h6 style="margin-bottom: 0px; margin-top: 20px;">EMAIL:</h6>
-								</div>
-								<div class="col-md-4 ">
-									<input type="text" name="name" placeholder="Email">
-								</div>
-								<div class="col-md-2">
-									<div class="single-input">
-										<button class="cr-btn" type="submit">
-											<span>찾기</span>
-										</button>
+							<form method="post" name="findPW">
+								<h6>Password찾기</h6>
+								<div class="row no-gutters">
+									<div class="col-md-1 ">
+										<h6 style="margin-bottom: 0px; margin-top: 20px;">ID:</h6>
 									</div>
+									<div class="col-md-3">
+										<input type="text" name="id" placeholder="ID" id="id_2">
+									</div>
+									<div class="col-md-1 offset-1">
+										<h6 style="margin-bottom: 0px; margin-top: 20px;">EMAIL:</h6>
+									</div>
+									<div class="col-md-4 ">
+										<input type="text" name="email" placeholder="Email" id="email_2">
+									</div>
+									<div class="col-md-2">
+										<div class="single-input">
+											<button class="cr-btn" type="button"
+												onclick="findPWGO(this.form)">
+												<span>찾기</span>
+											</button>
+										</div>
+									</div>
+
 								</div>
 
-							</div>
 
-
-
+							</form>
 						</div>
 					</div>
 				</div>

@@ -1,24 +1,24 @@
 package com.ob.view.controller;
 
-import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ob.biz.service.Find_PasswordService;
 import com.ob.biz.service.UsersService;
-import com.ob.biz.vo.MovieVO;
 import com.ob.biz.vo.UsersVO;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private Find_PasswordService find_PasswordService;
 
 	@RequestMapping(value = "/logIN.do", method = RequestMethod.POST)
 	public String loginIN(UsersVO vo, HttpSession session) {
@@ -95,5 +95,39 @@ public class LoginController {
 		}
 		
 	
-	}
+	}		
+		// 비밀번호 찾기
+		@RequestMapping(value = "/findPWchk.do", method = RequestMethod.POST)
+		public @ResponseBody String findPWchk(UsersVO vo, HttpServletResponse response) throws Exception{
+			System.out.println("넘어온 데이터" + vo);
+			
+			int count = usersService.findPWchk(vo);
+			if(count >=1) {
+				System.out.println("ㅇ응: 아이디가 있네");
+				// 임시 비밀번호 생성
+				String pw = "";
+				for (int i = 0; i < 12; i++) {
+					pw += (char) ((Math.random() * 26) + 97);
+				}
+				vo.setPassword(pw);
+				// 비밀번호 변경
+				usersService.update_pw(vo);
+				// 비밀번호 변경 메일 발송
+				System.out.println("바뀐 vo" +vo);
+				find_PasswordService.send_mail(vo, "find_pw");
+				System.out.println("뭔데이거");
+				
+				
+				
+			}else {
+				System.out.println("없네");
+			}
+			
+			return null;
+			
+//			service.find_pw(response, vo);
+		}
+		
+	
+	
 }

@@ -41,4 +41,9 @@ public interface UsersService {
 	//아이디 찾기 
 	public String findIDchk(UsersVO vo);
 
+	//아이디랑 이메일로 정보 있나 없나
+	public int findPWchk(UsersVO vo);
+	
+	//아이디를 없뎃시키기
+	public int update_pw(UsersVO vo);
 }
