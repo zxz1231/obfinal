@@ -49,8 +49,7 @@
 <script>
 
 function idChk(){
-	alert("idChk실행 - Logininformaion : " + "${Logininformaion}");
-	if("${Logininformaion}" != null) {
+	if("${Logininformation}" != null) {
 		return 1;
 	} else {
 		return 0;
@@ -58,15 +57,11 @@ function idChk(){
 }
  function res(m_id){
  	console.log("${Logininformation}");
- 	alert("${Logininformation}");
- 	alert("${Logininformation.u_id}");
  	
  	var u_id = "${Logininformation.u_id}";
  	if(u_id != ""){
- 		alert("아이디있음");
-  		location.href="movieRes.do";
+  		location.href="movieRes.do?m_id=" + m_id;
   	} else {
-  		alert("아이디없음");
   		document.getElementById("id01").style="display:block";
 	} 
 }
@@ -123,7 +118,7 @@ function idChk(){
 							</ul>
 							<div>			
 								<a href="#" onclick="res(${movieOne.m_id })" class="cr-btn cr-btn-sm" 
-								style="background-color: #f6644f; float: right">예매</a>
+								style="background-color: #ce2c3c; float: right">예매</a>
 							</div>
 						</div>
 					</div>

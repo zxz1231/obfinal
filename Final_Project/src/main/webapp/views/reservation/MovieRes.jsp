@@ -126,7 +126,10 @@
 			});
 		
 		 $('#Date').datepicker('setDate', 'today');
+		 
+		theater("${movieRes.m_id }","${movieRes.title }","${movieRes.director }","${movieRes.gnr }","${movieRes.runningtime }","${movieRes.poster }");
 	});
+	
 	
 	//극장
 	function theater(m_id,title,director,gnr,runnintime,poster) {
@@ -268,7 +271,7 @@
 				str += '<input type="hidden" name = "t_id" value=' + t_id + '>';
 				str += '<input type="hidden" name = "m_id" value=' + m_id + '>';
 				
-				strrrr += '<input type="submit" value="좌석선택" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #f6644f;height: 58px;">';
+				strrrr += '<input type="submit" value="좌석선택" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #ce2c3c;height: 58px;">';
 				$("#next").html(strrrr);
 				
 				str += '</div>';
@@ -338,18 +341,18 @@
 
 		<div class="container"
 			style="display: inline-block; text-align: center;">
-			<div class='col-sm-3'>
-				<img src="resources/img/영화.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/상영관.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/화살표.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/화살표.png" width="100">
-			</div>
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/영화.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/상영관.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/화살표.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/화살표.png" width="100"> -->
+<!-- 			</div> -->
 		</div>
 
 

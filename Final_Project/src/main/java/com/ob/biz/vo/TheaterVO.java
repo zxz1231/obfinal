@@ -138,30 +138,6 @@ public class TheaterVO {
 		this.img5_file = img5_file;
 	}
 
-	public String getRestraunt_title() {
-		return restraunt_title;
-	}
-
-	public void setRestraunt_title(String restraunt_title) {
-		this.restraunt_title = restraunt_title;
-	}
-
-	public String getRestraunt_phone() {
-		return restraunt_phone;
-	}
-
-	public void setRestraunt_phone(String restraunt_phone) {
-		this.restraunt_phone = restraunt_phone;
-	}
-
-	public String getRestraunt_address() {
-		return restraunt_address;
-	}
-
-	public void setRestraunt_address(String restraunt_address) {
-		this.restraunt_address = restraunt_address;
-	}
-
 	@Override
 	public String toString() {
 		return "TheaterVO [t_id=" + t_id + ", scr_num=" + scr_num + ", name=" + name + ", phone=" + phone + ", adress="
@@ -171,4 +147,7 @@ public class TheaterVO {
 				+ ", img2_file=" + img2_file + ", img3_file=" + img3_file + ", img4_file=" + img4_file + ", img5_file="
 				+ img5_file + "]";
 	}
+
+
+
 }

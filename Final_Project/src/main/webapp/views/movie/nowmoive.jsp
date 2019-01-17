@@ -50,7 +50,7 @@
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 <script>
 function idChk(){
-	alert("idChk실행 - Logininformaion : " + "${Logininformaion}");
+// 	alert("idChk실행 - Logininformaion : " + "${Logininformaion}");
 	if("${Logininformaion}" != null) {
 		return 1;
 	} else {
@@ -59,15 +59,15 @@ function idChk(){
 }
  function res(m_id){
  	console.log("${Logininformation}");
- 	alert("${Logininformation}");
- 	alert("${Logininformation.u_id}");
+//  	alert("${Logininformation}");
+//  	alert("${Logininformation.u_id}");
  	
  	var u_id = "${Logininformation.u_id}";
  	if(u_id != ""){
- 		alert("아이디있음");
-  		location.href="movieRes.do";
+//  		alert("아이디있음");
+  		location.href="movieRes.do?m_id=" + m_id;
   	} else {
-  		alert("아이디없음");
+//   		alert("아이디없음");
   		document.getElementById("id01").style="display:block";
 	} 
 }
@@ -141,7 +141,7 @@ function idChk(){
 												<h3>		
 													<a href="<%=contextPath%>/movieDetail.do?m_id=${movieidx.m_id}"><img alt="영화정보"
 														src="<%=IMGPath%>/영화정보.png"></a>
-														<a href="#" onclick="res(${movieOne.m_id })"><img alt="예매하기"
+														<a href="#" onclick="res(${movieidx.m_id })"><img alt="예매하기"
 														src="<%=IMGPath%>/예매.png"></a>
 												</h3>
 											</div>

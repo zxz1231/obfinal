@@ -103,16 +103,16 @@
 				console.log($("#seat").html());
 				
 				if($("#seat").html() == "") {
-					alert("내용없음");
+// 					alert("내용없음");
 					$("#seat").html(rowCol);
 				} else if ($("#seat").html() != "") {
 					if($("#seat").html().indexOf(rowCol) == -1) {
-						alert("내용없음");
+// 						alert("내용없음");
 						$("#seat").append(" " + rowCol);
 					} else {
-						alert("내용있음");
-						alert($("#seat").html().indexOf(rowCol));
-						alert($("#seat").html());
+// 						alert("내용있음");
+// 						alert($("#seat").html().indexOf(rowCol));
+// 						alert($("#seat").html());
 						$("#seat").html($("#seat").html().replace(rowCol, ''));
 					}
 				}
@@ -141,18 +141,18 @@
 
 		<div class="container"
 			style="display: inline-block; text-align: center;">
-			<div class='col-sm-3'>
-				<img src="resources/img/영화.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/상영관.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/좌석.png" width="100">
-			</div>
-			<div class='col-sm-3'>
-				<img src="resources/img/화살표.png" width="100">
-			</div>
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/영화.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/상영관.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/좌석.png" width="100"> -->
+<!-- 			</div> -->
+<!-- 			<div class='col-sm-3'> -->
+<!-- 				<img src="resources/img/화살표.png" width="100"> -->
+<!-- 			</div> -->
 		</div>
 
 
@@ -267,6 +267,16 @@
 									</div>
 								</div>
 							</li>
+							<li>
+								<div id="next">
+									<input type="hidden" name="scr_id" value=${scheduleVO.scr_id }>
+									<input type="hidden" name="m_id" value=${scheduleVO.m_id }>
+									<input type="hidden" name="t_id" value=${scheduleVO.t_id }>
+									<input type="hidden" name="time" value=${scheduleVO.time }>
+									<input type="hidden" name="date" value=${scheduleVO.date }>
+									<input type="button" value="결제하기" onclick="sendSeat(this.form)" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #ce2c3c;height: 58px;">
+								</div>
+							</li>
 						</ul>
 					</div>
 					<div class="card-footer d-flex flex-column" style="height: 146px;">
@@ -279,11 +289,9 @@
 									<input type="hidden" name="t_id" value=${scheduleVO.t_id }>
 									<input type="hidden" name="time" value=${scheduleVO.time }>
 									<input type="hidden" name="date" value=${scheduleVO.date }>
-									<input type="button" value="결제하기" onclick="sendSeat(this.form)" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #f6644f;height: 58px;">
+									<input type="button" value="결제하기" onclick="sendSeat(this.form)" class="cr-btn cr-btn-sm" style="margin-top: 30px;background-color: #ce2c3c;height: 58px;">
 								</div>
 							</li>
-
-
 						</ul>
 					</div>
 				</div>

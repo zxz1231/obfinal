@@ -52,9 +52,9 @@
 		SELECT * FROM USERS WHERE ID = #{id} AND PASSWORD = #{password}
 	</select>
 	
-	<select id="getUserOne" resultMap="usersResult" parameterType="users">
+	<select id="getUserOne" resultType="users" parameterType="users">
 	<!-- resultMap="userResult"> -->
-	SELECT * FROM USERS WHERE U_ID = 1
+	SELECT * FROM USERS WHERE U_ID = #{u_id}
 	</select>
 	
 	<select id="getUsersList" resultType="users">

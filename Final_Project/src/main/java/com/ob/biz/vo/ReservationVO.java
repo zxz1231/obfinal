@@ -140,9 +140,9 @@ public class ReservationVO {
 	@Override
 	public String toString() {
 		return "ReservationVO [r_id=" + r_id + ", u_id=" + u_id + ", nu_id=" + nu_id + ", sch_id=" + sch_id
-				+ ", seat_row=" + seat_row + ", seat_col=" + seat_col + ", r_date=" + r_date + "]";
+				+ ", seat_row=" + seat_row + ", seat_col=" + seat_col + ", r_date=" + r_date + ", title=" + title
+				+ ", runningtime=" + runningtime + ", t_name=" + t_name + ", t_phone=" + t_phone + ", t_address="
+				+ t_address + ", scr_name=" + scr_name + ", etc=" + etc + ", time=" + time + ", price=" + price
+				+ ", id=" + id + ", name=" + name + ", nu_phone=" + nu_phone + ", nu_name=" + nu_name + "]";
 	}
-	
-	
-	
 }

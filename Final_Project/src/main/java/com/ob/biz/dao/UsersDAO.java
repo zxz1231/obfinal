@@ -51,7 +51,7 @@ public class UsersDAO {
 	
 	public UsersVO getUserOne(UsersVO vo) {
 		System.out.println("UsersDAO : " + vo);
-		return mybatis.selectOne("UsersDAO.getUserOne");
+		return mybatis.selectOne("UsersDAO.getUserOne",vo);
 	}
 		
 	//회원 ID 조회

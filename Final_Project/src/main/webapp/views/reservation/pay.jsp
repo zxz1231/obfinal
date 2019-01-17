@@ -7,8 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h4>신용카드</h4>
-	<h4>핸드폰</h4>
-	<h4>계좌입금</h4>
+	<h4>결제방식 </h4>
+	<form action="payTest.do">
+	<select name="pay_type">
+		<option value="card">신용카드</option>
+		<option value="phone">핸드폰</option>
+		<option value="Transfer">계좌입금</option>
+	</select>
+	<input type="submit">
+	</form>
 </body>
 </html>

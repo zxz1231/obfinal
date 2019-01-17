@@ -14,6 +14,7 @@
  	<typeAlias alias="theater" type="com.ob.biz.vo.TheaterVO"/>
 	<typeAlias alias="screen" type="com.ob.biz.vo.ScreenVO"/>
 	<typeAlias alias="schedule" type="com.ob.biz.vo.ScheduleVO"/>
+	<typeAlias alias="pay_info" type="com.ob.biz.vo.Pay_infoVO"/>
 	
 	<typeAlias alias="page" type="com.ob.biz.vo.PageVO"/>
 	
@@ -30,5 +31,6 @@
     <mapper resource="mappings/schedule-mapper.xml" />
 	<mapper resource="mappings/theater-mapper.xml" />
 	<mapper resource="mappings/screen-mapper.xml" />
+	<mapper resource="mappings/pay_info-mapper.xml" />
   </mappers>
 </configuration>
