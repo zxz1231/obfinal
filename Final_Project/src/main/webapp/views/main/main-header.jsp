@@ -42,9 +42,9 @@
 										</ul></li>
 									<li class="cr-dropdown"><a href="about-us.html">극장</a>
 										<ul>
-											<li><a href="about-us.html">A</a></li>
-											<li><a href="about-us-2.html">B</a></li>
-											<li><a href="about-us-3.html">C</a></li>
+											<c:forEach var="i" items="${theaterList}">
+											<li><a href="<%=contextPath%>/theaterList.do?t_id=${i.t_id }">${i.name }</a></li>
+											</c:forEach>
 										</ul></li>
 
 									<li class="cr-dropdown"><a href="about-us.html">즐기기</a>
@@ -63,7 +63,7 @@
 
 									<li class="cr-dropdown"><a href="contact-us.html">고객센터</a>
 										<ul>
-											<li><a href="contact-us.html">공지사항</a></li>
+											<li><a href="<%=contextPath%>/getNoticeList.do?b_type=0&cPage=1">공지사항</a></li>
 											<li><a href="contact-us-2.html">문의사항</a></li>
 											<li><a href="contact-us-3.html">뭐쓸까?</a></li>
 											<li><a href="contact-us-4.html">모행?</a></li>

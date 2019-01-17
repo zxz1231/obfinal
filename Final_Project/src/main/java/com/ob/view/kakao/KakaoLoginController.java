@@ -46,7 +46,7 @@ public class KakaoLoginController {
 			// return "/views/login/login_success.jsp";
 			System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
 			if(newvo.getEmail()==null) return "/views/login/email_check.jsp";
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 
 		} else
 			System.out.println("이미 존재하는 id");
@@ -56,7 +56,7 @@ public class KakaoLoginController {
 		System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
 		if(newvo.getEmail()==null) return "/views/login/email_check.jsp";
 		
-		return "/views/main/main.jsp";
+		return "/mainGO.do";
 		//
 
 		// vo = service.kakaoLogin(vo);

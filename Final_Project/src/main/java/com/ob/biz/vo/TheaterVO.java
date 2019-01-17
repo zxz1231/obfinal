@@ -4,7 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class TheaterVO {
 	private int t_id, scr_num;
-	private String name, phone, adress, content, img1, img2, img3, img4, img5;
+	private String name, phone, adress, content, img1, img2, img3, img4, img5, restraunt_title, restraunt_phone, restraunt_address; 
+	
 
 	// 파일 관련 필드 추가
 	private MultipartFile img1_file, img2_file, img3_file, img4_file, img5_file;
@@ -137,12 +138,37 @@ public class TheaterVO {
 		this.img5_file = img5_file;
 	}
 
+	public String getRestraunt_title() {
+		return restraunt_title;
+	}
+
+	public void setRestraunt_title(String restraunt_title) {
+		this.restraunt_title = restraunt_title;
+	}
+
+	public String getRestraunt_phone() {
+		return restraunt_phone;
+	}
+
+	public void setRestraunt_phone(String restraunt_phone) {
+		this.restraunt_phone = restraunt_phone;
+	}
+
+	public String getRestraunt_address() {
+		return restraunt_address;
+	}
+
+	public void setRestraunt_address(String restraunt_address) {
+		this.restraunt_address = restraunt_address;
+	}
+
 	@Override
 	public String toString() {
 		return "TheaterVO [t_id=" + t_id + ", scr_num=" + scr_num + ", name=" + name + ", phone=" + phone + ", adress="
 				+ adress + ", content=" + content + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + ", img4="
-				+ img4 + ", img5=" + img5 + ", img1_file=" + img1_file + ", img2_file=" + img2_file + ", img3_file="
-				+ img3_file + ", img4_file=" + img4_file + ", img5_file=" + img5_file + "]";
+				+ img4 + ", img5=" + img5 + ", restraunt_title=" + restraunt_title + ", restraunt_phone="
+				+ restraunt_phone + ", restraunt_address=" + restraunt_address + ", img1_file=" + img1_file
+				+ ", img2_file=" + img2_file + ", img3_file=" + img3_file + ", img4_file=" + img4_file + ", img5_file="
+				+ img5_file + "]";
 	}
-
 }

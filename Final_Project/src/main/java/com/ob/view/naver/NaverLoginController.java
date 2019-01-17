@@ -94,7 +94,7 @@ public class NaverLoginController {
 			/* 네이버 로그인 성공 페이지 View 호출 */
 			// return "/views/login/login_success.jsp";
 			System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
-			return "/views/main/main.jsp";
+			return "/mainGO.do";
 
 		} else
 			System.out.println("이미 존재하는 id");
@@ -102,7 +102,7 @@ public class NaverLoginController {
 		UsersVO newvo = usersService.getApiUsers(vo);
 		session.setAttribute("Logininformation", newvo);
 		System.out.println("페이지 넘기기 마지막 확인 vo :" + newvo);
-		return "/views/main/main.jsp";
+		return "/mainGO.do";
 
 		// vo.setGender(sex); 
 		// vo.setNickname(nickname);

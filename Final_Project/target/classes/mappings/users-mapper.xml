@@ -30,6 +30,13 @@
 		 WHERE U_ID = #{u_id}
 	</update>
 	
+	<!-- 투표용 -->
+	<update id="updateUsersVote" parameterType="users">
+		UPDATE USERS 
+		   SET VOTEDMOVIE = #{votedmovie}
+		 WHERE U_ID = #{u_id}
+	</update>
+	
 	<!-- votedmovie 초기화 -->
 	<update id="resetVotedMovie" parameterType="users">
 		UPDATE USERS 

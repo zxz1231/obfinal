@@ -11,6 +11,9 @@ public interface UsersService {
 	// 회원정보 수정
 	public void updateUsers(UsersVO vo);
 	
+	// 투표후 vot만 회원정보 수정
+	public void updateUsersVote(UsersVO vo);
+	
 	// votedmovie 초기화
 	public void resetVotedMovie();
 
