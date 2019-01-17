@@ -37,5 +37,8 @@ public interface UsersService {
 
 	// 이메일 추가 하기
 	public int updateUsersEmail(UsersVO vo);
+	
+	//아이디 찾기 
+	public String findIDchk(UsersVO vo);
 
 }

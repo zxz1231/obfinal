@@ -77,6 +77,9 @@
 		 WHERE U_ID = #{u_id}
 	</update>
 	
+	<select id="findIDchk" parameterType="users" resultType="String">
+	 select id  from users where name = #{name} and email = #{email} and NOT id LIKE ('%n_%') AND NOT id like ('%k_%')
+	</select>
 	
 	
 </mapper>  
