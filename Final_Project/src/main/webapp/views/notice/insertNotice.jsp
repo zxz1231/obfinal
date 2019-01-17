@@ -17,10 +17,10 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- include libraries(jQuery, bootstrap) -->
+<!-- <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>  
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
@@ -68,8 +68,6 @@ $(document).ready(function() {
 <!-- Cusom css -->
 <link rel="stylesheet" href="<%=KPath%>/css/custom.css">
 
-<!-- Modernizer js -->
-<script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 
 </head>
 
@@ -219,8 +217,8 @@ $(document).ready(function() {
 
 	<!-- JS Files -->
 	<script src="<%=KPath%>/js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="<%=KPath%>/js/popper.min.js"></script>
-	<script src="<%=KPath%>/js/bootstrap.min.js"></script>
+	<script src="<%=KPath%>/js/popper.min.js"></script>	
+	 <script src="<%=KPath%>/js/bootstrap.min.js"></script> 
 	<script src="<%=KPath%>/js/plugins.js"></script>
 	<script src="<%=KPath%>/js/active.js"></script>
 	<script src="<%=KPath%>/js/scripts.js"></script>

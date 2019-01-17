@@ -39,7 +39,7 @@
 											<li><a href="index-creative-agency.html">(관람가이드)</a></li>
 											<li><a href="/getVoteList.do">보고싶은 명화</a></li>
 										</ul></li>
-									<li class="cr-dropdown"><a href="about-us.html">극장</a>
+									<li class="cr-dropdown"><a href="#">극장</a>
 										<ul>
 											<c:forEach var="i" items="${theaterList}">
 											<li><a href="<%=contextPath%>/theaterList.do?t_id=${i.t_id }">${i.name }</a></li>
@@ -62,7 +62,7 @@
 
 									<li class="cr-dropdown"><a href="contact-us.html">고객센터</a>
 										<ul>
-											<li><a href="<%=contextPath%>/getNotceList.do?b_type=0&cPage=1">공지사항</a></li>
+											<li><a href="<%=contextPath%>/getNoticeList.do?b_type=0&cPage=1">공지사항</a></li>
 											<li><a href="contact-us-3.html">뭐쓸까?</a></li>
 											<li><a href="contact-us-4.html">모행?</a></li>
 										</ul></li>
@@ -109,9 +109,9 @@
 		
 		
 </body>
-<!-- 로그인 메인 css -->
+<%-- <!-- 로그인 메인 css -->
 <link rel="stylesheet"
 	href="<%=contextPath%>/resources/addcss/login_main.css">
-
+ --%>
 
 </html>

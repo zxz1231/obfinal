@@ -181,12 +181,6 @@
 	</div>
 	<!-- //Main wrapper -->
 
-	<!-- JS Files -->
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
-	<script src="js/scripts.js"></script>
 
 </body>
 </html>
