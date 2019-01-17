@@ -25,8 +25,8 @@
 	
 	<update id="updateUsers" parameterType="users">
 		UPDATE USERS 
-		   SET PASSWORD = #{password}, NAME = #{name}
-			 , BIRTH = #{birth}, PHONE = #{phone}, GRADE = #{grade}, EMAIL = #{email}, VOTEDMOVIE = #{votedmovie}
+		   SET GRADE = #{grade}, ID = #{id}, PASSWORD = #{password}, NAME = #{name}
+			 , BIRTH = #{birth}, PHONE = #{phone}, EMAIL = #{email}, VOTEDMOVIE = #{votedmovie}
 		 WHERE U_ID = #{u_id}
 	</update>
 	
@@ -77,8 +77,16 @@
 		 WHERE U_ID = #{u_id}
 	</update>
 	
+	<select id="findIDchk" parameterType="users" resultType="String">
+	 select id  from users where name = #{name} and email = #{email} and NOT id LIKE ('%n_%') AND NOT id like ('%k_%')
+	</select>
 	
-	
+	<update id="update_pw" parameterType="users">
+		update USERS set password = #{password} where id = #{id}
+	</update>
+	<select id="findPWchk" parameterType="users" resultType="int">
+	select count(*) from USERS where ID = #{id} AND email= #{email}
+	</select>
 </mapper>  
 
 

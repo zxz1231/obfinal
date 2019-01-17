@@ -27,6 +27,7 @@ function login(frm){
 			alert(result);
 			if(result == "success"){
 				alert("로그인 되었습니다.");
+				frm.action = "<%=contextPath%>/mainGO.do?pageType=main";
 <%-- 				frm.action = "<%=contextPath%>/mainGO.do?pageType=${pageType}"; --%>
 <%-- 				frm.action = "<%=contextPath%>/mainGO.do?pageType=${pageType}"; --%>
 /* frm.action = "/mainGO.do"; */
@@ -90,8 +91,7 @@ function login(frm){
 					style="width: 100px; height: 40px;"
 					onclick="location.href='<%=contextPath%>/joinUS.do'">회원가입</button>
 
-				<span class="psw"><a href="#">비밀번호찾기</a></span> <span class="psw"><a
-					href="#">아이디찾기</a>&nbsp;&nbsp;</span>
+				<span class="psw"><a href="/findIDPW.do">아이디/비밀번호찾기</a></span> 
 			</div>
 		</form>
 	</div>

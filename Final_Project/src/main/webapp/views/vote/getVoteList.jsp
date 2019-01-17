@@ -39,6 +39,9 @@
 <!-- Custom css -->
 <link rel="stylesheet" href="<%=KPath%>/css/custom.css">
 
+<!-- 투표페이지 CSS -->
+<link rel="stylesheet" href="/views/vote/voteList.css">
+
 <!-- Modernizer js -->
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 
@@ -48,7 +51,7 @@
 
 $(function(){
 	getVoteList();
-	document.getElementsByTagname("jsp:include")[1].setAttribute("page","/views/vote/login_modal_vote.jsp");
+// 	document.getElementsByTagname("jsp:include")[1].setAttribute("page","/views/vote/login_modal_vote.jsp");
 })
 
 function getVoteList(){
@@ -126,41 +129,54 @@ function voteListing(result){
 	
 	//	전체 영화 리스트(mList)******************************
 	var str ='';
-	//str += '<div class="counter-area section-padding-sm bg-grey">';
 	str += '<div class="mList-content container">';
-	//str += '<div class="counter-area-inner counter-style-2">';
-	//str += '<div class="row no-gutters align-items-center">';
 	for(var i in mList){
-		str += '<div class="mList-item col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2" id="mList'+i+'" mList_m_id="' + mList[i].m_id + '" padding:0">';
-		str += 	'<a onclick="vote('+mList[i].m_id+')">';
-		str += 		'<div>';	
+		console.log(mList[i].onair);
+		if(mList[i].onair==0){
+		str += '<a onclick="vote('+mList[i].m_id+')">';
+		str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block>';
+		} else {
+		str += '<a>';
+		str += '<div class="mList-item card border-dark mb-3 col-3" mList_m_id="' + mList[i].m_id + '" style=max-width: 18rem; margin: 5px; padding: 0; display: block; background-color:red>';
+		}
+		str += '	<div class="card-header" style="padding:0">';
 		str += 			'<div class="counter text-center">';	
-		str += 				'<h3 class="counter-active">';
-		str += 					mList[i].vote;
-		str += 				'</h3>';
+		str += 				'<h3 class="counter-active">' + mList[i].vote + '</h3>';
 		str += 			'</div>';
-		str += 			'<div class="imgBox">';
-		str += 				'<img src="/resources/movieimg/'+mList[i].poster+'"><br>';
-		str += 			'</div>';
-		str += 			'<div class="titleBox text-center">';
-		str += 				'<h6>';
-		str += 					mList[i].title;
-		str += 				'</h6>';
-		str += 			'</div>';
-		str += 		'</div>';
-		str += 	'</a>';
+		str += '		<div class="imgBox" style="width:100%; margin:auto; overflow:hidden">';
+		str += '		<img src="/resources/movieimg/'+mList[i].poster+'" style="width:100%"><br>';
+		str += '		</div>';
+		str += '	</div>';
+		str += '	<div class="card-body text-dark text-center" style="min-height:50px">';
+		str += '		<h5 class="card-title" style="margin: ">' + mList[i].title + '</h5>';
+		str += '		<p class="card-text"><a href="#">상세보기</a></p>';
+		str += '	</div>';
+		str += '</div>';
+		str += '</a>';
 		str += '</div>';
 	};
-	// str += '</div>';
-	// str += '</div>';
 	str += '</div>';
-	// str += '</div>';
 	
 	$('.mList').html(str);
 }
 
 </script>
-
+<style>
+.disabled {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+</style>
+<!-- 로그인 메인 css -->
+<link rel="stylesheet" href="/resources/addcss/login_main.css">
 </head>
 <body>
 
@@ -176,49 +192,46 @@ function voteListing(result){
 		<div class="container">
 			<a href="#" id="myBtn">myBtn</a>
 			<a href="vote.do">vote.do</a>
-			<div class="votedmovie"></div>
-			<div class="mListByVote"></div>
-			<div class="mList"></div>
-		
-	<div class="card" style="width: 18rem;">
-		<!-- <img class="card-img-top" src="..." alt="Card image cap" style="height: 180px; width: 100%; display: block;"> -->
-		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<div class="votedmovie" style="display:flex"></div>
+			<div class="mListByVote" style="display:flex"></div>
+			<div class="mList" style="display:flex"></div>
+			
+			
+			<div class="votedmovie-content">
+				<div class="votedmovie-content-header">
+				</div>
+
+				<div class="votedmovie-content-body">
+				</div>
+			</div>
+			
+				
+			<div class="card" style="width: 18rem;">
+				<!-- <img class="card-img-top" src="..." alt="Card image cap" style="height: 180px; width: 100%; display: block;"> -->
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				<div class="card-body">
+					<a href="#" class="card-link">Card link</a>
+					<a href="#" class="card-link">Another link</a>
+				</div>
+			</div>
+			
+			<div class="card border-dark mb-3" style="max-width: 18rem;">
+				<div class="card-header">Header</div>
+				<div class="card-body text-dark">
+					<h5 class="card-title">Dark card title</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+				
 		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Dapibus ac facilisis in</li>
-			<li class="list-group-item">Vestibulum at eros</li>
-		</ul>
-		<div class="card-body">
-			<a href="#" class="card-link">Card link</a>
-			<a href="#" class="card-link">Another link</a>
-		</div>
-	</div>
-	
-	<div class="card border-dark mb-3" style="max-width: 18rem;">
-		<div class="card-header">Header</div>
-		<div class="card-body text-dark">
-			<h5 class="card-title">Dark card title</h5>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		</div>
-	</div>
-		<!-- The Modal -->
-<!-- 		<div id="myModal" class="modal"> -->
-<!-- 			<!-- Modal content --> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<span id="modal-close">&times;</span> -->
-<!-- 				<p>Some text in the Modal..</p> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-		<!--// The Modal -->
-		
-		</div>
-		
-		<!-- 로그인 modal 시작 (login폴더에 login_modal.jsp을 포함시킴)-->
-<%-- 		<jsp:include page="/views/vote/login_modal_vote.jsp"></jsp:include> --%>
-		<!-- 로그인 modal 끝 -->
 		
 	</main>	
 	<!--// 메인 영역 Content -->
@@ -232,13 +245,7 @@ function voteListing(result){
 
 <!-- Modal용 js -->
 <!-- <script src="/views/vote/voteMovieModal.js"></script> -->
-
-
-<!-- 로그인 메인 css -->
-<link rel="stylesheet" href="/resources/addcss/login_main.css">
 	
-<!-- 투표페이지 CSS -->
-<link rel="stylesheet" href="/views/vote/voteList.css">
 <!-- 투표페이지 모달용 CSS -->
 <!-- <link rel="stylesheet" href="/views/vote/voteMovieModal.css"> -->
 

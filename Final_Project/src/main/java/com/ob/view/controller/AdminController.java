@@ -600,12 +600,12 @@ public class AdminController {
 	public String Admin_searchSchedule(ScreenVO vo, Model model) {
 		// List<PlusVO> plusList = plusService.getPlusList();
 		List<TheaterVO> theaterList = theaterService.getTheaterList();
-		System.out.println(theaterList);
+		System.out.println("111111111111111111" +theaterList);
 		List<ScreenVO> screenList = screenService.getScreenList();
-		System.out.println(screenList);
+		System.out.println("222222222222222222222" +screenList);
 
 		List<PlusVO> plusList = plusService.getPlusList();
-
+		System.out.println("3333333333333333333" +plusList);
 		model.addAttribute("theaterList", theaterList);
 		model.addAttribute("screenList", screenList);
 		model.addAttribute("plusList", plusList);

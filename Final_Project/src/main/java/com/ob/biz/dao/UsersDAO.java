@@ -21,6 +21,7 @@ public class UsersDAO {
 	//회원정보 수정
 	public void updateUsers(UsersVO vo) {
 		System.out.println("==========================> Mybatis2로 updateUsers() 처리");
+		System.out.println("DAO- updateUsers실행. uvo : " + vo);
 		mybatis.update("UsersDAO.updateUsers", vo);
 	};
 	//votedmovie 수정 .
@@ -69,6 +70,17 @@ public class UsersDAO {
 		System.out.println("==========================> Mybatis2로 이메일 추가하기() 처리");
 		 return mybatis.delete("UsersDAO.updateUsersEmail", vo);
 		
+	}
+	//아이디 찾기
+	public String findIDchk(UsersVO vo) {
+		return mybatis.selectOne("UsersDAO.findIDchk",vo);
+	}
+	// 아이디랑 이메일로 존재여부 확인
+	public int findPWchk(UsersVO vo) {
+		return mybatis.selectOne("UsersDAO.findPWchk",vo);
+	}
+	public int update_pw(UsersVO vo) {
+		return mybatis.update("UsersDAO.update_pw",vo);
 	}
 	
 }

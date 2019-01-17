@@ -45,47 +45,63 @@
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<style>
+.row-text {
+	display:block;
+	margin:0;
+	padding:0;
+}
+</style>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
 $(function() {
+// 	$('#idcheck').on("click",function(){ 
 	$('#idcheck').click(function(){ 
-	  alert("중복체크 버튼이 눌렸습니다.");
-	  $("#idcheckok").val("ok")
+	  $("#idcheckok").val("ok");
 	  var id = $("#id").val();
 	  if(id == ''){
 		  alert("아이디를 입력후 중복체크를 눌러주세요.")
 		  $("#id").focus();
 			return false;
 	  }
-	  alert("입력한 아이디: "+id);	  
+	  console.log("입력한 아이디: "+id);	  
 	  
 	  $.ajax({
-		  url:"<%=contextPath%>/idchk.do",
+		  url:"idchk.do",
 			type:"post",
 			data : {'id':id},
 			dataType:"text",
 			success: function(result){
 				alert(result);
 				if(result == "0"){
+					var str='';
 					alert("사용가능");
-					$("#idcheckmsg")
-					.html(
-							"<div style='color: blue;'><b>사용가능</b></div>");
-							} else if (result == "1") {
-								alert("현재 사용중인 아이디입니다 다시 입력해주세요.");
-								$("#idcheckok").val("no");
-								$("#idcheckmsg")
-										.html(
-												"<div style='color: red;'><b>사용불가</b></div>");
-							}
-							else if (result =="2"){
-								alert("다른 오류 입니다.")
-							}
+					$("#idcheckmsg").html("<span style='color: blue;'><b>사용가능</b></span>");
+				} else if (result == "1") {
+					alert("현재 사용중인 아이디입니다 다시 입력해주세요.");
+					$("#idcheckok").val("no");
+					$("#idcheckmsg").html("<span style='color: red;'><b>사용불가</b></span>");
+				} else if (result =="2"){
+					alert("다른 오류 입니다.")
+				}
 
-						}
-					});
+			}
+		});
+	});
+	
+	//비밀번호 체크
+	$('#passwordCHK').on('change',function(){
+			var str='';
+			console.log("$('#password') : " + $('#password').val())
+			console.log("$('#passwordCHK') : " + $('#passwordCHK').val())
+			if($('#password').val() === $('#passwordCHK').val()){
+				str += '<span style="color:blue;"><b>비밀번호 일치</b></span>';
+			} else {
+				str += '<span style="color:red;"><b>비밀번호 불일치</b></span>';
+			}
+			$('#passwordCHKText').html(str);
 	});
 	
 	// 회원 가입 처리
@@ -175,7 +191,7 @@ $(function() {
 
 						});
 
-	});
+});
 </script>
 
 
@@ -197,78 +213,67 @@ $(function() {
 		<!--메인 영역 Content -->
 		<main class="page-content"> <!-- Counter Area --> <!-- 추천 영화 섹션 시작 -->
 		<section class="services-area section-padding-lg bg-grey">
-			<div class="container">
+			<div class="container" style="margin:500 0 0 0">
 				<div class="row">
 
 					<!-- ///////////////////////////////// 여기부터 채우면됨 -->
-					<div class="col-md-12">
-						<div class="pg-contact-form mr-0 mr-lg-3">
+					<div class="col-md-6" style="padding: 40px; margin:auto;">
+						<div class="pg-contact-form mr-0 mr-lg-3" style="padding:30px">
 
 							<form id="contact-form" name="signupform" method="post">
-								<fieldset>
+								<fieldset style="padding: 20px 30px; min-width:500px">
 									<legend>회원가입</legend>
-									<div class="row">
-
-										<div class="col-md-3">
-											아이디<input type="text" name="id" placeholder="입력해주세요" id="id">
-										</div>
-										<div class="col-md-2">
-											<div>
-												<button type="button" id="idcheck">중복확인</button>
-											</div>
-											<div id="idcheckmsg"></div>
+									<div class="row-text">아이디</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px; position:relative">
+											<input type="text" name="id" placeholder="입력해주세요" id="id" style="width:65%;">
+											<button type="button" id="idcheck" style="width: 120px; padding: 10px 5px; margin: 9px auto ; position:absolute; right:0">중복확인</button>
 											<input type="hidden" id="idcheckok" value="no">
-										</div>
+									</div>
+									&nbsp;&nbsp;&nbsp;<span id="idcheckmsg"></span>
+										
+									
+									<div class="row-text">비밀번호</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="password" name="password" id="password" style="width:65%;">
+									</div>
+									
+									<div class="row-text">비밀번호확인</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="password" name="passwordCHK"
+												id="passwordCHK" style="width:65%;">
+									</div>
+									&nbsp;&nbsp;&nbsp;<span id="passwordCHKText" ></span>
+									
+									<div class="row-text">이름</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="text" name="name" placeholder="입력해주세요"
+												id="name" style="width:65%;">
+									</div>
+									
+									<div class="row-text">생년월일</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="date" name="birth" id="birth"placeholder="ex)2000-01-01" style="width:65%;">
 
 									</div>
-									<div class="row">
-
-										<div class="col-md-3">
-											비밀번호<input type="password" name="password" id="password">
-										</div>
-
+									
+									<div class="row-text">핸드폰</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="text" name="phone"
+												placeholder="ex)010-0000-0000" id="phone" style="width:65%;">
 									</div>
-									<div class="row">
-
-										<div class="col-md-3">
-											비밀번호확인<input type="password" name="passwordCHK"
-												id="passwordCHK">
-										</div>
-									</div>
-									<div class="row">
-
-										<div class="col-md-3">
-											이름 <input type="text" name="name" placeholder="입력해주세요"
-												id="name">
-										</div>
-									</div>
-									<div class="row">
-
-										<div class="col-md-3">
-											생년월일 <input type="date" name="birth" id="birth"placeholder="ex)2000-01-01">
-										</div>
-
-									</div>
-									<div class="row">
-
-										<div class="col-md-3">
-											핸드폰 <input type="text" name="phone"
-												placeholder="ex)010-0000-0000" id="phone">
-										</div>
-									</div>
-									<div class="row">
-
-										<div class="col-md-4">
-											이메일 <input type="email" name="email" placeholder="입력해주세요"
-												id="email">
-										</div>
+									
+									<div class="row-text">이메일</div>
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px;">
+											<input type="email" name="email" placeholder="입력해주세요"
+												id="email" style="width:65%;">
 									</div>
 
-									<div class="col-lg-3">
-										<div class="single-input">
-											<button class="cr-btn" type="button" id="sendgo">
-												<span>가입신청</span>
-											</button>
+<!-- 								<div class="col-md-4"> -->
+									<div class="row" style="margin:0 0 5px 0; padding:0 15px; align-content: right; position:relative; min-height:80px">
+										<div style="margin:0; padding:0; position:absolute; right:0; min-height:initial">
+										<button class="cr-btn" type="button" id="sendgo" style="width:120px; maring: auto; padding: 10px 5px;" >
+											<span>가입신청</span>
+										</button>
 										</div>
 									</div>
 								</fieldset>
@@ -276,77 +281,7 @@ $(function() {
 						</div>
 					</div>
 
-
-
-
-
-
-
-
-
-
 					<!-- ///////////////////////////////// 여기부터 채우면끝 -->
-
-				</div>
-			</div>
-		</section>
-
-		<!-- Features Area -->
-		<section
-			class="features-area section-padding-top-xs section-padding-bottom-sm bg-grey">
-			<div class="container">
-				<div class="row justify-content-center services-grid">
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-color-plate"></i>
-								</span> <span> <i class="bi bi-color-plate"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>친절</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-support"></i>
-								</span> <span> <i class="bi bi-support"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>감동</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
-
-					<!-- Signle Service -->
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-						<div class="service text-center">
-							<div class="service-icon">
-								<span> <i class="bi bi-rocket2"></i>
-								</span> <span> <i class="bi bi-rocket2"></i>
-								</span>
-							</div>
-							<div class="service-content">
-								<h4>행복</h4>
-								<p>There are many variations of passages of Lorem Ipsum, but
-									the majority</p>
-							</div>
-						</div>
-					</div>
-					<!--// Signle Service -->
 
 				</div>
 			</div>

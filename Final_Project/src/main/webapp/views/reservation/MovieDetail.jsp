@@ -47,7 +47,6 @@
 <!-- Modernizer js -->
 <title>Insert title here</title>
 <script>
-
 function idChk(){
 	if("${Logininformation}" != null) {
 		return 1;

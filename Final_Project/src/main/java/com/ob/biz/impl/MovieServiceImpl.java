@@ -88,6 +88,11 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVO> getMovieListPreair() {
 		return movieDAO.getMovieListPreair();
 	}
+	
+	@Override
+	public List<MovieVO> getMovieListPreairGnr() {
+		return movieDAO.getMovieListPreairGnr();
+	}
 
 	@Override
 	public int updateMovieOnairOne(int m_id) {

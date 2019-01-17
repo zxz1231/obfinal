@@ -16,6 +16,32 @@
 <title>탬플릿</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js" defer></script>
+	
+<script>
+$(document).ready(function() {
+	$('#summernote').summernote({
+		  height: 350,
+		  toolbar: [
+		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		    ['fontsize', ['fontsize']],
+		    ['color', ['color']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['table', ['table']],
+		    ['picture', ['picture']],
+		    ['fullscreen', ['fullscreen']],
+		    ['height', ['height']]
+		  ]
+		})
+});
+</script>
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="<%=KPath%>/images/favicon.ico">
@@ -43,6 +69,8 @@
 
 <!-- Modernizer js -->
 <script src="<%=KPath%>/js/vendor/modernizr-3.5.0.min.js"></script>
+
+
 </head>
 
 <body>
@@ -70,7 +98,8 @@
 							<table>
 								<tr>
 									<th width="70">제목</th>
-									<td><input type="text" name="title" value="${notice.title }"></td>
+									<td><input type="text" name="title"
+										value="${notice.title }"></td>
 								</tr>
 								<tr>
 									<th>작성자</th>
@@ -78,7 +107,8 @@
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td><textarea name="content" rows="10" cols="40">${notice.content }</textarea></td>
+									<td><textarea id="summernote" name="content" rows="10"
+											cols="40">${notice.content }</textarea></td>
 								</tr>
 								<tr>
 									<th>등록일</th>

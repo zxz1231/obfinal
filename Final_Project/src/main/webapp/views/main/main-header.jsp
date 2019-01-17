@@ -25,9 +25,8 @@
 					<div class="col-lg-12">
 						<div class="header-inner">
 							<div class="logo">
-								<a href="/mainGO.do"> <img
-									src="/views/logo/로고1.png"
-									alt="logo secondary dark" style="height: 100px;width: 150px;">
+								<a href="/mainGO.do">
+								<img src="/views/logo/로고1.png" alt="logo secondary dark" style="height: 100px; width: 150px;">
 								</a>
 							</div>
 							<nav class="menu">
@@ -35,7 +34,7 @@
 									<li class="cr-dropdown"><a href="#">영화/예매</a>
 										<ul>
 											<li><a href="<%=contextPath%>/checkMovieList.do">현재상영작</a></li>
-											<li><a href="index-creative-studio.html">상영예정작</a></li>
+											<li><a href="getMovieListPreair.do">상영예정작</a></li>
 											<li><a href="index-marketing-agency.html">상영시간표</a></li>
 											<li><a href="index-creative-agency.html">(관람가이드)</a></li>
 											<li><a href="/getVoteList.do">보고싶은 명화</a></li>
@@ -63,8 +62,7 @@
 
 									<li class="cr-dropdown"><a href="contact-us.html">고객센터</a>
 										<ul>
-											<li><a href="<%=contextPath%>/getNoticeList.do?b_type=0&cPage=1">공지사항</a></li>
-											<li><a href="contact-us-2.html">문의사항</a></li>
+											<li><a href="<%=contextPath%>/getNotceList.do?b_type=0&cPage=1">공지사항</a></li>
 											<li><a href="contact-us-3.html">뭐쓸까?</a></li>
 											<li><a href="contact-us-4.html">모행?</a></li>
 										</ul></li>
@@ -88,7 +86,7 @@
 										<c:if test="${Logininformation.id eq 'admin' }">									
 										<li><a href="<%=contextPath%>/admin_Main.do">관리자모드</a></li>
 										</c:if>
-										<li><a href="contact-us-2.html">내정보보기</a></li>
+										<li><a href="mypage.do">마이페이지</a></li>
 									</ul>
 
 								</li>

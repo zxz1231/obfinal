@@ -25,6 +25,7 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public void updateUsers(UsersVO vo) {
+		System.out.println("usersService - updateUsers실행. uvo : " + vo);
 		usersDAO.updateUsers(vo);
 	}
 	
@@ -71,6 +72,21 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public int updateUsersEmail(UsersVO vo) {
 		return usersDAO.updateUsersEmail(vo);
+	}
+
+	@Override
+	public String findIDchk(UsersVO vo) {
+		return usersDAO.findIDchk(vo);
+	}
+
+	@Override
+	public int findPWchk(UsersVO vo) {
+		return usersDAO.findPWchk(vo);
+	}
+
+	@Override
+	public int update_pw(UsersVO vo) {
+		return usersDAO.update_pw(vo);
 	}
 
 

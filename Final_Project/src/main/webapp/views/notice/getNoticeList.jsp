@@ -95,14 +95,14 @@ th {
 	text-decoration: none;
 	display: block;
 	padding: 3px 7px;
-	border: 1px solid #00B3DC;
+	border: 1px solid none;
 	font-weight: bold;
 	color: black;
 }
 
 .paging li a:hover {
-	background-color: #00B3DC;
-	color: white;
+	background-color: white;
+	color: black;
 }
 
 .paging .disable {
@@ -113,8 +113,8 @@ th {
 
 .paging .now {
 	padding: 3px 7px;
-	border: 1px solid #ff4aa5;
-	background-color: #ff4aa5;
+	border: 1px solid none;
+	background-color: black;
 	color: white;
 	font-weight: bold;
 }
@@ -143,14 +143,17 @@ th {
 					<form action="getNoticeList.do" method="GET">
 						<%-- <input type="hidden" name="id" value="${Logininformation.id }"> --%>
 						<input type="hidden" name="cPage" value="${pvo.nowPage }">
-						<table>
-							<tr>
-								<th width="100">번호</th>
-								<th width="200">제목</th>
-								<th width="150">작성자</th>
-								<th width="150">등록일</th>
-								<th width="100">조회수</th>
-							</tr>
+						<h3>공지사항</h3>
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th class="center" width="50">번호</th>
+									<th class="center" width="200">제목</th>
+									<th class="center" width="150">등록자</th>
+									<th class="center" width="150">등록일</th>
+									<th class="center" width="100">조회수</th>
+								</tr>
+							</thead>
 							<c:choose>
 								<c:when test="${empty list }">
 									<tr>
@@ -161,18 +164,19 @@ th {
 									<c:forEach var="noticeList" items="${list }">
 										<tr>
 											<td class="center">${noticeList.b_id }</td>
-											<td><a
+											<td class="center"><a
 												href="getNotice.do?b_id=${noticeList.b_id }&cPage=${pvo.nowPage}">
 													${noticeList.title }</a></td>
-											<td>${noticeList.name }</td>
-											<td>${noticeList.regdate }</td>
+											<td class="center">${noticeList.name }</td>
+											<td class="center">${noticeList.regdate }</td>
 											<td class="center">${noticeList.hit }</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
 						</table>
-						<div class="container">
+						<div class="container"
+							style="padding-left: 250px; padding-top: 0px;">
 							<ol class="paging">
 								<c:forEach var="k" begin="${pvo.beginPage }"
 									end="${pvo.endPage }">
@@ -182,18 +186,22 @@ th {
 										</c:when>
 										<c:otherwise>
 											<li><a href="getNoticeList.do?b_type=0&cPage=${k }">${k }</a>
-											</li> 
+											</li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 							</ol>
+							<div>
+								<c:if test="${Logininformation.id == 'admin'}">
+									<button type="button" class="btn btn-danger"
+										onclick="javascript:location.href='/views/notice/insertNotice.jsp'">작성하기</button>
+									<!-- <input type="button" value="글쓰기"
+										onclick="javascript:location.href='/views/notice/insertNotice.jsp'"> -->
+								</c:if>
+								<c:if test="${Logininformation.id != 'admin'}">
+								</c:if>
+							</div>
 						</div>
-						<c:if test="${Logininformation.id == 'admin'}">
-							<input type="button" value="글쓰기"
-								onclick="javascript:location.href='/views/notice/insertNotice.jsp'">
-						</c:if>
-						<c:if test="${Logininformation.id != 'admin'}">
-						</c:if>
 					</form>
 					<!-- ///////////////////////////////// 여기부터 채우면끝 -->
 				</div>

@@ -53,14 +53,19 @@ public class MovieDAO {
 		return mybatis.selectList("MovieDAO.getMovieList");
 	}
 
-	//상영중 상태인 영화 목록 조회(영화제목순)
+	//상영중 상태인 영화 목록 조회
 	public List<MovieVO> getMovieListOnair() {
 		return mybatis.selectList("MovieDAO.getMovieListOnair");
 	}
 	
-	//상영예정 상태인 영화 목록 조회(영화제목순)
+	//상영예정 상태인 영화 목록 조회
 	public List<MovieVO> getMovieListPreair() {
 		return mybatis.selectList("MovieDAO.getMovieListPreair");
+	}
+	
+	//상영예정 상태인 영화 목록 조회(장르별)
+	public List<MovieVO> getMovieListPreairGnr() {
+		return mybatis.selectList("MovieDAO.getMovieListPreairGnr");
 	}
 	
 	//득표수 상위 5개 영화 목록 조회(득표수 내림차순, 영화제목순)

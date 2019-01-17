@@ -32,6 +32,7 @@ public class MovieController {
 	@Autowired
 	private UsersService usersService;
 	
+	//영화 상세보기
 	@RequestMapping("movieDetail.do")
 	public String movieDetail(MovieVO vo, Model model,HttpSession session) {
 		
@@ -42,6 +43,19 @@ public class MovieController {
 		//페이지 정보 저장
 //		session.setAttribute("pageType","MovieDetail");
 		return "/views/reservation/MovieDetail.jsp";
+	}
+	
+	//영화 상세보기(상영예정작)
+	@RequestMapping("movieDetailPreair.do")
+	public String movieDetailPreair(MovieVO vo, Model model,HttpSession session) {
+		
+		model.addAttribute("movieOne",movieService.getMovieOne(vo));
+		
+		System.out.println("movieService.getMovieOne(vo) : " + movieService.getMovieOne(vo));
+		
+		//페이지 정보 저장
+//		session.setAttribute("pageType","MovieDetail");
+		return "/views/movie/movieDetailPreair.jsp";
 	}
 	
 	@RequestMapping("movieRes.do")
@@ -87,6 +101,20 @@ public class MovieController {
 		//페이지 정보 저장
 //		session.setAttribute("pageType","nowmoive");
 		return "/views/movie/nowmoive.jsp";
+	}
+	
+	//상영예정작
+	@RequestMapping(value = "getMovieListPreair.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getMovieListPreair(MovieVO vo, Model model, HttpSession session) {
+		List<MovieVO> movieList = movieService.getMovieListPreair();
+		List<MovieVO> gnrList = movieService.getMovieListPreairGnr();
+		
+		// Model 형식으로 저장해서 DispatcherServervlet에 전달
+		model.addAttribute("movieListPreair", movieList);
+		model.addAttribute("gnrListPreair", gnrList);
+		
+		//페이지 정보 저장
+		return "/views/movie/preair.jsp";
 	}
 	
 	

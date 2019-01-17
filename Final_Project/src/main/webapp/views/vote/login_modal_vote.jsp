@@ -85,6 +85,15 @@ function login(frm){
 					href="#">아이디찾기</a>&nbsp;&nbsp;</span>
 			</div>
 		</form>
+		<!-- The Modal -->
+		<!-- 		<div id="myModal" class="modal"> -->
+		<!-- 			<!-- Modal content --> -->
+		<!-- 			<div class="modal-content"> -->
+		<!-- 				<span id="modal-close">&times;</span> -->
+		<!-- 				<p>Some text in the Modal..</p> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+				<!--// The Modal -->
 	</div>
 
 </body>

@@ -16,7 +16,7 @@ public class UsersController {
    @Autowired
    private UsersService usersService;
 
-   @RequestMapping(value = "/idchk.do", method = RequestMethod.POST)
+   @RequestMapping(value = "idchk.do", method = RequestMethod.POST)
    public @ResponseBody String idCHK(UsersVO vo, HttpSession session) {
       System.out.println("넘어온 데이터" + vo.getId());
       int getID = usersService.idcheck(vo);
@@ -36,7 +36,7 @@ public class UsersController {
          return "2";
 
    }
-
+   
    @RequestMapping(value = "/signUP.do", method = RequestMethod.POST)
    public @ResponseBody String signUP(UsersVO vo, HttpSession session) {
       System.out.println("입력받은 vo" + vo);

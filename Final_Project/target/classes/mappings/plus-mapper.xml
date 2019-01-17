@@ -5,7 +5,7 @@
 <mapper namespace="PlusDAO">
 
 
-	<select id="getPlusALl" resultType="plus">
+	<select id="getPlusALL" resultType="plus">
 	select * from schedule sch , screen scr ,theater t ,movie m where sch.m_id = m.m_id AND sch.t_id = t.t_id AND sch.scr_id = scr.scr_id
 	</select>
 	
@@ -32,7 +32,7 @@
 	]]>
 	</insert>
 	
-	<select id="getMovieOne" resultType="movie">
+<!-- 	<select id="getMovieOne" resultType="movie">
 		SELECT * FROM MOVIE WHERE M_ID = #{m_id}
 	</select>
 	
@@ -44,7 +44,7 @@
 		UPDATE MOVIE
 		   SET TITLE =  #{title}, GNR= #{gnr}, DIRECTOR=#{director},RUNNINGTIME=#{runningtime},RESTRICT= #{restrict},
 		   ONAIR= #{onair},CONTENT = #{content} WHERE m_id = #{m_id}
-	</update>
+	</update> -->
 	
 	<!-- <select id="getPlusTitlebyt_id" resultType="plus">
 	    select  *
