@@ -60,8 +60,6 @@ public class MovieController {
 	
 	@RequestMapping("movieRes.do")
 	public String movieRes(MovieVO movieVO, Model model, HttpSession session, HttpServletRequest request) {
-		//로그이
-		
 		
 		model.addAttribute("movieRes",movieService.getMovieOne(movieVO));
 		
@@ -86,7 +84,6 @@ public class MovieController {
 		List<MovieVO> theaterList = theaterService.getTheater_movieList(movieVO.getM_id());
 		
 		return theaterList;
-
 	}
 
 	@RequestMapping(value = "/checkMovieList.do", method = {RequestMethod.GET, RequestMethod.POST})
