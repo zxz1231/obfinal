@@ -78,10 +78,22 @@
 			data : commentData,
 			dataType : "text",
 			success : function(result) {
-				
-				
+	            var okID = result;
+	            var noID = "notfound";
 
-			}
+	            if (result == noID) {
+	               $("#show").css("display", "block");
+	               $("#nouser").css("display","none");
+	               $("#userID").html("일치하는 정보가 없습니다").css("color", "red");
+
+	            } else if (result == okID) {
+	               alert("아이디가 있고");
+	               $("#userID").html("회원님의 아이디는  : "+ result).css("color", "blue");
+	               $("#show").css("display", "block");
+
+	            }
+
+	         }
 		});
 
 		/* 여기까지 */
