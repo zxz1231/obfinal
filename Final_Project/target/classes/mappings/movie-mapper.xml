@@ -126,7 +126,7 @@
 	
 	<select id="getMovieGnr" resultType="movie">
 		SELECT DISTINCT GNR FROM
-		MOVIE WHERE GNR IS NOT NULL
+		MOVIE WHERE GNR IS NOT NULL AND ONAIR=1
 	</select>
 
 	<!-- 영화 상세조회 -->
