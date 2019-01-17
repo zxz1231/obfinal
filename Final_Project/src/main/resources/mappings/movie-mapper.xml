@@ -109,9 +109,9 @@
 		SELECT * FROM MOVIE Where ONAIR=-1 ORDER BY M_ID 
 	</select>
 
-	<!-- 상영예정 상태인 영화 목록 조회 -->
+	<!-- 상영예정 상태인 영화 장르별 조회 -->
 	<select id="getMovieListPreairGnr" resultType="movie">
-		SELECT * FROM MOVIE Where ONAIR=-1 AND GNR IS NOT NULL ORDER BY M_ID 
+		SELECT DISTINCT GNR FROM MOVIE Where ONAIR=-1 AND GNR IS NOT NULL
 	</select>
 
 	<!-- 득표수 상위 5개 영화 목록 조회(득표수 내림차순, 영화제목순) -->

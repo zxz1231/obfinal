@@ -32,6 +32,7 @@ public class MovieController {
 	@Autowired
 	private UsersService usersService;
 	
+	//영화 상세보기
 	@RequestMapping("movieDetail.do")
 	public String movieDetail(MovieVO vo, Model model,HttpSession session) {
 		
@@ -42,6 +43,19 @@ public class MovieController {
 		//페이지 정보 저장
 //		session.setAttribute("pageType","MovieDetail");
 		return "/views/reservation/MovieDetail.jsp";
+	}
+	
+	//영화 상세보기(상영예정작)
+	@RequestMapping("movieDetailPreair.do")
+	public String movieDetailPreair(MovieVO vo, Model model,HttpSession session) {
+		
+		model.addAttribute("movieOne",movieService.getMovieOne(vo));
+		
+		System.out.println("movieService.getMovieOne(vo) : " + movieService.getMovieOne(vo));
+		
+		//페이지 정보 저장
+//		session.setAttribute("pageType","MovieDetail");
+		return "/views/movie/movieDetailPreair.jsp";
 	}
 	
 	@RequestMapping("movieRes.do")

@@ -111,7 +111,7 @@
 				<!-- Poftfolio Filters -->
 				<div class="portfolio-filters" style="float: left;">
 					<span><button class="is-checked" data-filter="*">ALL</button></span>
-					<c:forEach var="gnridx" items="${gnrList}">
+					<c:forEach var="gnridx" items="${gnrListPreair}">
 						<span><button data-filter=".pfolio-filter-${gnridx.gnr }">${gnridx.gnr}</button></span>
 					</c:forEach>
 				</div>
@@ -138,7 +138,7 @@
 												<h6>${movieidx.title}</h6>
 												<hr>
 												<h3>		
-													<a href="<%=contextPath%>/movieDetail.do?m_id=${movieidx.m_id}"><img alt="영화정보"
+													<a href="movieDetailPreair.do?m_id=${movieidx.m_id}"><img alt="영화정보"
 														src="<%=IMGPath%>/영화정보.png"></a>
 <%-- 														<a href="#" onclick="res(${movieOne.m_id })"><img alt="예매하기" --%>
 <%-- 														src="<%=IMGPath%>/예매.png"></a> --%>
