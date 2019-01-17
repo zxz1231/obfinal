@@ -21,6 +21,7 @@ public class UsersDAO {
 	//회원정보 수정
 	public void updateUsers(UsersVO vo) {
 		System.out.println("==========================> Mybatis2로 updateUsers() 처리");
+		System.out.println("DAO- updateUsers실행. uvo : " + vo);
 		mybatis.update("UsersDAO.updateUsers", vo);
 	};
 	//votedmovie 수정 .

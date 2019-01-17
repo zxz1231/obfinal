@@ -25,6 +25,7 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public void updateUsers(UsersVO vo) {
+		System.out.println("usersService - updateUsers실행. uvo : " + vo);
 		usersDAO.updateUsers(vo);
 	}
 	
