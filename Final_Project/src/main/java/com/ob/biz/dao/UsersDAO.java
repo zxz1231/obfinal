@@ -74,5 +74,12 @@ public class UsersDAO {
 	public String findIDchk(UsersVO vo) {
 		return mybatis.selectOne("UsersDAO.findIDchk",vo);
 	}
+	// 아이디랑 이메일로 존재여부 확인
+	public int findPWchk(UsersVO vo) {
+		return mybatis.selectOne("UsersDAO.findPWchk",vo);
+	}
+	public int update_pw(UsersVO vo) {
+		return mybatis.update("UsersDAO.update_pw",vo);
+	}
 	
 }

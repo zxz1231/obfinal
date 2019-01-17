@@ -78,6 +78,16 @@ public class UsersServiceImpl implements UsersService{
 		return usersDAO.findIDchk(vo);
 	}
 
+	@Override
+	public int findPWchk(UsersVO vo) {
+		return usersDAO.findPWchk(vo);
+	}
+
+	@Override
+	public int update_pw(UsersVO vo) {
+		return usersDAO.update_pw(vo);
+	}
+
 
 
 }
