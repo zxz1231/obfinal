@@ -121,7 +121,7 @@ function idChk(){
 
 					<!-- Portfolios -->
 					<div class="row no-gutters portfolios portfolios-style-1"
-						style="height: 900px; width: 700px;" data-show="6" data-load="3">
+						style="height: 900px; width: 700px;" data-show="9" data-load="6">
 
 						<c:forEach var="movieidx" items="${movieList}">
 							<c:if test="${not empty movieidx.poster}">
