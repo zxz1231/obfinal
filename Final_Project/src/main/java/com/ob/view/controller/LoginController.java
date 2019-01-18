@@ -114,8 +114,8 @@ public class LoginController {
 				usersService.update_pw(vo);
 				// 비밀번호 변경 메일 발송
 				System.out.println("바뀐 vo" +vo);
-				find_PasswordService.send_mail(vo, "find_pw");
-				System.out.println("뭔데이거");
+				String mailsendOk = find_PasswordService.send_mail(vo, "find_pw");
+				System.out.println(mailsendOk);
 				
 				
 				
@@ -125,7 +125,6 @@ public class LoginController {
 			
 			return null;
 			
-//			service.find_pw(response, vo);
 		}
 		
 	
